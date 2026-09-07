@@ -1,0 +1,17 @@
+[project]
+name = "phoenixai-prc2026-taxiout"
+version = "0.1.0"
+requires-python = ">=3.12"
+license = "GPL-3.0-only"
+description = "Independent reproducible taxi-out research for PRC Data Challenge 2026"
+dependencies = ["pandas", "numpy", "pyarrow", "catboost", "pydantic", "boto3"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+ignore_missing_imports = true
+exclude = [".venv", "runs"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

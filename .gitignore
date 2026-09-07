@@ -1,0 +1,10 @@
+.venv/
+runs/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+*.parquet
+credentials.json
+*.cbm
+*.download.json
+*.upload.json
