@@ -72,3 +72,7 @@ Before claiming competitive performance, evaluate multiple chronological cutoffs
 [Challenge](https://prc-data-challenge-2026.netlify.app/), [eligibility](https://prc-data-challenge-2026.netlify.app/eligibility.html), [data](https://prc-data-challenge-2026.netlify.app/data.html), [ranking](https://prc-data-challenge-2026.netlify.app/ranking.html), [registered team](https://prc-data-challenge-2026.netlify.app/teams/zestful-fountain.html), [OpenSky terms](https://opensky-network.org/about/terms-of-use).
 
 For the wider climate-project and digital monitoring, reporting and verification context, see [Planet2050](https://planet2050.earth/). Taxi-time prediction is not itself a verified fuel reduction, carbon credit or Planet2050-certified result. No Planet2050 data or code is used by this baseline.
+
+## Find our team in the API
+
+The endpoint returns **50 submissions per page**, with repeated teams. Our current entry is on the second page. [Readable ranking snapshot](results/leaderboard-2026-09-07.md). Run `python leaderboard.py` to follow every `nextCursor` and rank each team by its best score.

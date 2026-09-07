@@ -1,0 +1,9 @@
+{
+  "iterations": 1000,
+  "depth": 7,
+  "learning_rate": 0.05,
+  "seed": 20260906,
+  "data_class": "synthetic",
+  "validation_start": "2025-10-01T00:00:00Z",
+  "data_permission_ref": null
+}
