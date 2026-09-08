@@ -76,3 +76,7 @@ For the wider climate-project and digital monitoring, reporting and verification
 ## Find our team in the API
 
 The endpoint returns **50 submissions per page**, with repeated teams. Our current entry is on the second page. [Readable ranking snapshot](results/leaderboard-2026-09-07.md). Run `python leaderboard.py` to follow every `nextCursor` and rank each team by its best score.
+
+## Latest carrier/specialist submission
+
+v3 officially scored **292.4043 seconds RMSE**, rank **12 of 69** at 2026-09-08 04:04 UTC. [Dated result](results/leaderboard-2026-09-08.md). `carrier_contest.py` provides independent training and inference; see METHOD.md. First place remains unachieved.

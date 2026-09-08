@@ -4,6 +4,8 @@ Team: **zestful-fountain**. Original independent GPL-3.0-only implementation.
 
 ## Official result
 
+Latest v3 result: **292.4043 seconds RMSE**, all **344,841** pairs, processed **2026-09-08T04:03:37Z**. Rank **12 of 69** at 04:04 UTC. See [dated snapshot](results/leaderboard-2026-09-08.md). The leader scored 260.931.
+
 Submission `zestful-fountain_v2.parquet`: **297.5883 seconds RMSE**, all **344,841** pairs scored, processed **2026-09-07T17:52:51Z**. At 17:53 UTC the team was **13th of 66**. The leading score was 263.4623. Rankings change; this is a dated snapshot, not a winning claim. The previous official submission scored 461.4635. Source: [official leaderboard API](https://datacomp.opensky-network.org/api/competitions/bb3693e1-26bc-4a9e-8619-4fe78b4eab0c/leaderboard), [ranking rules](https://prc-data-challenge-2026.netlify.app/ranking.html).
 
 ## Data and permitted context
