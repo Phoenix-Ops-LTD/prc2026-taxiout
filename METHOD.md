@@ -4,7 +4,9 @@ Team: **zestful-fountain**. Original independent GPL-3.0-only implementation.
 
 ## Official result
 
-Latest v3 result: **292.4043 seconds RMSE**, all **344,841** pairs, processed **2026-09-08T04:03:37Z**. Rank **12 of 69** at 04:04 UTC. See [dated snapshot](results/leaderboard-2026-09-08.md). The leader scored 260.931.
+Latest v4: **291.4829 seconds RMSE**, **12 of 69** at **2026-09-08T04:26:13Z**. All 344,841 pairs scored. [Dated snapshot](results/leaderboard-2026-09-08.md). Leader: 260.931.
+
+Earlier v3 result: **292.4043 seconds RMSE**, all **344,841** pairs, processed **2026-09-08T04:03:37Z**. Rank **12 of 69** at 04:04 UTC. See [dated snapshot](results/leaderboard-2026-09-08.md). The leader scored 260.931.
 
 Submission `zestful-fountain_v2.parquet`: **297.5883 seconds RMSE**, all **344,841** pairs scored, processed **2026-09-07T17:52:51Z**. At 17:53 UTC the team was **13th of 66**. The leading score was 263.4623. Rankings change; this is a dated snapshot, not a winning claim. The previous official submission scored 461.4635. Source: [official leaderboard API](https://datacomp.opensky-network.org/api/competitions/bb3693e1-26bc-4a9e-8619-4fe78b4eab0c/leaderboard), [ranking rules](https://prc-data-challenge-2026.netlify.app/ranking.html).
 
@@ -83,3 +85,5 @@ python ensemble_contest.py predict --global-run runs/reproduction-carrier/global
 ```
 
 Use fresh run directories and an unused increasing submission version. Local validation does not establish an official score; only an organizer score receipt does.
+
+The fixed blend was submitted as v4 and scored **291.4829 seconds RMSE** officially (2026-09-08T04:25:34Z), an improvement over v3. The larger 83-feature match-context model scored 324.998 with the LIRF specialist locally, so it was rejected.

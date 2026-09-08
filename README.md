@@ -80,3 +80,7 @@ The endpoint returns **50 submissions per page**, with repeated teams. Our curre
 ## Latest carrier/specialist submission
 
 v3 officially scored **292.4043 seconds RMSE**, rank **12 of 69** at 2026-09-08 04:04 UTC. [Dated result](results/leaderboard-2026-09-08.md). `carrier_contest.py` provides independent training and inference; see METHOD.md. First place remains unachieved.
+
+## Latest fixed ensemble submission
+
+v4 officially scored **291.4829 seconds RMSE**, rank **12 of 69** at 2026-09-08 04:26 UTC. [Result](results/leaderboard-2026-09-08.md). `ensemble_contest.py` adds reproducible LightGBM fitting and the fixed blend; see METHOD.md.
