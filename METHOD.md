@@ -70,3 +70,16 @@ python carrier_contest.py predict --global-run runs/reproduction-carrier/global 
 ```
 
 Choose a fresh version number if v3 already exists. The command fits validation models at the selected fixed tree counts and then refits each model on all its authorized nonnegative training rows. Hashes, feature schemas and counts are checked before prediction. The final full global fit was restarted after an interrupted local process; it completed 2,980 iterations, with recovery snapshots enabled. Snapshot files, logs and fitted models remain private. GPU training is not bitwise deterministic; the saved model digest identifies the exact submitted fit.
+
+## Fixed LightGBM blend candidate
+
+The LightGBM residual model uses the same 70 features, 63 leaves, learning rate 0.035, minimum child size 80, L2 regularization 10, column fraction 0.9 and 679 trees (seed 20260907). A fixed 25% LightGBM / 75% global CatBoost blend retains the unchanged unmatched-LIRF specialist. Predictions from each constituent are floored at zero before blending.
+
+January/July holdout RMSE is **323.377**, versus **324.065** for v3, with improvements in both months and 54 of 62 UTC days. A paired day-cluster bootstrap (2,000 resamples, seed 20260908) gives a 95% interval of [-580.97, -301.10] seconds squared for the change in mean squared error. This is a conditional diagnostic on the reused tuning holdout, not independent evidence of generalization. The 50/50 blend was weaker and worsened July. A non-LIRF unmatched specialist gave only 0.012 seconds overall improvement while worsening most airports; it was rejected.
+
+```sh
+python ensemble_contest.py train --data runs/data --output runs/reproduction-light --permission-ref "PRC2026 registered participant, challenge-only"
+python ensemble_contest.py predict --global-run runs/reproduction-carrier/global --specialist-run runs/reproduction-carrier/specialist --light-run runs/reproduction-light --ranking runs/data/ranking.parquet --template runs/data/submitting.parquet --output runs/submissions/zestful-fountain_v4.parquet --permission-ref "PRC2026 registered participant, challenge-only"
+```
+
+Use fresh run directories and an unused increasing submission version. Local validation does not establish an official score; only an organizer score receipt does.
