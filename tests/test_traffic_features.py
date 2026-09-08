@@ -3,6 +3,7 @@ import pandas as pd
 
 from traffic_features import movement_context
 from traffic_features import nm_schedule_fallback_baseline
+from traffic_features import add_carrier_features
 from contest import matrix
 from test_pipeline import fixture
 
@@ -55,3 +56,14 @@ def test_unmatched_lirf_fallback_extrapolates_without_altering_other_airports() 
         "movement_minus_LOBT_flt": [float("nan"), float("nan"), 850.],
         "movement_minus_AOBT_3_flt": [float("nan"), float("nan"), 800.]})
     assert nm_schedule_fallback_baseline(x).tolist() == [87000., 1000., 800.]
+
+
+def test_carrier_features_exclude_flight_number_and_private_target_fields() -> None:
+    raw = pd.DataFrame({"FLIGHT_mvt": ["RYR1234", "RYR9876", None],
+        "SCHED_TIME_UTC_mvt": pd.to_datetime(["2025-01-02T09:00Z"] * 3),
+        "MVT_TIME_UTC_mvt": pd.to_datetime(["2025-01-02T09:20:30Z"] * 3)})
+    base = pd.DataFrame({"ADEP_mvt": ["LIRF"] * 3})
+    x = add_carrier_features(base, raw)
+    assert x.movement_carrier.tolist() == ["RYR", "RYR", "UNKNOWN"]
+    pd.testing.assert_series_equal(x.iloc[0], x.iloc[1], check_names=False)
+    pd.testing.assert_frame_equal(x, add_carrier_features(base, raw.assign(TAXITIME_SEC_mvt=-1, FLIGHT_ID_mvt=42)))

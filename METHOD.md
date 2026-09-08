@@ -53,3 +53,18 @@ The example uses a new version number to avoid overwriting the scored submission
 ## Remaining competitive work
 
 Investigate LIRF heavy-tail errors using training-only folds, validate airport-specific residual models and blending on identical holdouts, and test robustness to missing NM matches. Preserve untouched folds for final model selection. Additional live data access is a separate OpenSky licensing process and is not required for this submission. Winning remains an objective, not an achieved result.
+
+## Carrier model and unmatched LIRF specialist (v3 candidate)
+
+`carrier_contest.py` adds five predictors to the same 65-feature matrix: movement airline prefix, airport/prefix pair, scheduled day of month and movement/schedule seconds. Full flight numbers and identifiers are excluded. The global residual model uses depth 9, learning rate 0.045, L2 regularization 5 and 2,980 trees. A separate CPU CatBoost model replaces its residual only for LIRF rows with missing `IOBT_flt`: depth 5, learning rate 0.04, L2 regularization 10, 1,014 trees. Both use seed 20260907 and the same continuous baseline. The specialist is fitted on 1,488 nonnegative labels in its full fit.
+
+On the same January/July 2025 holdout, the global carrier model scored 327.340 seconds, and the combined model scored **324.065**, compared with 331.284 for v2. These parameters were selected using this holdout; it is **not an untouched test**, and these values are not official scores. Positive outliers remain unchanged. A larger unmatched-LIRF residual specialist was not retained. A matched-LIRF LightGBM experiment was rejected: residual RMSE 395.047 versus 393.384 for the existing global model on that scope; direct-target fitting was worse at 629.654. A capped-residual global experiment was stopped early because its validation result deteriorated. No leaderboard quota was used for these rejected runs.
+
+Reproduce the selected carrier/specialist method with authorized data:
+
+```sh
+python carrier_contest.py train --data runs/data --output runs/reproduction-carrier --device GPU --permission-ref "PRC2026 registered participant, challenge-only"
+python carrier_contest.py predict --global-run runs/reproduction-carrier/global --specialist-run runs/reproduction-carrier/specialist --ranking runs/data/ranking.parquet --template runs/data/submitting.parquet --output runs/submissions/zestful-fountain_v3.parquet --permission-ref "PRC2026 registered participant, challenge-only"
+```
+
+Choose a fresh version number if v3 already exists. The command fits validation models at the selected fixed tree counts and then refits each model on all its authorized nonnegative training rows. Hashes, feature schemas and counts are checked before prediction. The final full global fit was restarted after an interrupted local process; it completed 2,980 iterations, with recovery snapshots enabled. Snapshot files, logs and fitted models remain private. GPU training is not bitwise deterministic; the saved model digest identifies the exact submitted fit.

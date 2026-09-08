@@ -119,3 +119,21 @@ def nm_schedule_fallback_baseline(out: pd.DataFrame) -> pd.Series:
     unmatched = out["missing_IOBT_flt"].eq(1) & out["ADEP_mvt"].eq("LIRF")
     schedule_delta = out["movement_schedule_delta_sec"].clip(0, 172800)
     return schedule_delta.where(unmatched, result).astype(float)
+
+
+def add_carrier_features(out: pd.DataFrame, departures: pd.DataFrame) -> pd.DataFrame:
+    """Recover an airline prefix where NM matching lost operator metadata.
+
+    Flight numbers and movement/flight IDs are not predictors. Calendar and
+    timestamp precision are supplied movement context, not target information.
+    """
+    require_columns(departures, ["FLIGHT_mvt", "SCHED_TIME_UTC_mvt", "MVT_TIME_UTC_mvt"])
+    out = out.copy()
+    out["movement_carrier"] = departures["FLIGHT_mvt"].str.extract(r"^([A-Za-z]{2,4})", expand=False).fillna("UNKNOWN").str.upper()
+    out["airport_movement_carrier"] = out["ADEP_mvt"] + ":" + out["movement_carrier"]
+    scheduled = pd.to_datetime(departures["SCHED_TIME_UTC_mvt"], utc=True)
+    movement = pd.to_datetime(departures["MVT_TIME_UTC_mvt"], utc=True)
+    out["scheduled_day"] = scheduled.dt.day.astype(float)
+    out["movement_second"] = movement.dt.second.astype(float)
+    out["schedule_second"] = scheduled.dt.second.astype(float)
+    return out
