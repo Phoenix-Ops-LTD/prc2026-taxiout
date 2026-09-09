@@ -87,3 +87,21 @@ python ensemble_contest.py predict --global-run runs/reproduction-carrier/global
 Use fresh run directories and an unused increasing submission version. Local validation does not establish an official score; only an organizer score receipt does.
 
 The fixed blend was submitted as v4 and scored **291.4829 seconds RMSE** officially (2026-09-08T04:25:34Z), an improvement over v3. The larger 83-feature match-context model scored 324.998 with the LIRF specialist locally, so it was rejected.
+
+## Duration-context candidate (9 September 2026, not yet submitted)
+
+`duration_contest.py` extends the carrier matrix to 93 features with normalized record-agreement indicators, route/aircraft/runway interactions, planned and actual NM flight-duration differences, duration ratios/plausibility and off-block/schedule deltas. These derive exclusively from organizer-supplied retrospective predictors; departure targets, airport block timestamps and identifiers remain excluded. Duration differences use the existing capped NM deltas. Missing NM observations remain missing.
+
+The candidate uses CatBoost depth 9, learning rate 0.05, L2 regularization 7, 254 borders and seed 20260907. A 5,000-tree January/July validation run selected 4,998 trees. The raw model scored 324.864 seconds RMSE; retaining the existing unmatched-LIRF specialist gives 321.832. A coarse fixed blend comparison evaluated duration weights 0, 0.25, 0.5, 0.75 and 1 on identical IDs and labels. The selected 75% duration / 25% v4 blend scored **321.589**, versus **323.377** for v4. January improves from 346.045 to 344.710; July from 303.881 to 301.668; 55 of 62 UTC days improve. The specialist predictions remain exactly unchanged. This is a reused tuning holdout, not an untouched test or an official score.
+
+Full fitting uses all 2,084,678 nonnegative 2025 departure labels. Recovery validates source hashes, configuration and feature schema before resuming snapshots. GPU fitting is not bitwise deterministic; save the exact model hash. Reproduction commands, using fresh output paths:
+
+```sh
+python duration_contest.py train --data runs/data --output runs/duration-validation --validation-only --permission-ref "PRC2026 registered participant, challenge-only"
+python duration_contest.py train --data runs/data --output runs/duration-full --permission-ref "PRC2026 registered participant, challenge-only"
+python duration_contest.py predict --run runs/duration-full --global-run runs/reproduction-carrier/global --specialist-run runs/reproduction-carrier/specialist --light-run runs/reproduction-light --ranking runs/data/ranking.parquet --template runs/data/submitting.parquet --output runs/submissions/zestful-fountain_v5.parquet --permission-ref "PRC2026 registered participant, challenge-only"
+```
+
+The validation command uses the selected fixed tree count, rather than repeating early stopping. Produce the carrier/specialist and LightGBM runs with the earlier commands. The predictor recomputes v4 from its constituent models, checks model hashes and feature schemas, blends aligned predictions, preserves the specialist and validates the exact official template. Training/prediction never uploads automatically. `--resume` resumes an interrupted training command with identical arguments and inputs; completed runs cannot be overwritten.
+
+Further recovered experiments were rejected: airport-specific weights selected across the two months scored 323.712, worse than the fixed v4 blend; the normalized-carrier specialist scored 323.623 and worsened January. Arrival-to-departure NM linkage remains an unvalidated research possibility, with no submission based on it.
