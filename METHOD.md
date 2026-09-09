@@ -4,11 +4,9 @@ Team: **zestful-fountain**. Original independent GPL-3.0-only implementation.
 
 ## Official result
 
-Latest v4: **291.4829 seconds RMSE**, **12 of 69** at **2026-09-08T04:26:13Z**. All 344,841 pairs scored. [Dated snapshot](results/leaderboard-2026-09-08.md). Leader: 260.931.
+Latest v5: **290.0659 seconds RMSE**, **19 of 89** at **2026-09-09T18:40:47Z**. All 344,841 pairs scored; leader 246.3605. [Dated snapshot](results/leaderboard-2026-09-09.md). The first-place-through-deadline goal remains incomplete.
 
-Earlier v3 result: **292.4043 seconds RMSE**, all **344,841** pairs, processed **2026-09-08T04:03:37Z**. Rank **12 of 69** at 04:04 UTC. See [dated snapshot](results/leaderboard-2026-09-08.md). The leader scored 260.931.
-
-Submission `zestful-fountain_v2.parquet`: **297.5883 seconds RMSE**, all **344,841** pairs scored, processed **2026-09-07T17:52:51Z**. At 17:53 UTC the team was **13th of 66**. The leading score was 263.4623. Rankings change; this is a dated snapshot, not a winning claim. The previous official submission scored 461.4635. Source: [official leaderboard API](https://datacomp.opensky-network.org/api/competitions/bb3693e1-26bc-4a9e-8619-4fe78b4eab0c/leaderboard), [ranking rules](https://prc-data-challenge-2026.netlify.app/ranking.html).
+Earlier official scores: v4 291.4829, v3 292.4043, v2 297.5883, v1 461.4635 seconds RMSE. Historical ranks and processing times remain in the [8 September](results/leaderboard-2026-09-08.md) and [7 September](results/leaderboard-2026-09-07.md) snapshots. Rankings change; these are dated measurements.
 
 ## Data and permitted context
 
@@ -88,7 +86,7 @@ Use fresh run directories and an unused increasing submission version. Local val
 
 The fixed blend was submitted as v4 and scored **291.4829 seconds RMSE** officially (2026-09-08T04:25:34Z), an improvement over v3. The larger 83-feature match-context model scored 324.998 with the LIRF specialist locally, so it was rejected.
 
-## Duration-context candidate (9 September 2026, not yet submitted)
+## Duration-context submission v5 (9 September 2026)
 
 `duration_contest.py` extends the carrier matrix to 93 features with normalized record-agreement indicators, route/aircraft/runway interactions, planned and actual NM flight-duration differences, duration ratios/plausibility and off-block/schedule deltas. These derive exclusively from organizer-supplied retrospective predictors; departure targets, airport block timestamps and identifiers remain excluded. Duration differences use the existing capped NM deltas. Missing NM observations remain missing.
 
@@ -105,3 +103,7 @@ python duration_contest.py predict --run runs/duration-full --global-run runs/re
 The validation command uses the selected fixed tree count, rather than repeating early stopping. Produce the carrier/specialist and LightGBM runs with the earlier commands. The predictor recomputes v4 from its constituent models, checks model hashes and feature schemas, blends aligned predictions, preserves the specialist and validates the exact official template. Training/prediction never uploads automatically. `--resume` resumes an interrupted training command with identical arguments and inputs; completed runs cannot be overwritten.
 
 Further recovered experiments were rejected: airport-specific weights selected across the two months scored 323.712, worse than the fixed v4 blend; the normalized-carrier specialist scored 323.623 and worsened January. Arrival-to-departure NM linkage remains an unvalidated research possibility, with no submission based on it.
+
+The duration blend was submitted as v5 and officially scored **290.0659 seconds RMSE**, rank **19 of 89** at 18:40 UTC. All 344,841 values exactly match independent recomputation against the saved duration model and the scored v4 predictions, including exact preservation of all 383 specialist values. [Dated official result](results/leaderboard-2026-09-09.md). The full model has 4,998 trees and uses all 2,084,678 nonnegative labels. This is the first submission on 9 September.
+
+Post-v5 local checks: the duration LightGBM candidate at 523 trees scored 327.526 with the specialist; adding it at 10% to v5 gives 321.371 on the reused holdout. A separate 119-feature NM interval/forward-traffic LightGBM candidate scored 328.146 with the specialist and 321.376 at a 10% addition. Neither was submitted. Both gains are small and need further validation. Three mixture-of-baselines classifiers for unmatched LIRF worsened both months; rejected. Arrival NM record recovery also worsened both months and was rejected. A new recurring-flight-service category experiment is local only and unscored; it uses recurring service strings as categories, not movement/NM record IDs.
