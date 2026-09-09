@@ -14,4 +14,4 @@ jobs:
           cache-dependency-path: requirements.lock.txt
       - run: python -m pip install -r requirements.lock.txt
       - run: python -m pytest -q
-      - run: python -m mypy pipeline.py buckets.py traffic_features.py contest.py carrier_contest.py ensemble_contest.py leaderboard.py
+      - run: python -m mypy pipeline.py buckets.py traffic_features.py contest.py carrier_contest.py ensemble_contest.py duration_contest.py leaderboard.py

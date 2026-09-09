@@ -84,3 +84,9 @@ v3 officially scored **292.4043 seconds RMSE**, rank **12 of 69** at 2026-09-08 
 ## Latest fixed ensemble submission
 
 v4 officially scored **291.4829 seconds RMSE**, rank **12 of 69** at 2026-09-08 04:26 UTC. [Result](results/leaderboard-2026-09-08.md). `ensemble_contest.py` adds reproducible LightGBM fitting and the fixed blend; see METHOD.md.
+
+## Active continuation
+
+At **2026-09-09 17:53 UTC**, the complete 571-submission API snapshot places v4 **20th of 89 scored teams**; the leader is at **246.3605**. First place remains unachieved. The goal is to reach it and defend it through the published 11 October deadline, within the submission rules.
+
+`duration_contest.py` supplies the next reproducible candidate: 93 retrospective features and a fixed blend preserving the LIRF specialist. Local reused-holdout RMSE is **321.589**, versus **323.377** for v4. The full fit is in progress; this candidate has no official score yet. See [METHOD.md](METHOD.md) for reproduction and validation limits.
