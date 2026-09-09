@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
@@ -45,10 +46,36 @@ def upload(s3: Any, path: Path, template: Path) -> None:
     if manifest["submission_sha256"] != sha256(path) or manifest["template_sha256"] != sha256(template):
         raise ValueError("Submission or template digest changed")
     validate_submission(pd.read_parquet(template), pd.read_parquet(path))
+    # Check every page immediately before writing. A rolling 24-hour limit is
+    # conservative even if the organizer's daily reset timezone changes.
+    now = datetime.now(timezone.utc)
+    objects = [item for page in s3.get_paginator("list_objects_v2").paginate(Bucket=TEAM_BUCKET)
+        for item in page.get("Contents", [])]
+    versions: list[int] = []
+    recent = 0
+    for item in objects:
+        match = re.fullmatch(r"zestful-fountain_v([1-9][0-9]*)\.parquet", item["Key"])
+        if not match:
+            continue
+        versions.append(int(match.group(1)))
+        modified = item["LastModified"]
+        if not isinstance(modified, datetime) or modified.tzinfo is None:
+            raise ValueError("Submission timestamps must be timezone-aware")
+        if modified > now:
+            raise ValueError("Remote submission timestamp is in the future; check the clock")
+        recent += int(modified >= now - timedelta(hours=24))
+    version = int(path.stem.rsplit("_v", 1)[1])
+    if version <= max(versions, default=0):
+        raise ValueError("Submission version must increase beyond every existing version")
+    if recent >= 5:
+        raise ValueError("Five-submission rolling 24-hour limit reached")
+    if sum(int(item["Size"]) for item in objects) + path.stat().st_size > 1_000_000_000:
+        raise ValueError("Submission would exceed the one GB team-bucket limit")
     # Conditional create prevents accidental replacement of a previous submission.
     with path.open("rb") as body:
         response = s3.put_object(Bucket=TEAM_BUCKET, Key=path.name, Body=body, ContentType="application/vnd.apache.parquet", IfNoneMatch="*")
-    write_json(path.with_suffix(".upload.json"), {"bucket": TEAM_BUCKET, "key": path.name, "submission_sha256": manifest["submission_sha256"], "etag": response.get("ETag"), "status": "UPLOADED_SCORE_PENDING"})
+    write_json(path.with_suffix(".upload.json"), {"bucket": TEAM_BUCKET, "key": path.name, "submission_sha256": manifest["submission_sha256"], "etag": response.get("ETag"), "status": "UPLOADED_SCORE_PENDING",
+        "limits_checked_at_utc": now.isoformat(), "previous_submissions_in_24h": recent})
 
 
 def main() -> None:

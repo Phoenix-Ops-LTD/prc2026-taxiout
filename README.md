@@ -42,6 +42,8 @@ python buckets.py --credentials /private/minio.json list --bucket prc-2026-zestf
 
 The training command above illustrates multiple inputs; pass **all twelve** authorized 2025 monthly files for the final fit. October through December is the default temporal holdout, so training inputs must include records on both sides of 1 October. Download the resulting score object separately; an upload receipt is not an official score. Conditional uploads refuse replacement. Keep version numbers increasing.
 
+Immediately before upload, `buckets.py` paginates the team bucket and enforces increasing versions, a conservative maximum of five submissions in the preceding 24 hours, and the one GB capacity limit. Unknown/invalid timestamps or listing failures stop the write. Run only one uploader at a time; these client-side checks do not provide a distributed lock against simultaneous processes.
+
 ## Method and evaluation
 
 - Target: `TAXITIME_SEC_mvt`, seconds; departures only. Official metric: RMSE.
