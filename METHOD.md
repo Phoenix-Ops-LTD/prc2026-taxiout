@@ -151,3 +151,18 @@ python arrival_contest.py predict --run runs/arrival-full --arrival-specialist r
 ```
 
 Use fresh run/output paths and an unused increasing submission version. Prediction checks baseline, source-data and model digests, feature schemas, expert seed membership and exact template alignment. Source tests cover excluded departure fields, strict completion timing, ties, empty pools, row ordering, finite/nonnegative predictions and the combined inference path. Training and prediction do not upload automatically. V7 subsequently scored **285.749 seconds RMSE** officially across all 344,841 pairs, improving v6 by 2.6224 seconds. The complete 05:58 UTC snapshot ranks the team 19/96, with first at 245.094. Every value matches independent recomputation exactly. [Official dated result](results/leaderboard-2026-09-10.md).
+
+## Deeper arrival residual candidate v8
+
+`arrival_boost_contest.py` uses the same 123 predictors as the v7 global model with CatBoost depth 9, learning rate 0.05, L2 regularization 7, 254 borders and seed 20260907. Fitting excludes the separately modeled unmatched-LIRF scope and caps fitting residuals at +/-7,200 seconds. Original evaluation labels remain unchanged. The January/July validation run selected 4,999 trees out of a maximum 5,000 with early stopping patience 200. GPU fitting is not bitwise deterministic; saved-model digests identify individual fits.
+
+A fixed 50% blend with v7 was declared before reading the completed validation result. Promotion required at least 0.5 seconds overall improvement, improvement in each month, and at least 40 improved days. The blend scored **315.778** versus v7 **318.547** on the reused January/July holdout: January **341.669** versus 343.676, July **293.251** versus 296.749, and **61 of 62 days** improved. The existing v7 unmatched-LIRF predictions remain exactly unchanged. This is local selection evidence from a reused holdout, not an official score or an untouched generalization test.
+
+Full fitting uses all 2,083,190 eligible ordinary-scope 2025 departures. The standalone feature builder was compared against every cached fitting feature: all **123 columns across 2,085,047 departure rows matched exactly**. Training verifies twelve monthly input files, 2025 movement timestamps, finite labels and immutable output paths. Inference verifies the v7 baseline and ranking/template digests, completed-model status, parameters, model digest, tree count, feature order, finite nonnegative values and exact template alignment.
+
+```sh
+python arrival_boost_contest.py train --data runs/data --output runs/arrival-boost-full --trees 4999 --device GPU --permission-ref "PRC2026 registered participant, challenge-only"
+python arrival_boost_contest.py predict --run runs/arrival-boost-full --baseline runs/submissions/zestful-fountain_v7.parquet --ranking runs/data/ranking.parquet --template runs/data/submitting.parquet --output runs/submissions/zestful-fountain_v8.parquet --permission-ref "PRC2026 registered participant, challenge-only"
+```
+
+Use fresh paths and an unused increasing submission version. Training and prediction do not upload automatically. At publication this candidate has no official result; v7 remains the verified best submission.
