@@ -108,7 +108,7 @@ The duration blend was submitted as v5 and officially scored **290.0659 seconds 
 
 Post-v5 local checks: the duration LightGBM candidate at 523 trees scored 327.526 with the specialist; adding it at 10% to v5 gives 321.371 on the reused holdout. A separate 119-feature NM interval/forward-traffic LightGBM candidate scored 328.146 with the specialist and 321.376 at a 10% addition. Neither was submitted. Both gains are small and need further validation. Three mixture-of-baselines classifiers for unmatched LIRF worsened both months; rejected. Arrival NM record recovery also worsened both months and was rejected. A new recurring-flight-service category experiment is local only and unscored; it uses recurring service strings as categories, not movement/NM record IDs.
 
-## Specialist seed ensemble candidate (10 September 2026)
+## Specialist seed ensemble v6 (10 September 2026)
 
 `specialist_ensemble.py` averages the existing specialist with four additional CPU CatBoost fits. Every fit uses the existing 70-feature matrix, depth 5, 1,014 trees, learning rate 0.04 and L2 regularization 10. Seeds 20260907 through 20260911 were declared together and receive equal 20% weights; no seed was selected or discarded according to its score. Each constituent is floored at zero before averaging. All predictions outside LIRF with missing `IOBT_flt` remain exactly equal to v5.
 
@@ -131,3 +131,5 @@ python specialist_ensemble.py predict --run runs/specialist-bagging-full --basel
 ```
 
 Training and prediction do not submit automatically. Use an unused increasing version and obtain the organizer's score receipt separately. Source checks cover exact scope/order preservation, invalid seeds, nonfinite/negative expert values, model tampering and a synthetic inference round trip.
+
+The ensemble was submitted as v6 and officially scored **288.3714 seconds RMSE** across all **344,841 pairs**, improving v5 by 1.6945 seconds. At 05:09 UTC on 10 September the complete 668-submission snapshot ranks the team 22nd of 95, with the leader at 245.2901. Independent recomputation matches every prediction exactly, including exact preservation of the 344,458 rows outside the specialist. [Dated result](results/leaderboard-2026-09-10.md). First place remains unachieved.
