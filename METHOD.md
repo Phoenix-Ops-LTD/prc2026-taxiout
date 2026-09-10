@@ -133,3 +133,21 @@ python specialist_ensemble.py predict --run runs/specialist-bagging-full --basel
 Training and prediction do not submit automatically. Use an unused increasing version and obtain the organizer's score receipt separately. Source checks cover exact scope/order preservation, invalid seeds, nonfinite/negative expert values, model tampering and a synthetic inference round trip.
 
 The ensemble was submitted as v6 and officially scored **288.3714 seconds RMSE** across all **344,841 pairs**, improving v5 by 1.6945 seconds. At 05:09 UTC on 10 September the complete 668-submission snapshot ranks the team 22nd of 95, with the leader at 245.2901. Independent recomputation matches every prediction exactly, including exact preservation of the 344,458 rows outside the specialist. [Dated result](results/leaderboard-2026-09-10.md). First place remains unachieved.
+
+## Completed-arrival candidate v7
+
+The organizers explicitly retain arrival taxi-in and in-block measurements in the ranking dataset; only departure taxi-out and block-time fields are blanked. `arrival_features.py` filters to ARR rows before reading those fields. It derives 26 features from arrivals completed strictly before the queried departure movement: airport/runway counts, taxi-in mean and standard deviation over 15/30/60 minutes, last-completion age/taxi-in, and same-stand age/taxi-in/aircraft/carrier agreement. Simultaneous airport/runway completions are averaged; ambiguous same-stand ties remain missing. This is retrospective challenge context, with no live forecasting claim. [Organizer schema](https://prc-data-challenge-2026.netlify.app/data.html#the-ranking-dataset).
+
+The global LightGBM retains the existing fixed 679-tree configuration and adds these observations to 97 features (duration93 plus normalized recurring movement/NM service names and their airport interactions). The standalone fixed feature comparison improves January/July RMSE from 332.674 to 326.346 and February/August from 272.272 to 267.592, improving all four months. Service names are recurring categories; unique movement/flight identifiers are never model predictors.
+
+The arrival specialist uses the original carrier70 plus the same 26 features, depth 5, 1,014 trees, learning rate 0.04 and L2 10. All five seeds 20260907–20260911 receive equal weight. Its scope RMSE improves from 3605.043 to 3470.237 on January/July and 3338.878 to 3192.807 on February/August. January alone worsens from 3488.457 to 3752.507; the other three months improve. No seed is selected or discarded.
+
+V7 uses 25% global arrival / 75% v6 outside the unmatched-LIRF scope, and 50% arrival specialist / 50% v6 inside that scope. The complete candidate improves reused January/July RMSE from **321.005 to 318.547**, January from 344.186 to 343.676 and July from 301.026 to 296.749; 54/62 days improve. The conservative specialist weight limits the observed January regression. These holdouts were used for research choices and are not untouched tests. February/August validates the component comparisons, not the full historical v6 ensemble. All original validation labels remain unchanged; full fitting excludes negative departure labels under the existing policy.
+
+```sh
+python arrival_contest.py train --data runs/data --output runs/arrival-full --permission-ref "PRC2026 registered participant, challenge-only"
+python arrival_specialist.py --data runs/data --output runs/arrival-specialist-full --permission-ref "PRC2026 registered participant, challenge-only"
+python arrival_contest.py predict --run runs/arrival-full --arrival-specialist runs/arrival-specialist-full --baseline runs/submissions/zestful-fountain_v6.parquet --ranking runs/data/ranking.parquet --template runs/data/submitting.parquet --output runs/submissions/zestful-fountain_v7.parquet --permission-ref "PRC2026 registered participant, challenge-only"
+```
+
+Use fresh run/output paths and an unused increasing submission version. Prediction checks baseline, source-data and model digests, feature schemas, expert seed membership and exact template alignment. Source tests cover excluded departure fields, strict completion timing, ties, empty pools, row ordering, finite/nonnegative predictions and the combined inference path. Training and prediction do not upload automatically. An official v7 score is pending.
