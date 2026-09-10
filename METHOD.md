@@ -18,25 +18,25 @@ The [official schema](https://prc-data-challenge-2026.netlify.app/data.html) ret
 
 65 features: airport/aircraft/operator/runway/stand categories and interactions; UTC schedule and movement calendars; movement/schedule deltas; trailing arrival/departure counts at airport and runway level over 15/30/60 minutes; headways; initial/estimated/actual NM time deltas, missingness and airport-match indicators. Exact-time events are excluded from trailing counts. Arrivals contribute traffic context through their destination airport only.
 
-A continuous baseline uses valid matching-airport NM actual off-block time, falling back to last-known and first-filed estimates, then 1,000 seconds. For unmatched LIRF records with missing initial NM time, it uses the nonnegative movement/schedule delta. This exception arose from inspection of the January–June 2025 fitting partition: some ground-source records encode very long delays that tree leaves cannot extrapolate. The CatBoost regressor learns the remaining residual. Labels are not rewritten. Positive outliers remain; negative labels are excluded from fitting but retained in validation scoring. Final predictions are floored at zero.
+A continuous baseline uses valid matching-airport NM actual off-block time, falling back to last-known and first-filed estimates, then 1,000 seconds. For unmatched LIRF records with missing initial NM time, it uses the nonnegative movement/schedule delta. This exception arose from inspection of the Januaryâ€“June 2025 fitting partition: some ground-source records encode very long delays that tree leaves cannot extrapolate. The CatBoost regressor learns the remaining residual. Labels are not rewritten. Positive outliers remain; negative labels are excluded from fitting but retained in validation scoring. Final predictions are floored at zero.
 
 CatBoost RMSE, depth 8, learning rate 0.055, seed 20260907, maximum 2,200 iterations, patience 120. Seasonal validation selected 2,199 iterations; final fitting uses all 2,084,678 nonnegative departure labels. GPU execution uses an NVIDIA RTX 5060 Laptop (8 GB). GPU floating-point reduction is not bitwise deterministic; record model hashes and numerical differences when reproducing. The locked environment uses Python 3.12.
 
 ## Validation and rejected changes
 
-These are 2025 holdouts, not leaderboard estimates. The July–December split trains on the first six months. The January/July seasonal split trains on the other ten months and is explicitly **not** a chronological forecast. It checks the seasonal mixture represented by the ranking months without reading ranking labels.
+These are 2025 holdouts, not leaderboard estimates. The Julyâ€“December split trains on the first six months. The January/July seasonal split trains on the other ten months and is explicitly **not** a chronological forecast. It checks the seasonal mixture represented by the ranking months without reading ranking labels.
 
 | Candidate | 2025 holdout | RMSE seconds |
 |---|---|---:|
-| Original context, 500 trees | July–December | 389.207 |
-| Context, 1,000 trees | July–December | 382.284 |
-| Traffic features with capped labels (rejected) | July–December | 434.145 |
-| Planned-time residual | July–December | 355.680 |
-| Supplied NM records, residual | July–December | 342.865 |
-| NM residual with unmatched LIRF fallback | July–December | **267.998** |
+| Original context, 500 trees | Julyâ€“December | 389.207 |
+| Context, 1,000 trees | Julyâ€“December | 382.284 |
+| Traffic features with capped labels (rejected) | Julyâ€“December | 434.145 |
+| Planned-time residual | Julyâ€“December | 355.680 |
+| Supplied NM records, residual | Julyâ€“December | 342.865 |
+| NM residual with unmatched LIRF fallback | Julyâ€“December | **267.998** |
 | NM residual with same fallback | January and July | **331.284** |
 
-The seasonal test is harder; scores across those two splits are not directly comparable. The local July–December result does not imply a 268-second official score. No changes were selected by probing individual ranking targets or exploiting the scoring service. Only one improved submission was made on 7 September before this report. The earlier CPU traffic run was cancelled and has no result.
+The seasonal test is harder; scores across those two splits are not directly comparable. The local Julyâ€“December result does not imply a 268-second official score. No changes were selected by probing individual ranking targets or exploiting the scoring service. Only one improved submission was made on 7 September before this report. The earlier CPU traffic run was cancelled and has no result.
 
 ## Reproduce the submitted method
 
@@ -140,7 +140,7 @@ The organizers explicitly retain arrival taxi-in and in-block measurements in th
 
 The global LightGBM retains the existing fixed 679-tree configuration and adds these observations to 97 features (duration93 plus normalized recurring movement/NM service names and their airport interactions). The standalone fixed feature comparison improves January/July RMSE from 332.674 to 326.346 and February/August from 272.272 to 267.592, improving all four months. Service names are recurring categories; unique movement/flight identifiers are never model predictors.
 
-The arrival specialist uses the original carrier70 plus the same 26 features, depth 5, 1,014 trees, learning rate 0.04 and L2 10. All five seeds 20260907–20260911 receive equal weight. Its scope RMSE improves from 3605.043 to 3470.237 on January/July and 3338.878 to 3192.807 on February/August. January alone worsens from 3488.457 to 3752.507; the other three months improve. No seed is selected or discarded.
+The arrival specialist uses the original carrier70 plus the same 26 features, depth 5, 1,014 trees, learning rate 0.04 and L2 10. All five seeds 20260907â€“20260911 receive equal weight. Its scope RMSE improves from 3605.043 to 3470.237 on January/July and 3338.878 to 3192.807 on February/August. January alone worsens from 3488.457 to 3752.507; the other three months improve. No seed is selected or discarded.
 
 V7 uses 25% global arrival / 75% v6 outside the unmatched-LIRF scope, and 50% arrival specialist / 50% v6 inside that scope. The complete candidate improves reused January/July RMSE from **321.005 to 318.547**, January from 344.186 to 343.676 and July from 301.026 to 296.749; 54/62 days improve. The conservative specialist weight limits the observed January regression. These holdouts were used for research choices and are not untouched tests. February/August validates the component comparisons, not the full historical v6 ensemble. All original validation labels remain unchanged; full fitting excludes negative departure labels under the existing policy.
 
@@ -150,4 +150,4 @@ python arrival_specialist.py --data runs/data --output runs/arrival-specialist-f
 python arrival_contest.py predict --run runs/arrival-full --arrival-specialist runs/arrival-specialist-full --baseline runs/submissions/zestful-fountain_v6.parquet --ranking runs/data/ranking.parquet --template runs/data/submitting.parquet --output runs/submissions/zestful-fountain_v7.parquet --permission-ref "PRC2026 registered participant, challenge-only"
 ```
 
-Use fresh run/output paths and an unused increasing submission version. Prediction checks baseline, source-data and model digests, feature schemas, expert seed membership and exact template alignment. Source tests cover excluded departure fields, strict completion timing, ties, empty pools, row ordering, finite/nonnegative predictions and the combined inference path. Training and prediction do not upload automatically. An official v7 score is pending.
+Use fresh run/output paths and an unused increasing submission version. Prediction checks baseline, source-data and model digests, feature schemas, expert seed membership and exact template alignment. Source tests cover excluded departure fields, strict completion timing, ties, empty pools, row ordering, finite/nonnegative predictions and the combined inference path. Training and prediction do not upload automatically. V7 subsequently scored **285.749 seconds RMSE** officially across all 344,841 pairs, improving v6 by 2.6224 seconds. The complete 05:58 UTC snapshot ranks the team 19/96, with first at 245.094. Every value matches independent recomputation exactly. [Official dated result](results/leaderboard-2026-09-10.md).

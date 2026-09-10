@@ -1,6 +1,6 @@
 # PhoenixAI PRC 2026 taxi-out research
 
-Independent, original research for team **zestful-fountain**. Latest official submission v6 scored **288.3714 seconds RMSE** across **344,841 predictions**, rank **22nd of 95 scored teams at 05:09 UTC on 10 September 2026**. The leader scored 245.2901 at that snapshot; first place remains unachieved. [Official result](results/leaderboard-2026-09-10.md). See [METHOD.md](METHOD.md) for validation, availability limits and reproduction.
+Independent, original research for team **zestful-fountain**. Latest official submission v7 scored **285.749 seconds RMSE** across **344,841 predictions**, rank **19th of 96 scored teams at 05:58 UTC on 10 September 2026**. The leader scored 245.094 at that snapshot; first place remains unachieved. [Official result](results/leaderboard-2026-09-10.md). See [METHOD.md](METHOD.md) for validation, availability limits and reproduction.
 
 This directory alone is GPL-3.0-only. The proprietary parent PhoenixAI/RALE repository, product modules, credentials, models and restricted datasets are excluded.
 
@@ -13,7 +13,7 @@ Python 3.12; create an isolated virtual environment, then:
 ```sh
 python -m pip install -r requirements.lock.txt
 python -m pytest -q
-python -m mypy pipeline.py buckets.py traffic_features.py contest.py
+python -m mypy pipeline.py buckets.py traffic_features.py contest.py carrier_contest.py ensemble_contest.py duration_contest.py specialist_ensemble.py arrival_features.py arrival_specialist.py arrival_contest.py leaderboard.py
 ```
 
 Tests train twice on fixed synthetic fixtures, compare predictions, and verify template order, invalid values and feature leakage exclusions. Synthetic scores are test outputs only.
