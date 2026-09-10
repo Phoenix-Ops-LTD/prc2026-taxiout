@@ -107,3 +107,27 @@ Further recovered experiments were rejected: airport-specific weights selected a
 The duration blend was submitted as v5 and officially scored **290.0659 seconds RMSE**, rank **19 of 89** at 18:40 UTC. All 344,841 values exactly match independent recomputation against the saved duration model and the scored v4 predictions, including exact preservation of all 383 specialist values. [Dated official result](results/leaderboard-2026-09-09.md). The full model has 4,998 trees and uses all 2,084,678 nonnegative labels. This is the first submission on 9 September.
 
 Post-v5 local checks: the duration LightGBM candidate at 523 trees scored 327.526 with the specialist; adding it at 10% to v5 gives 321.371 on the reused holdout. A separate 119-feature NM interval/forward-traffic LightGBM candidate scored 328.146 with the specialist and 321.376 at a 10% addition. Neither was submitted. Both gains are small and need further validation. Three mixture-of-baselines classifiers for unmatched LIRF worsened both months; rejected. Arrival NM record recovery also worsened both months and was rejected. A new recurring-flight-service category experiment is local only and unscored; it uses recurring service strings as categories, not movement/NM record IDs.
+
+## Specialist seed ensemble candidate (10 September 2026)
+
+`specialist_ensemble.py` averages the existing specialist with four additional CPU CatBoost fits. Every fit uses the existing 70-feature matrix, depth 5, 1,014 trees, learning rate 0.04 and L2 regularization 10. Seeds 20260907 through 20260911 were declared together and receive equal 20% weights; no seed was selected or discarded according to its score. Each constituent is floored at zero before averaging. All predictions outside LIRF with missing `IOBT_flt` remain exactly equal to v5.
+
+The fixed comparison improved the specialist on all four validation months:
+
+| Held-out month | Existing specialist RMSE | Five-seed RMSE |
+| --- | ---: | ---: |
+| January 2025 | 3618.550 | 3488.457 |
+| July 2025 | 3655.346 | 3625.347 |
+| February 2025 | 3048.315 | 2905.968 |
+| August 2025 | 3508.444 | 3456.604 |
+
+January/July fitting uses the other ten months (1,090 specialist fitting rows; 398 validation rows); February/August likewise uses the other ten months (1,234 fitting rows; 254 validation rows). All original evaluation labels, including extreme values, remain unchanged. January/July overall RMSE with the rest of v5 unchanged improves from **321.589 to 321.005**. February/August is an additional specialist comparison, not validation of the full v5 ensemble. These are local research results, not an official score.
+
+The original seed's predictions are retained from the validated v5 baseline file. The command below fits the other four experts on all 1,488 nonnegative specialist labels. A fresh immutable output is required; inference verifies baseline/input/model digests, feature order, exact template alignment, finite values and scope preservation.
+
+```sh
+python specialist_ensemble.py train --data runs/data --output runs/specialist-bagging-full --permission-ref "PRC2026 registered participant, challenge-only"
+python specialist_ensemble.py predict --run runs/specialist-bagging-full --baseline runs/submissions/zestful-fountain_v5.parquet --ranking runs/data/ranking.parquet --template runs/data/submitting.parquet --output runs/submissions/zestful-fountain_v6.parquet --permission-ref "PRC2026 registered participant, challenge-only"
+```
+
+Training and prediction do not submit automatically. Use an unused increasing version and obtain the organizer's score receipt separately. Source checks cover exact scope/order preservation, invalid seeds, nonfinite/negative expert values, model tampering and a synthetic inference round trip.
