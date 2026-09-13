@@ -1,6 +1,6 @@
 # PhoenixAI PRC 2026 taxi-out research
 
-Independent, original research for team **zestful-fountain**. Latest submission v9 scored **277.7530 seconds RMSE** across **344,841 predictions**. The verified team best is **277.7530**, rank **16 of 129 at 10:23 UTC on 2026-09-13**. The leader scored 245.0207; first place through the deadline remains incomplete. [Official result](results/leaderboard-2026-09-13.md). See [METHOD.md](METHOD.md) for validation, availability limits and reproduction.
+Independent, original research for team **zestful-fountain**. V11 scored **274.9738 seconds RMSE** on all **344,841 pairs**, improving v10 by **0.2013 seconds**. Complete 1173-submission pagination at **2026-09-13T12:34:57.647494+00:00** ranks the team **14/130**. Leader 245.0207; remaining gap **29.9531 seconds**. First place remains incomplete. [Official result](results/leaderboard-2026-09-13.md). See [METHOD.md](METHOD.md) for validation, availability limits and reproduction.
 
 This directory alone is GPL-3.0-only. The proprietary parent PhoenixAI/RALE repository, product modules, credentials, models and restricted datasets are excluded.
 
@@ -28,7 +28,7 @@ Tests train twice on fixed synthetic fixtures, compare predictions, and verify t
 
 One fixed local diagnostic improves proposed-v10 reused January/July RMSE from **314.3197465013 to 313.7463286061**, a **0.5734178952-second** gain, with both months improving. It changes 31 of 344,419 rows and retains all original labels, including 80 negatives. The largest beneficial row supplies 45.8% of net squared-error improvement; excluding it only for influence analysis leaves a 0.311181-second gain and improvement in both months. These are reused selection data, with historical holdout material already inspected; this is not an untouched validation result.
 
-Target-free ranking checks found 21 eligible rows and matched their replacement proxies. They do not verify actual overlaid ranking predictions or establish an official gain. This frozen diagnostic had no predeclared promotion criteria; any later release decision follows observation of its results. After observing these results and reconciling the improved official v10 score, the fixed rule was manually selected for a guarded release. Actual ranking verification and publication must precede upload; there is **no official v11 score** yet. [Exact rule, evidence limits and conditional CLI usage](METHOD.md#fixed-nm-clock-overlay-proposal-v11).
+Target-free ranking checks found 21 eligible rows and matched their replacement proxies. They do not verify actual overlaid ranking predictions or establish an official gain. This frozen diagnostic had no predeclared promotion criteria; any later release decision follows observation of its results. After observing these results and reconciling the improved official v10 score, the fixed rule was manually selected for a guarded release. Publication and exact verification of all 344,841 actual ranking predictions preceded guarded upload. V11 then scored **274.9738 RMSE** officially, improving v10 by **0.2013 seconds**; rank remained **14/130** at 12:34 UTC on 13 September 2026. [Exact rule, evidence limits and conditional CLI usage](METHOD.md#fixed-nm-clock-overlay-proposal-v11).
 
 ## Authorized data access
 
