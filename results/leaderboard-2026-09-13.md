@@ -48,3 +48,18 @@ All 344,841 actual values independently match the pinned v10 predictions with th
 Original source [PR 12](https://github.com/Phoenix-Ops-LTD/prc2026-taxiout/pull/12) merged as `243b0f03a3c901fb77c564f092795421266ba5c4` after both public CI runs passed. Validation includes 96 package tests, strict mypy on 18 production modules and both new tests, parent lint/typecheck/94 tests, and zero secret-scan findings. The guarded upload found three previous submissions in the rolling 24-hour window. Own-team result and complete public leaderboard agree.
 
 The decision followed the frozen diagnostic result, with no predeclared promotion criteria. Reused local validation improved by 0.573418 seconds; that differs from the official gain of 0.2013 seconds. Reuse, concentrated influence and unavailable complete February/August validation remain documented.
+
+
+## V12: following-context CatBoost replacement
+
+V12 scored **273.5557 seconds RMSE** on all **344,841 pairs**, improving v11 by **1.4181 seconds**. Complete public pagination at **2026-09-13T16:53:37.305711+00:00** ranks the team **12/131**, up from 14/131 immediately before submission. Leader 245.0207; remaining gap **28.5350 seconds**. First place remains incomplete. The own-team score receipt and complete public leaderboard agree.
+
+All 344,841 actual ranking values match a separate native-model recomputation exactly. All 383 specialists and 21 fixed clock values remain unchanged; 344,424 predictions change overall. Mean absolute change is 10.899522 seconds. Submission SHA-256: `ec307db8f2fad283706bafbdacad25b2dc7bc8cee86eb2a43757780cc21b76e8`.
+
+The fixed 183-feature model completed all 4,999 GPU trees on 2,083,190 eligible ordinary 2025 rows, retaining the 37.5% component replacement and 7,200-second fit-only residual cap. Model SHA-256: `b3b71fdc3f55dc1f0e2aa8abf138900eb3b32b6c8f584277a1474ef0fd508ab1`. The exact training-feature and actual saved-model local-inference checks passed before full fitting. The ranking verifier uses 153 independently reconstructed columns and thirty source-port parity columns backed by separate direct synthetic and sampled real-row oracles. This does not claim independent all-row mathematical reconstruction of those new thirty features.
+
+Original GPLv3 source [PR 14](https://github.com/Phoenix-Ops-LTD/prc2026-taxiout/pull/14), head `0415bafaeed28a9808fbbdd98328e2a5f37fa111`, merged as `e52c497cc4647e56f4a7c0a103bccb00b6699f98` after both public CI checks passed. Validation included 107 research tests, strict typing for twenty source modules, parent lint/typecheck/94 tests and zero secret/artifact scan findings. Guarded upload at 16:52 UTC verified original source/model/baseline lineage, exact template values, increasing version, bucket capacity and the rolling limit; it found four earlier uploads in 24 hours. Conditional creation prevented replacement of a previous object.
+
+The fixed local candidate improved reused January/July whole RMSE from 313.746329 to 312.971010, both months and 59/62 days. All 344,419 original labels, including 80 negatives, remained, with all 398 specialist and 31 local clock values unchanged. This 0.775318-second reused local gain is separate from the official 1.4181-second gain. Restricted data, models and credentials remain private. Following-context observations are retrospective; no predeparture availability is claimed.
+
+Sources: [official ranking](https://prc-data-challenge-2026.netlify.app/ranking.html), [complete paginated API](https://datacomp.opensky-network.org/api/competitions/bb3693e1-26bc-4a9e-8619-4fe78b4eab0c/leaderboard), [method and reproduction](../METHOD.md#fixed-following-context-catboost-candidate-v12).

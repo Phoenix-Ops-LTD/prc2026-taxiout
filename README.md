@@ -1,6 +1,6 @@
 # PhoenixAI PRC 2026 taxi-out research
 
-Independent, original research for team **zestful-fountain**. V11 scored **274.9738 seconds RMSE** on all **344,841 pairs**, improving v10 by **0.2013 seconds**. Complete 1173-submission pagination at **2026-09-13T12:34:57.647494+00:00** ranks the team **14/130**. Leader 245.0207; remaining gap **29.9531 seconds**. First place remains incomplete. [Official result](results/leaderboard-2026-09-13.md). See [METHOD.md](METHOD.md) for validation, availability limits and reproduction.
+Independent, original research for team **zestful-fountain**. V12 scored **273.5557 seconds RMSE** on all **344,841 pairs**, improving v11 by **1.4181 seconds**. Complete public pagination at **2026-09-13T16:53:37.305711+00:00** ranks the team **12/131**, up from 14/131 immediately before submission. Leader 245.0207; remaining gap **28.5350 seconds**. First place remains incomplete. [Official result](results/leaderboard-2026-09-13.md#v12-following-context-catboost-replacement). See [METHOD.md](METHOD.md) for validation, availability limits and reproduction.
 
 This directory alone is GPL-3.0-only. The proprietary parent PhoenixAI/RALE repository, product modules, credentials, models and restricted datasets are excluded.
 
@@ -18,11 +18,11 @@ python -m mypy pipeline.py buckets.py traffic_features.py contest.py carrier_con
 
 Tests train twice on fixed synthetic fixtures, compare predictions, and verify template order, invalid values and feature leakage exclusions. Synthetic scores are test outputs only.
 
-## Local v10 candidate
+## Neighbor replacement submission v10
 
 `neighbor_boost_contest.py` replaces v9's existing 123-feature CatBoost component with the same fixed 4,999-tree model using 153 features. The frozen 37.5% component replacement improves reused January/July RMSE from 315.179 to 314.320, improving both months and 52/62 days. These local results use reused selection data. V10 subsequently scored **275.1751** officially on all 344,841 pairs, ranking **14/130** at 12:04 UTC on 13 September 2026. [Configuration, guards and reproduction commands](METHOD.md#nm-neighbor-catboost-replacement-candidate-v10).
 
-## Conditional clock-overlay proposal v11
+## Fixed clock-overlay submission v11
 
 `nm_clock_overlay.py` applies one fixed rule to supplied full predictions: for ordinary departures with matching NM origins, both valid clock proxies and signed `AOBT_3_flt - LOBT_flt > 7200` seconds, replace the entire prediction with the nonnegative movement-minus-LOBT proxy. Every other prediction and the existing LIRF/missing-IOBT specialist remain exact. The original GPLv3 module performs no fitting or model inference; `clock_overlay_contest.py` provides a separate file/manifest wrapper for an independently verified v10 baseline.
 
@@ -89,28 +89,28 @@ For the wider climate-project and digital monitoring, reporting and verification
 
 ## Find our team in the API
 
-The endpoint returns **50 submissions per page**, with repeated teams. Our current entry is on the second page. [Readable ranking snapshot](results/leaderboard-2026-09-07.md). Run `python leaderboard.py` to follow every `nextCursor` and rank each team by its best score.
+The endpoint is paginated and contains repeated teams. Entries can move between pages. [Dated ranking snapshot](results/leaderboard-2026-09-13.md). Run `python leaderboard.py` to follow every `nextCursor` and rank each team by its best score.
 
-## Latest carrier/specialist submission
+## Carrier/specialist submission v3
 
 v3 officially scored **292.4043 seconds RMSE**, rank **12 of 69** at 2026-09-08 04:04 UTC. [Dated result](results/leaderboard-2026-09-08.md). `carrier_contest.py` provides independent training and inference; see METHOD.md. First place remains unachieved.
 
-## Latest fixed ensemble submission
+## Fixed ensemble submission v4
 
 v4 officially scored **291.4829 seconds RMSE**, rank **12 of 69** at 2026-09-08 04:26 UTC. [Result](results/leaderboard-2026-09-08.md). `ensemble_contest.py` adds reproducible LightGBM fitting and the fixed blend; see METHOD.md.
 
-## Latest duration submission and active continuation
+## Duration submission v5
 
 v5 officially scored **290.0659 seconds RMSE**, with all **344,841 pairs** scored. Rank **19 of 89** at **2026-09-09 18:40 UTC**; the leader is at **246.3605**. [Dated result](results/leaderboard-2026-09-09.md). First place remains unachieved; the goal is to reach it and defend it through the published 11 October deadline within the submission rules.
 
 `duration_contest.py` reproduces the 93-feature retrospective model and fixed blend preserving the LIRF specialist. Local reused-holdout RMSE is **321.589**, versus **323.377** for v4; that is distinct from the official score. Full fitting completed on all 2,084,678 nonnegative 2025 departure labels. Independent recomputation exactly matches every submitted value. See [METHOD.md](METHOD.md).
 
-The latest submission, v6, uses `specialist_ensemble.py` to average five predeclared specialist seeds while keeping every other v5 prediction exact. It officially scored **288.3714**, improving v5 by **1.6945 seconds**. The specialist improves in January, February, July and August validation; overall January/July RMSE is 321.005. Reproduction and validation limits are documented in [METHOD.md](METHOD.md#specialist-seed-ensemble-v6-10-september-2026).
+The v6 submission uses `specialist_ensemble.py` to average five predeclared specialist seeds while keeping every other v5 prediction exact. It officially scored **288.3714**, improving v5 by **1.6945 seconds**. The specialist improves in January, February, July and August validation; overall January/July RMSE is 321.005. Reproduction and validation limits are documented in [METHOD.md](METHOD.md#specialist-seed-ensemble-v6-10-september-2026).
 
-## Selected following-context candidate
+## Following-context submission v12
 
 The fixed 183-feature CatBoost candidate passes its predeclared local criteria: reused January/July whole-ensemble RMSE improves from 313.746329 to 312.971010, with both months and 59/62 days improving. This 0.775318-second local gain is not an official score. All 398 specialist and 31 clock-correction predictions remain exact. The existing 37.5% component weight and 4,999-tree settings are unchanged.
 
 `nm_following_features.py` adds thirty features from strictly following, same-UTC-month NM departure-clock observations. The added columns match all 2,085,047 training and 344,841 ranking departures against the fixed experimental references; separate direct synthetic and sampled real-row oracles also pass. These are retrospective supplied observations, with no predeparture availability claim.
 
-`following_boost_contest.py` provides full fitting and guarded prediction for this selected candidate. It checks the v11/v10 prediction chain and the old Cat153 model, then replaces only that component while preserving the specialist and clock scopes. Full fitting, publication/verification of a resulting submission, and an official result are separate steps. See [the fixed protocol and reproduction commands](METHOD.md#fixed-following-context-catboost-candidate-v12).
+`following_boost_contest.py` provides full fitting and guarded prediction for this selected candidate. It checks the v11/v10 prediction chain and the old Cat153 model, then replaces only that component while preserving the specialist and clock scopes. Full fitting, original source publication, exact all-row prediction verification, guarded upload and official result reconciliation are complete for v12. The local gain above remains distinct from the official 1.4181-second improvement. See [the fixed protocol and reproduction commands](METHOD.md#fixed-following-context-catboost-candidate-v12).
