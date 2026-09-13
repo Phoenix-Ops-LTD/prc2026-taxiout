@@ -291,3 +291,39 @@ python following_boost_contest.py predict --run runs/following-boost-full-v74 --
 ```
 
 These are reproduction commands, not an instruction to upload. Use the next unused submission version and a fresh output. The module does not publish or upload; official submission still requires completed full fitting, public source CI, independent verification of every actual ranking prediction and the existing bucket quota/schema/digest guards. Models, input data, private evidence and credentials remain outside the public repository.
+
+## Fixed longer LightGBM candidate (v13)
+
+A separate frozen comparison increases the existing ordinary LightGBM component from 679 to **2,716 CPU trees** (four times the original count), reusing the same verified 183-feature matrix. Every other numerical parameter remains fixed: 63 leaves, learning rate .035, minimum child samples 80, L2 regularization 10, feature fraction .9, seed 20260907, two CPU threads, deterministic mode and column-wise fitting. No early stopping, intermediate validation selection or weight search is used. The preceding 679-tree following-context candidate remains rejected under its original whole-gain criterion.
+
+Holdout membership uses the UTC month of `SCHED_TIME_UTC_mvt`. The two original fitting partitions exclude January/July and February/August respectively, as well as negative fitting labels and the separate LIRF/missing-IOBT specialist scope. They contain 1,739,249 and 1,748,599 fitting rows. Residuals alone are capped to +/-7200 seconds for fitting. All original evaluation labels are retained: 344,419 January/July rows with 80 negatives, and 334,920 February/August rows with 75 negatives. Specialist component values remain exact on 398 and 254 rows respectively.
+
+| Reused 2025 month | Original 153-feature/679-tree component RMSE | 183-feature/679-tree control RMSE | 183-feature/2,716-tree component RMSE |
+| --- | ---: | ---: | ---: |
+| January | 345.8390802518 | 344.5126274727 | 344.3166419782 |
+| July | 300.2855633098 | 298.9445527794 | 297.0593469972 |
+| February | 270.0465641912 | 263.0570568220 | 259.0067819021 |
+| August | 248.5780296747 | 247.6175178749 | 246.3027271202 |
+
+The fixed whole January/July replacement is `v12_local + .125 * (nonnegative LightGBM183/2716 - nonnegative LightGBM153/679)`, retaining every specialist and original-clock value. Its 12.5% weight comes from the existing v9 ordinary blend's 25% candidate weight times its 50% neighbor weight. Subsequent CatBoost replacements and the clock overlay leave this component weight unchanged outside the protected scopes.
+
+| Reused 2025 holdout | V12 local baseline RMSE | Fixed longer replacement RMSE |
+| --- | ---: | ---: |
+| January and July | 312.9710103047 | 312.4703995155 |
+| January | 339.0773341786 | 338.6963163515 |
+| July | 290.2265049010 | 289.6102685902 |
+
+All five predeclared criteria pass: whole January/July gain at least .5 seconds, improvement in both whole months, at least 40/62 improved days, improvement in all four component months against the original 153-feature model, and improvement in all four against the 679-tree/183-feature control. The actual whole gain is **0.5006107892629075 seconds**, just **0.0006107892629075** above the unchanged threshold; **61/62 days** improve. All 398 specialists and 31 clock values remain exact. The narrow margin and repeated reuse of these research holdouts limit the evidence: this is not an untouched test, a four-month whole-ensemble evaluation or an official gain.
+
+Independent artifact recomputation checks every original label and timestamp across all four months, both controls, the complete first-pair replacement equation, original clock scope, protected values, native model metadata and source/input/output hashes. Separate native inference from the actual old and new saved models reproduces every first-pair component and whole prediction exactly. The public replacement also matches every first-pair value and its numerical parameters exactly match the frozen plan. The second-pair check is an artifact/metadata audit, not fresh second-pair native inference. Feature evidence reuses the unchanged helper and previous complete public-matrix/cache equality, supported by the documented direct synthetic and sampled mathematical oracles; it is not a new independent all-row mathematical derivation.
+
+`long_following_contest.py train` reads all twelve authorized 2025 monthly files and fits ordinary nonnegative-label rows with the same 183 features and residual cap. It records fitting populations, model settings, input hashes and the complete executable source snapshot, verifies them again after fitting, and requires all fixed trees. Short runs must explicitly declare synthetic data. A fresh output directory is required.
+
+Prediction accepts the actual retained v12, v11, v10 and v9 artifacts/manifests and the original full ordinary model. It checks the manifest chain, original component weights and model hash, identical twelve-file training inputs, source snapshots, model parameters/trees/categories and complete template alignment. It also reconstructs the original clock overlay and verifies v12 preserves the protected v11 values. Existing submitted baselines remain trusted immutable inputs; these internal checks do not replace independent release-time checks against separately pinned artifacts. The replacement preserves both protected scopes before arithmetic and rejects invalid values instead of clipping the final result. No upload capability is included.
+
+```sh
+python long_following_contest.py train --data runs/data --output runs/following-long-full-v77 --permission-ref "PRC2026 registered participant, challenge-only"
+python long_following_contest.py predict --run runs/following-long-full-v77 --old-run runs/equal-ordinary-full-v64 --baseline runs/submissions/zestful-fountain_v12.parquet --v11-baseline runs/submissions/zestful-fountain_v11.parquet --v10-baseline runs/submissions/zestful-fountain_v10.parquet --v9-baseline runs/submissions/zestful-fountain_v9.parquet --ranking runs/data/ranking.parquet --template runs/data/submitting.parquet --output runs/submissions/zestful-fountain_v13.parquet --permission-ref "PRC2026 registered participant, challenge-only"
+```
+
+These are reproduction commands for the selected local candidate. Full fitting, verified actual ranking predictions and any official v13 result are still separate and pending at this entry. A release must use fresh credit, source/publication, quota/version/capacity and exact schema/digest checks. V12 remains the official best at 273.5557 RMSE; first place is not achieved. Data, trained models, private evidence and credentials remain outside the public source repository.
