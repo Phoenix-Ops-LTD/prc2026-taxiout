@@ -106,3 +106,11 @@ v5 officially scored **290.0659 seconds RMSE**, with all **344,841 pairs** score
 `duration_contest.py` reproduces the 93-feature retrospective model and fixed blend preserving the LIRF specialist. Local reused-holdout RMSE is **321.589**, versus **323.377** for v4; that is distinct from the official score. Full fitting completed on all 2,084,678 nonnegative 2025 departure labels. Independent recomputation exactly matches every submitted value. See [METHOD.md](METHOD.md).
 
 The latest submission, v6, uses `specialist_ensemble.py` to average five predeclared specialist seeds while keeping every other v5 prediction exact. It officially scored **288.3714**, improving v5 by **1.6945 seconds**. The specialist improves in January, February, July and August validation; overall January/July RMSE is 321.005. Reproduction and validation limits are documented in [METHOD.md](METHOD.md#specialist-seed-ensemble-v6-10-september-2026).
+
+## Selected following-context candidate
+
+The fixed 183-feature CatBoost candidate passes its predeclared local criteria: reused January/July whole-ensemble RMSE improves from 313.746329 to 312.971010, with both months and 59/62 days improving. This 0.775318-second local gain is not an official score. All 398 specialist and 31 clock-correction predictions remain exact. The existing 37.5% component weight and 4,999-tree settings are unchanged.
+
+`nm_following_features.py` adds thirty features from strictly following, same-UTC-month NM departure-clock observations. The added columns match all 2,085,047 training and 344,841 ranking departures against the fixed experimental references; separate direct synthetic and sampled real-row oracles also pass. These are retrospective supplied observations, with no predeparture availability claim.
+
+`following_boost_contest.py` provides full fitting and guarded prediction for this selected candidate. It checks the v11/v10 prediction chain and the old Cat153 model, then replaces only that component while preserving the specialist and clock scopes. Full fitting, publication/verification of a resulting submission, and an official result are separate steps. See [the fixed protocol and reproduction commands](METHOD.md#fixed-following-context-catboost-candidate-v12).
