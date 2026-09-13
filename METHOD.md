@@ -165,4 +165,32 @@ python arrival_boost_contest.py train --data runs/data --output runs/arrival-boo
 python arrival_boost_contest.py predict --run runs/arrival-boost-full --baseline runs/submissions/zestful-fountain_v7.parquet --ranking runs/data/ranking.parquet --template runs/data/submitting.parquet --output runs/submissions/zestful-fountain_v8.parquet --permission-ref "PRC2026 registered participant, challenge-only"
 ```
 
-Use fresh paths and an unused increasing submission version. Training and prediction do not upload automatically. At publication this candidate has no official result; v7 remains the verified best submission.
+Use fresh paths and an unused increasing submission version. Training and prediction do not upload automatically. V8 subsequently scored **278.6349 seconds RMSE** officially, improving v7 by 7.1141 seconds. The complete 09:54 UTC snapshot on 13 September ranks the team 17/127, leader 245.0207. Every prediction independently recomputes exactly and all 383 existing specialist values are preserved. [Dated result](results/leaderboard-2026-09-13.md).
+
+## Airport and completed-NM-neighbor candidate v9
+
+`ordinary_ensemble.py` combines a global LightGBM model with one expert per departure airport. All eleven models use 679 trees, 63 leaves, learning rate 0.035, minimum child samples 80, L2 regularization 10, column fraction 0.9, seed 20260907, two threads, deterministic fitting and column-wise histograms. Full fitting uses all 2,083,190 nonnegative ordinary-scope 2025 departure labels, excluding the existing unmatched-LIRF specialist scope. Fitting residuals are capped at +/-7,200 seconds; original evaluation labels remain unchanged.
+
+Airport experts use the 123 existing arrival-context predictors. The global model adds 30 features from `nm_neighbor_features.py`: for airport, runway and stand groups, counts, means, standard deviations, own-minus-mean differences, latest age and latest value for the supplied NM taxi-time proxy. The proxy is movement time minus NM AOBT, accepted only from 0 to 7,200 seconds with matching movement/NM departure airports. Pools contain DEP rows from the same calendar month and strictly earlier movement times; the queried row and simultaneous movements are excluded. The helper selects only allowed timestamp/group fields before operating, never departure labels or block times. Latest timestamp ties are averaged; missing stands do not form an observed stand group. These are retrospective organizer-supplied predictors, with no live forecasting claim.
+
+The fixed candidate averages the airport and neighbor models equally. Its component comparison against the identically configured pooled 123-feature model improves all four evaluated months:
+
+| Held-out month | Pooled RMSE | Equal airport/neighbor RMSE |
+| --- | ---: | ---: |
+| January 2025 | 347.313 | 344.175 |
+| July 2025 | 301.045 | 296.675 |
+| February 2025 | 283.220 | 275.394 |
+| August 2025 | 249.154 | 244.701 |
+
+Within each split, models fit the other ten months. The v7 specialist is restored identically for these comparisons. The airport model alone worsens January and February; the equal combination was explored after the individual January/July results, so this is reused research evidence. February/August compares components and does not validate the complete historical v8/v9 ensemble.
+
+Outside the specialist scope, the proposed submission uses 75% v8 plus 25% of the equal candidate. This improves complete reused January/July RMSE from **315.778 to 315.179**, January from 341.669 to 341.197 and July from 293.251 to 292.531; **55/62 days** improve. All v8 specialist values remain exact. The recorded continuation criteria require at least 0.5 seconds overall gain, improvement in both months, at least 40 improved days, all four component-month improvements and an improved official v8 result. All requirements passed on 13 September; the earlier conditional runner timed out before the v8 receipt existed and fitted no models.
+
+The standalone implementation exactly matches every cached feature: **153 columns across 2,085,047 departures**. The promotion wrapper additionally binds the twelve training-file hashes, source snapshot, comparison and decision before fitting. Synthetic tests cover strict timing/month/target exclusion, ties, alignment, configuration and model tampering, and independent full training/prediction round trips.
+
+```sh
+python ordinary_ensemble.py train --data runs/data --output runs/ordinary-full --permission-ref "PRC2026 registered participant, challenge-only"
+python ordinary_ensemble.py predict --run runs/ordinary-full --baseline runs/submissions/zestful-fountain_v8.parquet --ranking runs/data/ranking.parquet --template runs/data/submitting.parquet --output runs/submissions/zestful-fountain_v9.parquet --permission-ref "PRC2026 registered participant, challenge-only"
+```
+
+Use fresh paths and the next unused submission version. Inference checks the v8 baseline, data and template digests, all model hashes, tree counts, feature order, fixed parameters and blend weights before exact-template validation. Neither command uploads. At source publication v9 has no official result; v8 remains the verified best.
