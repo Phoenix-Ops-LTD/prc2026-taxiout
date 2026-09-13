@@ -30,3 +30,10 @@ The organizer processed v9 at 2026-09-13T10:22:50.947686Z; own-bucket receipt an
 The fixed 25% addition gives reused January/July validation RMSE 315.179 versus v8 315.778, improving both months and 55/62 days. Four-month component comparisons also improve; their scope and prior holdout reuse are documented in [METHOD.md](../METHOD.md#airport-and-completed-nm-neighbor-candidate-v9). They are not official scores. Restricted data, fitted models and credentials remain private.
 
 Sources: [official ranking](https://prc-data-challenge-2026.netlify.app/ranking.html), [complete paginated API](https://datacomp.opensky-network.org/api/competitions/bb3693e1-26bc-4a9e-8619-4fe78b4eab0c/leaderboard).
+
+
+## V10: fixed CatBoost neighbor replacement
+
+V10 scored **275.1751 seconds RMSE** on all **344,841 pairs**, improving v9 by **2.5779 seconds**. Complete 1170-submission pagination at **2026-09-13T12:04:35.502766+00:00** ranks the team **14/130**. Leader 245.0207; remaining gap 30.1544 seconds. First place remains incomplete. The own-bucket result agrees with the complete public leaderboard.
+
+All 344,841 predictions independently recompute exactly, preserving all 383 specialist values. Submission SHA-256: `e5ae15d458f183da627a251d82c58c73cbcb25781d21f3b4b0362650563fbda0`. The fixed 153-feature model completed all 4,999 trees on 2,083,190 ordinary training rows. Original GPLv3 source was published through [PR 11](https://github.com/Phoenix-Ops-LTD/prc2026-taxiout/pull/11) with passing CI before guarded upload. Local selection and official scoring remain distinct.
