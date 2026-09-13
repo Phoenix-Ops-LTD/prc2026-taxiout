@@ -13,14 +13,22 @@ Python 3.12; create an isolated virtual environment, then:
 ```sh
 python -m pip install -r requirements.lock.txt
 python -m pytest -q
-python -m mypy pipeline.py buckets.py traffic_features.py contest.py carrier_contest.py ensemble_contest.py duration_contest.py specialist_ensemble.py arrival_features.py arrival_specialist.py arrival_contest.py arrival_boost_contest.py nm_neighbor_features.py ordinary_ensemble.py neighbor_boost_contest.py leaderboard.py
+python -m mypy pipeline.py buckets.py traffic_features.py contest.py carrier_contest.py ensemble_contest.py duration_contest.py specialist_ensemble.py arrival_features.py arrival_specialist.py arrival_contest.py arrival_boost_contest.py nm_neighbor_features.py ordinary_ensemble.py neighbor_boost_contest.py nm_clock_overlay.py clock_overlay_contest.py leaderboard.py
 ```
 
 Tests train twice on fixed synthetic fixtures, compare predictions, and verify template order, invalid values and feature leakage exclusions. Synthetic scores are test outputs only.
 
 ## Local v10 candidate
 
-`neighbor_boost_contest.py` replaces v9's existing 123-feature CatBoost component with the same fixed 4,999-tree model using 153 features. The frozen 37.5% component replacement improves reused January/July RMSE from 315.179 to 314.320, improving both months and 52/62 days. This is local research selection evidence, not an untouched test or an official v10 score; the verified best remains v9 at 277.7530. [Configuration, guards and reproduction commands](METHOD.md#nm-neighbor-catboost-replacement-candidate-v10).
+`neighbor_boost_contest.py` replaces v9's existing 123-feature CatBoost component with the same fixed 4,999-tree model using 153 features. The frozen 37.5% component replacement improves reused January/July RMSE from 315.179 to 314.320, improving both months and 52/62 days. These local results use reused selection data. V10 subsequently scored **275.1751** officially on all 344,841 pairs, ranking **14/130** at 12:04 UTC on 13 September 2026. [Configuration, guards and reproduction commands](METHOD.md#nm-neighbor-catboost-replacement-candidate-v10).
+
+## Conditional clock-overlay proposal v11
+
+`nm_clock_overlay.py` applies one fixed rule to supplied full predictions: for ordinary departures with matching NM origins, both valid clock proxies and signed `AOBT_3_flt - LOBT_flt > 7200` seconds, replace the entire prediction with the nonnegative movement-minus-LOBT proxy. Every other prediction and the existing LIRF/missing-IOBT specialist remain exact. The original GPLv3 module performs no fitting or model inference; `clock_overlay_contest.py` provides a separate file/manifest wrapper for an independently verified v10 baseline.
+
+One fixed local diagnostic improves proposed-v10 reused January/July RMSE from **314.3197465013 to 313.7463286061**, a **0.5734178952-second** gain, with both months improving. It changes 31 of 344,419 rows and retains all original labels, including 80 negatives. The largest beneficial row supplies 45.8% of net squared-error improvement; excluding it only for influence analysis leaves a 0.311181-second gain and improvement in both months. These are reused selection data, with historical holdout material already inspected; this is not an untouched validation result.
+
+Target-free ranking checks found 21 eligible rows and matched their replacement proxies. They do not verify actual overlaid ranking predictions or establish an official gain. This frozen diagnostic had no predeclared promotion criteria; any later release decision follows observation of its results. After observing these results and reconciling the improved official v10 score, the fixed rule was manually selected for a guarded release. Actual ranking verification and publication must precede upload; there is **no official v11 score** yet. [Exact rule, evidence limits and conditional CLI usage](METHOD.md#fixed-nm-clock-overlay-proposal-v11).
 
 ## Authorized data access
 

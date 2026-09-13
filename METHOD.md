@@ -4,7 +4,7 @@ Team: **zestful-fountain**. Original independent GPL-3.0-only implementation.
 
 ## Official result
 
-Latest v9: **277.7530 seconds RMSE**, **16 of 129** at **10:23 UTC on 2026-09-13**. All 344,841 pairs scored; leader 245.0207. [Dated snapshot](results/leaderboard-2026-09-13.md). V10 has local selection evidence only; the first-place-through-deadline goal remains incomplete.
+Latest v10: **275.1751 seconds RMSE**, **14 of 130** at **12:04 UTC on 2026-09-13**. All 344,841 pairs scored; leader 245.0207. [Dated snapshot](results/leaderboard-2026-09-13.md). First place through the deadline remains incomplete.
 
 Earlier official scores: v4 291.4829, v3 292.4043, v2 297.5883, v1 461.4635 seconds RMSE. Historical ranks and processing times remain in the [8 September](results/leaderboard-2026-09-08.md) and [7 September](results/leaderboard-2026-09-07.md) snapshots. Rankings change; these are dated measurements.
 
@@ -45,7 +45,7 @@ Obtain authorized dataset access independently. Store all twelve 2025 monthly fi
 ```sh
 python -m pip install -r requirements.lock.txt
 python -m pytest -q
-python -m mypy pipeline.py buckets.py traffic_features.py contest.py carrier_contest.py ensemble_contest.py duration_contest.py specialist_ensemble.py arrival_features.py arrival_specialist.py arrival_contest.py arrival_boost_contest.py nm_neighbor_features.py ordinary_ensemble.py neighbor_boost_contest.py leaderboard.py
+python -m mypy pipeline.py buckets.py traffic_features.py contest.py carrier_contest.py ensemble_contest.py duration_contest.py specialist_ensemble.py arrival_features.py arrival_specialist.py arrival_contest.py arrival_boost_contest.py nm_neighbor_features.py ordinary_ensemble.py neighbor_boost_contest.py nm_clock_overlay.py clock_overlay_contest.py leaderboard.py
 python contest.py train --data runs/data --output runs/reproduction-v2 --device GPU --validation seasonal --permission-ref "PRC2026 registered participant, challenge-only"
 python contest.py predict --run runs/reproduction-v2 --ranking runs/data/ranking.parquet --template runs/data/submitting.parquet --output runs/submissions/zestful-fountain_v3.parquet --permission-ref "PRC2026 registered participant, challenge-only"
 ```
@@ -219,3 +219,44 @@ python neighbor_boost_contest.py predict --run runs/neighbor-boost-full --old-ru
 ```
 
 Use fresh paths and an unused increasing version. Inference verifies the v9-to-v8 baseline digest chain, the original CatBoost123 digest embedded in v8, identical twelve-file training provenance, both model schemas and fitted parameters, exact tree counts, data/template digests, scope counts and unchanged v8/v9 specialist values. The output records both model/report digests and both baseline-manifest digests. Synthetic tests exercise a full training/prediction round trip, component subtraction, exact row/specialist preservation, manifest/model tampering and invalid replacement rejection. Neither command uploads; source publication, full fitting and independent all-row verification remain separate requirements before an official submission.
+
+
+## Fixed NM-clock overlay proposal v11
+
+`nm_clock_overlay.py` is an original GPL-3.0-only pure implementation, rule version `prc2026-nm-clock-rule/1.0.0`. It accepts original departure rows and full predictions indexed by exactly the same unique, non-null movement IDs. It aligns by ID, preserves prediction order and makes no fit, model call or file access. Its behavior has no configurable thresholds, weights or airport exceptions beyond preserving the existing specialist.
+
+The fixed eligibility rule requires all of the following:
+
+- An ordinary DEP row, outside LIRF with missing `IOBT_flt`.
+- Exact equality between `ADEP_flt.fillna("UNKNOWN")` and `ADEP_mvt`, without airport normalization.
+- Both movement-minus-`AOBT_3_flt` and movement-minus-`LOBT_flt` proxies present and within the inclusive [-7200, 172800] second interval after the existing [-604800, 604800] raw clipping.
+- Signed `AOBT_3_flt - LOBT_flt` strictly greater than 7200 seconds. An opposite-sign disagreement or equality at the threshold does not qualify.
+
+Only these rows replace the entire supplied prediction with `max(0, movement time - LOBT)`. This is neither a residual adjustment nor a blend. Every value outside the trigger, including the specialist, stays numerically exact. Predictions must be real, finite and nonnegative. Output values are float64; wider floating types and integers above 2**53 are rejected to avoid changing unaffected values during conversion. Clock columns must already contain typed UTC-aware datetimes, with NaT allowed. Original airport string columns are expected. Movement/clock rows contain no required target, block-time or schedule fields.
+
+The organizer describes LOBT as last known off-block time and AOBT_3 as actual off-block time for the flown M3 trajectory, and notes unreconciled movement/NM matching inconsistencies. These definitions establish field meaning, not a reliability ordering or an explanation of discrepancies. The observations are retrospective; no predeparture availability claim follows. [Organizer data definitions](https://prc-data-challenge-2026.netlify.app/data.html).
+
+The rule and the sole comparison baseline were frozen before one new local calculation. That baseline was reconstructed from the audited saved v65 comparison artifacts as proposed v10: `v9 + .375 * (CatBoost153 - CatBoost123)`, restoring the existing specialist. The fixed diagnostic retained all 344,419 original January/July 2025 labels, including 80 negatives and extreme values; no labels were clipped or dropped. All 398 specialist predictions and every noneligible prediction stayed exact.
+
+| Reused 2025 holdout | Proposed-v10 RMSE | Clock-overlay RMSE |
+| --- | ---: | ---: |
+| January and July | 314.3197465013 | 313.7463286061 |
+| January | 340.1687564047 | 339.7824741052 |
+| July | 291.8250533115 | 291.0724032621 |
+
+The whole gain is 0.5734178952 seconds. Among 31 eligible rows, 18 squared errors improve and 13 worsen; 12 days improve, 6 worsen and 44 are unchanged. Independent direct reconstruction matched the diagnostic, and the standalone helper subsequently matched all 344,419 local predictions. The largest beneficial row contributes 45.8% of net squared-error improvement. A post-result influence calculation excluding that one row leaves a 0.311181-second gain and improvement in both months. This influence calculation changes neither the rule nor the complete reported evaluation.
+
+January/July has repeatedly informed research decisions. The motivating calculation used fitting-support rows after excluding January, February, July and August, but historical provenance material loaded by that diagnostic also contained previously inspected holdout information. This evidence is not blind or untouched, and its small, concentrated trigger scope limits confidence in generalization. February/August was not evaluated against a complete v10 incumbent because that historical whole-ensemble comparison was unavailable. No alternate thresholds, airport subsets, blend weights or incumbents were searched in this diagnostic, and it creates no automatic promotion. This was a frozen diagnostic without predeclared promotion criteria; any later release decision is made after observing these results.
+
+A separate target-free ranking check found 21 eligible departures and matched the rule's scope and replacement proxy values. It did not apply the overlay to actual v10 ranking predictions, so it is not an all-row candidate prediction proof, an official score or evidence of official improvement. Actual candidate creation and independent full-row verification against the verified v10 artifact remain separate steps. This v11 proposal has not been officially submitted or scored.
+
+The conditional wrapper requires the exact retained v10 prediction file and its manifest. It verifies v10's model version, v9 lineage, .375 component weight, 7200-second fitting cap, baseline/ranking/template digests, row count and specialist count. It loads only the original movement ID, phase, airports and four clock columns from ranking data; departure labels and block times are excluded. It checks source and input hashes again before writing, preserves template IDs/dtypes/order, validates serialized predictions and records output/source/baseline provenance. An independently verified v10 artifact must be pinned by the release process; internal manifest consistency alone does not establish that provenance.
+
+```sh
+python clock_overlay_contest.py --baseline runs/submissions/zestful-fountain_v10.parquet --ranking runs/data/ranking.parquet --template runs/data/submitting.parquet --output runs/submissions/zestful-fountain_v11.parquet --permission-ref "PRC2026 registered participant, challenge-only"
+```
+
+This command is conditional reproduction guidance, not an instruction to submit the proposal. Use a fresh output and the next unused version. It never trains or uploads, and its output status explicitly distinguishes unscored competition predictions from synthetic tests. Synthetic source tests cover strict signed/boundary behavior, both-clock validity, missing values, specialist preservation, ID order/duplicates, exact unaffected values, invalid inputs, forbidden-field independence, manifest tampering and mid-operation input changes.
+
+
+Release selection on 13 September 2026 is an explicit post-result decision under the existing competition authorization. V10 officially improved to 275.1751 on all ranking pairs. The frozen v71 clock rule was then selected unchanged for source publication and exact actual-ranking verification before any upload. The local diagnostic had no predeclared promotion criteria; selection does not imply official improvement.
