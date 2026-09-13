@@ -13,3 +13,20 @@ The organizer processed `zestful-fountain_v8.parquet` at 2026-09-13T09:54:05.856
 The selected fixed 50% v7/arrival-CatBoost blend scored 315.778 versus 318.547 on reused January/July validation, improving both months and 61/62 days. Those local scores are separate from the official result. All original evaluation labels remain unchanged. Restricted data, fitted models and credentials remain private.
 
 Sources: [official ranking](https://prc-data-challenge-2026.netlify.app/ranking.html), [complete paginated leaderboard API](https://datacomp.opensky-network.org/api/competitions/bb3693e1-26bc-4a9e-8619-4fe78b4eab0c/leaderboard). See [method and reproduction](../METHOD.md#deeper-arrival-residual-candidate-v8).
+
+
+## V9: airport and completed-NM-neighbor ensemble
+
+V9 scored **277.7530 seconds RMSE** on all **344,841 pairs**, improving v8 by 0.8819 seconds. Complete 1156-submission pagination at **2026-09-13T10:23:11.674210+00:00** ranks the team **16/129**. The team best is **277.7530** (zestful-fountain_v9.parquet); the leader is **245.0207**, leaving **32.7323 seconds**. First place through the deadline remains incomplete.
+
+The organizer processed v9 at 2026-09-13T10:22:50.947686Z; own-bucket receipt and complete public leaderboard agree.
+
+- Submission SHA-256: `c7f6b87013fce585702491bddf178e9292aaf1f1a89250f898fa60f4e61ca1d2`; 4,707,625 bytes.
+- Independent recomputation matches all 344,841 predictions exactly, preserving all 383 v8 specialist values. All 153 ranking features also match the original validation implementation exactly. Mean absolute prediction change: 9.995 seconds.
+- Full fit: one 153-feature global neighbor model and ten 123-feature airport experts, each with 679 trees. All 2,083,190 eligible ordinary-scope 2025 labels are used; fitting residuals alone are capped at 7,200 seconds.
+- Original public source [PR 9](https://github.com/Phoenix-Ops-LTD/prc2026-taxiout/pull/9): `e35e7aea2fafc403ace30afc215e6cb1987addd9`, merged as `bc5af00e8026169d88073b696a117019f0f099c1`. All 38 research tests, fifteen strict mypy modules, public CI, parent lint/typecheck/94 tests and parent quality/governance/browser CI pass. Secret/artifact scans have zero findings.
+- Guarded upload verified all bucket pages, quota, capacity, increasing version, finite exact-template values and hashes. It found 1 earlier submissions in the rolling 24-hour window at 2026-09-13T10:22:10.820657+00:00.
+
+The fixed 25% addition gives reused January/July validation RMSE 315.179 versus v8 315.778, improving both months and 55/62 days. Four-month component comparisons also improve; their scope and prior holdout reuse are documented in [METHOD.md](../METHOD.md#airport-and-completed-nm-neighbor-candidate-v9). They are not official scores. Restricted data, fitted models and credentials remain private.
+
+Sources: [official ranking](https://prc-data-challenge-2026.netlify.app/ranking.html), [complete paginated API](https://datacomp.opensky-network.org/api/competitions/bb3693e1-26bc-4a9e-8619-4fe78b4eab0c/leaderboard).
