@@ -1,6 +1,6 @@
 # PhoenixAI PRC 2026 taxi-out research
 
-Independent, original research for team **zestful-fountain**. Latest official submission v7 scored **285.749 seconds RMSE** across **344,841 predictions**, rank **19th of 96 scored teams at 05:58 UTC on 10 September 2026**. The leader scored 245.094 at that snapshot; first place remains unachieved. [Official result](results/leaderboard-2026-09-10.md). See [METHOD.md](METHOD.md) for validation, availability limits and reproduction.
+Independent, original research for team **zestful-fountain**. Verified best submission **v8: 278.6349 seconds RMSE** across **344,841 predictions**, rank **17 of 127 scored teams at 09:54 UTC on 13 September 2026**. The leader scored 245.0207; first place through the deadline remains incomplete. [Official result](results/leaderboard-2026-09-13.md). See [METHOD.md](METHOD.md) for validation, availability limits and reproduction.
 
 This directory alone is GPL-3.0-only. The proprietary parent PhoenixAI/RALE repository, product modules, credentials, models and restricted datasets are excluded.
 
