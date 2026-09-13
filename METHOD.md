@@ -4,7 +4,7 @@ Team: **zestful-fountain**. Original independent GPL-3.0-only implementation.
 
 ## Official result
 
-Latest v5: **290.0659 seconds RMSE**, **19 of 89** at **2026-09-09T18:40:47Z**. All 344,841 pairs scored; leader 246.3605. [Dated snapshot](results/leaderboard-2026-09-09.md). The first-place-through-deadline goal remains incomplete.
+Latest v9: **277.7530 seconds RMSE**, **16 of 129** at **10:23 UTC on 2026-09-13**. All 344,841 pairs scored; leader 245.0207. [Dated snapshot](results/leaderboard-2026-09-13.md). V10 has local selection evidence only; the first-place-through-deadline goal remains incomplete.
 
 Earlier official scores: v4 291.4829, v3 292.4043, v2 297.5883, v1 461.4635 seconds RMSE. Historical ranks and processing times remain in the [8 September](results/leaderboard-2026-09-08.md) and [7 September](results/leaderboard-2026-09-07.md) snapshots. Rankings change; these are dated measurements.
 
@@ -45,7 +45,7 @@ Obtain authorized dataset access independently. Store all twelve 2025 monthly fi
 ```sh
 python -m pip install -r requirements.lock.txt
 python -m pytest -q
-python -m mypy pipeline.py buckets.py traffic_features.py contest.py
+python -m mypy pipeline.py buckets.py traffic_features.py contest.py carrier_contest.py ensemble_contest.py duration_contest.py specialist_ensemble.py arrival_features.py arrival_specialist.py arrival_contest.py arrival_boost_contest.py nm_neighbor_features.py ordinary_ensemble.py neighbor_boost_contest.py leaderboard.py
 python contest.py train --data runs/data --output runs/reproduction-v2 --device GPU --validation seasonal --permission-ref "PRC2026 registered participant, challenge-only"
 python contest.py predict --run runs/reproduction-v2 --ranking runs/data/ranking.parquet --template runs/data/submitting.parquet --output runs/submissions/zestful-fountain_v3.parquet --permission-ref "PRC2026 registered participant, challenge-only"
 ```
@@ -194,3 +194,28 @@ python ordinary_ensemble.py predict --run runs/ordinary-full --baseline runs/sub
 ```
 
 Use fresh paths and the next unused submission version. Inference checks the v8 baseline, data and template digests, all model hashes, tree counts, feature order, fixed parameters and blend weights before exact-template validation. Neither command uploads. V9 subsequently scored **277.7530 seconds RMSE** officially, improving v8 by 0.8819 seconds. The complete 10:23 UTC snapshot on 2026-09-13 ranks the team 16/129; team best 277.7530, leader 245.0207. Every prediction independently recomputes exactly, preserving all 383 specialist values. [Dated result](results/leaderboard-2026-09-13.md).
+
+## NM-neighbor CatBoost replacement candidate v10
+
+`neighbor_boost_contest.py` adds the same 30 strict-past NM-neighbor predictors to the existing CatBoost's 123 arrival-context features. The 153-feature model retains depth 9, learning rate 0.05, L2 regularization 7, 254 borders, seed 20260907, GPU fitting and two threads. The tree count was fixed at 4,999 before the completed validation result, with no early stopping or blend-weight search. Competition configuration enforces these 4,999 GPU trees; shorter CPU fits require an explicit synthetic data class and are labeled synthetic tests. GPU fitting is not bitwise deterministic; saved-model digests identify each fitted artifact.
+
+The candidate changes only the ordinary component that contributes 37.5% of v9: `v10 = v9 + 0.375 * (CatBoost153 - CatBoost123)`. Each CatBoost prediction retains its original nonnegative floor. The replacement itself is never clipped: a negative or nonfinite result rejects prediction. All LIRF rows with missing `IOBT_flt` preserve the v9 specialist exactly.
+
+The predeclared gate required at least 0.5 seconds overall January/July improvement, improvement in each month, and at least 40 improved days against the actual v9 local baseline. The completed fixed comparison passes:
+
+| Reused 2025 holdout | V9 RMSE | Replacement RMSE |
+| --- | ---: | ---: |
+| January and July | 315.179420 | 314.319747 |
+| January | 341.196848 | 340.168756 |
+| July | 292.531371 | 291.825053 |
+
+The gain is 0.859674 seconds, with 52/62 days improved. Fitting uses the other ten months and excludes negative departure labels and the separate unmatched-LIRF scope; fitting residuals alone are capped at +/-7,200 seconds. All 344,419 original evaluation labels, including 80 negative labels and extreme values, remain unchanged. These months have been reused for research decisions; the result is not an untouched generalization test or an official score. The earlier four-month LightGBM comparison motivated these features but does not independently validate this complete CatBoost replacement. V9 remains the verified official best.
+
+Full training uses all twelve authorized 2025 files and the existing 2,083,190 eligible ordinary-scope departures. To reproduce, first retain the exact v8/v9 prediction files and manifests and the original 123-feature full model that produced v8. Replacing that old model with a new fit would not reproduce the component embedded in the retained v9 baseline.
+
+```sh
+python neighbor_boost_contest.py train --data runs/data --output runs/neighbor-boost-full --permission-ref "PRC2026 registered participant, challenge-only"
+python neighbor_boost_contest.py predict --run runs/neighbor-boost-full --old-run runs/arrival-boost-full --baseline runs/submissions/zestful-fountain_v9.parquet --v8-baseline runs/submissions/zestful-fountain_v8.parquet --ranking runs/data/ranking.parquet --template runs/data/submitting.parquet --output runs/submissions/zestful-fountain_v10.parquet --permission-ref "PRC2026 registered participant, challenge-only"
+```
+
+Use fresh paths and an unused increasing version. Inference verifies the v9-to-v8 baseline digest chain, the original CatBoost123 digest embedded in v8, identical twelve-file training provenance, both model schemas and fitted parameters, exact tree counts, data/template digests, scope counts and unchanged v8/v9 specialist values. The output records both model/report digests and both baseline-manifest digests. Synthetic tests exercise a full training/prediction round trip, component subtraction, exact row/specialist preservation, manifest/model tampering and invalid replacement rejection. Neither command uploads; source publication, full fitting and independent all-row verification remain separate requirements before an official submission.
