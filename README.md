@@ -13,10 +13,14 @@ Python 3.12; create an isolated virtual environment, then:
 ```sh
 python -m pip install -r requirements.lock.txt
 python -m pytest -q
-python -m mypy pipeline.py buckets.py traffic_features.py contest.py carrier_contest.py ensemble_contest.py duration_contest.py specialist_ensemble.py arrival_features.py arrival_specialist.py arrival_contest.py leaderboard.py
+python -m mypy pipeline.py buckets.py traffic_features.py contest.py carrier_contest.py ensemble_contest.py duration_contest.py specialist_ensemble.py arrival_features.py arrival_specialist.py arrival_contest.py arrival_boost_contest.py nm_neighbor_features.py ordinary_ensemble.py neighbor_boost_contest.py leaderboard.py
 ```
 
 Tests train twice on fixed synthetic fixtures, compare predictions, and verify template order, invalid values and feature leakage exclusions. Synthetic scores are test outputs only.
+
+## Local v10 candidate
+
+`neighbor_boost_contest.py` replaces v9's existing 123-feature CatBoost component with the same fixed 4,999-tree model using 153 features. The frozen 37.5% component replacement improves reused January/July RMSE from 315.179 to 314.320, improving both months and 52/62 days. This is local research selection evidence, not an untouched test or an official v10 score; the verified best remains v9 at 277.7530. [Configuration, guards and reproduction commands](METHOD.md#nm-neighbor-catboost-replacement-candidate-v10).
 
 ## Authorized data access
 
