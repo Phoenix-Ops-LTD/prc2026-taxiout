@@ -13,7 +13,7 @@ Python 3.12; create an isolated virtual environment, then:
 ```sh
 python -m pip install -r requirements.lock.txt
 python -m pytest -q
-python -m mypy pipeline.py buckets.py traffic_features.py contest.py carrier_contest.py ensemble_contest.py duration_contest.py specialist_ensemble.py arrival_features.py arrival_specialist.py arrival_contest.py arrival_boost_contest.py nm_neighbor_features.py ordinary_ensemble.py neighbor_boost_contest.py nm_clock_overlay.py clock_overlay_contest.py leaderboard.py
+python -m mypy arrival_boost_contest.py arrival_contest.py arrival_features.py arrival_specialist.py buckets.py carrier_contest.py clock_overlay_contest.py contest.py duration_contest.py ensemble_contest.py following_boost_contest.py leaderboard.py long_following_contest.py neighbor_boost_contest.py nm_clock_overlay.py nm_following_features.py nm_neighbor_features.py ordinary_ensemble.py pipeline.py specialist_ensemble.py traffic_features.py
 ```
 
 Tests train twice on fixed synthetic fixtures, compare predictions, and verify template order, invalid values and feature leakage exclusions. Synthetic scores are test outputs only.
@@ -114,3 +114,11 @@ The fixed 183-feature CatBoost candidate passes its predeclared local criteria: 
 `nm_following_features.py` adds thirty features from strictly following, same-UTC-month NM departure-clock observations. The added columns match all 2,085,047 training and 344,841 ranking departures against the fixed experimental references; separate direct synthetic and sampled real-row oracles also pass. These are retrospective supplied observations, with no predeparture availability claim.
 
 `following_boost_contest.py` provides full fitting and guarded prediction for this selected candidate. It checks the v11/v10 prediction chain and the old Cat153 model, then replaces only that component while preserving the specialist and clock scopes. Full fitting, original source publication, exact all-row prediction verification, guarded upload and official result reconciliation are complete for v12. The local gain above remains distinct from the official 1.4181-second improvement. See [the fixed protocol and reproduction commands](METHOD.md#fixed-following-context-catboost-candidate-v12).
+
+## Selected longer LightGBM candidate
+
+`long_following_contest.py` retains the verified 183 features and increases the existing LightGBM component from 679 to 2,716 fixed CPU trees, keeping every other numerical parameter and its 12.5% ensemble weight. Both fixed local comparisons have completed. All original criteria pass: reused January/July whole RMSE improves from 312.971010 to 312.470400, both months and 61/62 days improve, and the component beats both the original 153-feature and 679-tree/183-feature controls in January, February, July and August.
+
+The whole gain is **0.500610789 seconds**, only **0.000610789** above the unchanged 0.5-second threshold. This is a narrow reused-holdout gain, not an official result. Independent artifact recomputation retains all 679,339 original four-month labels, including 155 negatives. Separate actual-model inference and the public replacement reproduce every first-pair prediction exactly, preserving 398 specialist and 31 clock values. The second-pair audit checks saved predictions and native model metadata; it does not rerun that model's inference.
+
+The candidate is selected locally for original-source publication and full-fit preparation. Full fitting and any official submission remain separate steps. V12 remains the official incumbent. [Fixed protocol, limitations and reproduction commands](METHOD.md#fixed-longer-lightgbm-candidate-v13).
