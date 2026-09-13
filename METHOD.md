@@ -260,3 +260,32 @@ This command is conditional reproduction guidance, not an instruction to submit 
 
 
 Release selection on 13 September 2026 is an explicit post-result decision under the existing competition authorization. V10 officially improved to 275.1751 on all ranking pairs. The frozen v71 clock rule was then selected unchanged for source publication and exact actual-ranking verification before any upload. The local diagnostic had no predeclared promotion criteria; selection does not imply official improvement.
+
+## Fixed following-context CatBoost candidate (v12)
+
+`nm_following_features.py` derives thirty additional predictors from supplied departure movement times and NM AOBT_3 clocks. The reference pool contains only DEP rows with normalized matching movement/NM origin airports and a movement-minus-AOBT_3 proxy in the inclusive range 0..7200 seconds. Airport, airport/runway and airport/stand groups stay within the same UTC movement month. Missing runway/stand values do not form observed groups.
+
+For each group, 15- and 60-minute windows are strictly after the query time and inclusive at the upper limit: `(query, query + window]`. Each window provides count, mean, population standard deviation and the query's own valid proxy minus the mean. The nearest strictly later movement adds waiting time and proxy, limited to two hours; events tied at that timestamp are averaged. Query-time ties, the query itself, earlier events, ARR rows, departure targets and departure block times are excluded from this helper. The original ARR-context features still use only the organizer-supplied ARR values. Following observations are retrospective ranking context, not evidence of operational availability before departure.
+
+Two fixed 679-tree LightGBM comparisons first showed component improvement in January, February, July and August. Their whole January/July replacement gained only 0.283203 seconds, below its fixed 0.5-second gate; that LightGBM candidate remains rejected. A separate CatBoost experiment was frozen before the second comparison completed, conditional on independently verified improvement in all four component months. It adds the same thirty features to the existing 153-feature CatBoost and retains 4,999 GPU trees, depth 9, learning rate .05, L2 7, 254 borders, seed 20260907 and two CPU threads. No early stopping, weight search or threshold change is used. GPU fitting is not bitwise deterministic; saved-model digests identify actual fits.
+
+The local fitting partition excludes January/July and negative labels and preserves the separate LIRF/missing-IOBT specialist. The residual fitting cap remains +/-7200 seconds. All 344,419 original evaluation labels, including 80 negatives and positive extremes, remain unchanged. The whole candidate is `v11 + .375 * (nonnegative Cat183 - nonnegative Cat153)`, preserving all 398 specialist and 31 frozen clock-overlay values.
+
+| Reused 2025 holdout | V11 RMSE | Fixed Cat183 replacement RMSE |
+| --- | ---: | ---: |
+| January and July | 313.7463286061 | 312.9710103047 |
+| January | 339.7824741052 | 339.0773341786 |
+| July | 291.0724032621 | 290.2265049010 |
+
+The independently recomputed 0.7753183013-second gain passes the unchanged 0.5-second criterion, both months improve, and 59/62 days improve against the required 40. These months have repeatedly informed research decisions; they are not untouched validation. The all-four-month evidence belongs to the preceding feature/LightGBM comparison, not a full four-month CatBoost ensemble evaluation. The selected candidate has no official result at this documentation step.
+
+The public full-fitting command reads all twelve authorized 2025 monthly files, reconstructs the complete 183-feature matrix and fits only nonnegative ordinary-scope labels. It snapshots source, records source/data/model digests and parameters, and checks source and inputs again after fitting. Competition configuration fixes GPU/4,999 trees; short CPU runs must explicitly declare synthetic data. A fresh output directory is required.
+
+Prediction requires the actual retained v11 and v10 artifacts and manifests, the old full Cat153 model, the new full Cat183 model, ranking data and template. It checks both baseline versions, exact v11/v10 linkage, source/clock-rule provenance, the old model and report digests bound by v10, identical twelve-file training inputs, feature/category schemas, fixed model parameters and tree counts. It also reconstructs v11 from v10 with the original clock rule and requires exact equality. The replacement skips both protected scopes before arithmetic, so it cannot accidentally alter a clock or specialist value. Serialized output must retain every template ID, dtype/order, finite nonnegative value and exact prediction. Inputs, models and source are rehashed before writing. Internal manifest consistency complements, rather than replaces, independently pinned release provenance.
+
+```sh
+python following_boost_contest.py train --data runs/data --output runs/following-boost-full-v74 --permission-ref "PRC2026 registered participant, challenge-only"
+python following_boost_contest.py predict --run runs/following-boost-full-v74 --old-run runs/neighbor-boost-full-v68 --baseline runs/submissions/zestful-fountain_v11.parquet --v10-baseline runs/submissions/zestful-fountain_v10.parquet --ranking runs/data/ranking.parquet --template runs/data/submitting.parquet --output runs/submissions/zestful-fountain_v12.parquet --permission-ref "PRC2026 registered participant, challenge-only"
+```
+
+These are reproduction commands, not an instruction to upload. Use the next unused submission version and a fresh output. The module does not publish or upload; official submission still requires completed full fitting, public source CI, independent verification of every actual ranking prediction and the existing bucket quota/schema/digest guards. Models, input data, private evidence and credentials remain outside the public repository.
