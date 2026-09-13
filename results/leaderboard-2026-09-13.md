@@ -37,3 +37,14 @@ Sources: [official ranking](https://prc-data-challenge-2026.netlify.app/ranking.
 V10 scored **275.1751 seconds RMSE** on all **344,841 pairs**, improving v9 by **2.5779 seconds**. Complete 1170-submission pagination at **2026-09-13T12:04:35.502766+00:00** ranks the team **14/130**. Leader 245.0207; remaining gap 30.1544 seconds. First place remains incomplete. The own-bucket result agrees with the complete public leaderboard.
 
 All 344,841 predictions independently recompute exactly, preserving all 383 specialist values. Submission SHA-256: `e5ae15d458f183da627a251d82c58c73cbcb25781d21f3b4b0362650563fbda0`. The fixed 153-feature model completed all 4,999 trees on 2,083,190 ordinary training rows. Original GPLv3 source was published through [PR 11](https://github.com/Phoenix-Ops-LTD/prc2026-taxiout/pull/11) with passing CI before guarded upload. Local selection and official scoring remain distinct.
+
+
+## V11: fixed NM-clock correction
+
+V11 scored **274.9738 seconds RMSE** on all **344,841 pairs**, improving v10 by **0.2013 seconds**. Complete 1173-submission pagination at **2026-09-13T12:34:57.647494+00:00** ranks the team **14/130**. Leader 245.0207; remaining gap **29.9531 seconds**. First place remains incomplete.
+
+All 344,841 actual values independently match the pinned v10 predictions with the frozen LOBT proxy on 21 IDs. Exactly 21 predictions change, with 344,820 outside values and 383 specialist values preserved. Submission SHA-256: `4e378264ff1547a5e36dbe77f1528ffe36898fe51e66477ce0a6eb7f2f164e90`.
+
+Original source [PR 12](https://github.com/Phoenix-Ops-LTD/prc2026-taxiout/pull/12) merged as `243b0f03a3c901fb77c564f092795421266ba5c4` after both public CI runs passed. Validation includes 96 package tests, strict mypy on 18 production modules and both new tests, parent lint/typecheck/94 tests, and zero secret-scan findings. The guarded upload found three previous submissions in the rolling 24-hour window. Own-team result and complete public leaderboard agree.
+
+The decision followed the frozen diagnostic result, with no predeclared promotion criteria. Reused local validation improved by 0.573418 seconds; that differs from the official gain of 0.2013 seconds. Reuse, concentrated influence and unavailable complete February/August validation remain documented.
