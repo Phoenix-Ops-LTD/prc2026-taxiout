@@ -1,5 +1,18 @@
 # PhoenixAI PRC 2026 taxi-out research
 
+The **9 October generalization-first forecast** is implemented in `forecast_run.py`,
+`forecast_features.py` and `forecast_model.py`. It preserves the retrospective work
+below and selects models using forward September–November validation, then reports
+December and February/June/July diagnostics. The final template covers all four
+2026 months. See [GENERALIZATION.md](GENERALIZATION.md) for feature availability,
+leakage limits, reproduction and the portable `taxiOut.predict()` research interface.
+
+The completed frozen ensemble has 403.769790-second forward RMSE. Both final
+(670,790 rows) and ranking (344,841 rows) files pass exact fresh saved-model checks.
+The continuously updated [MAE leaderboard](LEADERBOARD.md) reports its own CHAMPION;
+[complete aggregate validation and delivery evidence](results/generalization-2026-10-09.md)
+retain weaker seasonal outcomes and all limitations. No new official score is claimed.
+
 Independent, original research for team **zestful-fountain**. V12 scored **273.5557 seconds RMSE** on all **344,841 pairs**, improving v11 by **1.4181 seconds**. Complete public pagination at **2026-09-13T16:53:37.305711+00:00** ranks the team **12/131**, up from 14/131 immediately before submission. Leader 245.0207; remaining gap **28.5350 seconds**. First place remains incomplete. [Official result](results/leaderboard-2026-09-13.md#v12-following-context-catboost-replacement). See [METHOD.md](METHOD.md) for validation, availability limits and reproduction.
 
 This directory alone is GPL-3.0-only. The proprietary parent PhoenixAI/RALE repository, product modules, credentials, models and restricted datasets are excluded.
@@ -79,7 +92,7 @@ Before claiming competitive performance, evaluate multiple chronological cutoffs
 3. Export **only this independent directory** to a standalone public GPLv3 GitHub repository, excluding `runs`, virtual environments, caches and private config. Do not publish the proprietary parent repository. Complete a secret scan first.
 4. Produce and validate a genuine ranking submission; upload to the assigned team bucket and verify the official result file.
 5. Retain code commit, environment lock, data hashes and exact configuration for winner reproduction. Prepare the method report and any organizer-requested final materials.
-6. Submit well before the published **11 October 2026, 23:59:59 CET** deadline. Ask organizers to reconcile CET/CEST wording; do not rely on a last-hour interpretation.
+6. Submit well before the extended deadline **14 October 2026, 10:00 UTC**, explicitly confirmed by the [organizer](https://prc-data-challenge-2026.netlify.app/). Local final files require validation against the actual final template.
 
 ## Sources and climate context
 
@@ -122,3 +135,10 @@ The fixed 183-feature CatBoost candidate passes its predeclared local criteria: 
 The whole gain is **0.500610789 seconds**, only **0.000610789** above the unchanged 0.5-second threshold. This is a narrow reused-holdout gain, not an official result. Independent artifact recomputation retains all 679,339 original four-month labels, including 155 negatives. Separate actual-model inference and the public replacement reproduce every first-pair prediction exactly, preserving 398 specialist and 31 clock values. The second-pair audit checks saved predictions and native model metadata; it does not rerun that model's inference.
 
 The candidate is selected locally for original-source publication and full-fit preparation. Full fitting and any official submission remain separate steps. V12 remains the official incumbent. [Fixed protocol, limitations and reproduction commands](METHOD.md#fixed-longer-lightgbm-candidate-v13).
+
+# Live forward leaderboard
+
+See [LEADERBOARD.md](LEADERBOARD.md) and [leaderboard.json](leaderboard.json) for
+completed purged forward-validation experiments, ranked by mean fold MAE.
+`forward_leaderboard.py --watch` refreshes both after each completed ledger and
+prediction pair; partial runs are unranked and official scores are excluded.
