@@ -18,11 +18,13 @@ def test_export_excludes_private_runs_weights_and_data(tmp_path: Path) -> None:
     (private / "training.parquet").write_bytes(b"restricted")
     (source / "weights.cbm").write_bytes(b"restricted")
     (source / "credentials.json").write_text("private", encoding="utf-8")
+    (source / "dashboard.html").write_text("<title>public dashboard</title>", encoding="utf-8")
     output = tmp_path / "public.zip"
     report = export_source(source, output)
     assert report["restricted_artifacts"] == "EXCLUDED"
     with zipfile.ZipFile(output) as archive:
         assert "model.py" in archive.namelist()
+        assert "dashboard.html" in archive.namelist()
         assert not any("runs" in n or "credentials" in n or "weights" in n for n in archive.namelist())
         assert report["files"] == {n: hashlib.sha256(archive.read(n)).hexdigest() for n in archive.namelist()}
     with pytest.raises(ValueError, match="new"):

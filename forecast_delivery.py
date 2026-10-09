@@ -84,6 +84,8 @@ def export_source(source: Path, output: Path, inference_only: bool = False) -> d
                     source / ".gitignore", source / "config.example.json"])
     if (source / "leaderboard.json").exists():
         paths.append(source / "leaderboard.json")
+    if (source / "dashboard.html").exists():
+        paths.append(source / "dashboard.html")
     if inference_only:
         allowed = {"taxiout.py", "forecast_model.py", "forecast_guard.py", "forecast_novel_guard.py", "forecast_features.py", "pipeline.py", "LICENSE",
                    "requirements.lock.txt", "DATA_USE.md", "GENERALIZATION.md", "INFERENCE.md"}

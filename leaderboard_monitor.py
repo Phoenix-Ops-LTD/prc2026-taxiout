@@ -108,6 +108,42 @@ def discover_runs(root: Path, allowed: set[str]) -> list[Path]:
     return found
 
 
+def measured_execution(report: dict[str, Any], runs: list[Path]) -> None:
+    """Carry real GPU identity and separate clocks without rewriting legacy evidence."""
+    for run in runs:
+        plan = load_json(run / "plan.json")
+        if plan.get("execution_unit") != "GPU":
+            continue
+        ledger_path = run / "experiment-ledger.json"
+        ledger = load_json(ledger_path) if ledger_path.exists() else []
+        for entry in report["entries"] + report["completed_fold_experiments"]:
+            if not entry["experiment_id"].startswith(run.name + "/"):
+                continue
+            model = entry["model"]
+            records = [r for r in ledger if r.get("experiment", "").startswith("forward-")
+                       and r.get("model") == model and f"2025-{r['validation_month']:02}" in entry["validation_folds"]]
+            entry["device"] = "GPU RTX4090 / CPU inference"
+            entry["parameters"] = {**entry.get("parameters", {}), **plan.get("training_overrides", {}).get(model, {})}
+            if records:
+                entry["training_time_seconds"] = sum(r["training_time_seconds"] for r in records)
+                entry["inference_time_seconds"] = sum(r["inference_time_seconds"] for r in records)
+                entry["timing_status"] = "MEASURED_SEPARATELY_SUM_OF_COMPLETED_FOLDS"
+                entry["timestamp"] = max(r["completed_at_utc"] for r in records)
+    singles = {e["model"]: e for e in report["entries"] if e.get("status") == "COMPLETED_VALIDATED" and e.get("model_family") != "fixed_equal_ensemble"}
+    for entry in report["entries"]:
+        weights = entry.get("parameters", {}).get("weights", {})
+        if len(weights) < 2:
+            continue
+        components = [singles[n] for n in weights if n in singles]
+        if len(components) != len(weights) or not any("GPU" in c["device"] for c in components):
+            continue
+        mixed = any(c["device"] == "CPU" for c in components)
+        entry["device"] = "GPU RTX4090 + CPU training / CPU inference" if mixed else "GPU RTX4090 / CPU inference"
+        for field in ["training_time_seconds", "inference_time_seconds"]:
+            entry[field] = sum(c[field] for c in components) if all(c[field] is not None for c in components) else None
+        entry["timing_status"] = "SUM_OF_MEASURED_COMPONENT_TIMES; blend composition unmeasured" if not mixed else "SEPARATE_TIMERS_UNAVAILABLE_FOR_LEGACY_CPU_COMPONENT; no retraining for fixed blend"
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data", type=Path, required=True)
@@ -163,6 +199,7 @@ def main() -> None:
             if current_cv != previous_cv or current_diagnostics != previous_diagnostics:
                 if current_cv != previous_cv:
                     report = snapshot(args.runs, cv_context, source, commit, args.selections)
+                    measured_execution(report, args.runs)
                 diagnostic_rows: list[dict[str, Any]] = []
                 seen_predictions: set[str] = set()
                 for diagnostic_source in diagnostic_sources:
