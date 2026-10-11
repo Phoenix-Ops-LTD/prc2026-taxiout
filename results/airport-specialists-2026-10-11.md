@@ -21,6 +21,11 @@ measured global fitting and incremental airport fitting; the reused contribution
 is explicit. The deployment loader rejects the new policy until an explicitly
 compatible loader is used, preventing silent loss of airport models.
 
+The preserved Linux-trained native models also reproduce all 1,595,853
+model/row predictions exactly on Windows CPU. Archive-verification directories
+are excluded from automatic leaderboard discovery unless prediction files exist;
+explicitly registered incomplete experiments remain visible and unranked.
+
 | Model | Pooled forward RMSE (s) | Mean fold MAE (s) |
 | --- | ---: | ---: |
 | gpu_airport_no_demand_novel_guarded | 415.781698875 | 222.538340271 |
@@ -41,7 +46,7 @@ frozen GPU output batch while excluding preparation directories. It shows the
 completed specialist results and comparison against the incumbent. Official
 ranking history remains observation-only in ignored runtime files.
 
-Validation: 153 research tests and 41 maintained strict Python modules pass;
+Validation: 154 research tests and 41 maintained strict Python modules pass;
 repository lint/types and all 986 tests pass. Native roundtrip, unseen-input
 fallback, corrupted specialist artifacts and discovery of new GPU batches are
 covered. Desktop and 390-pixel mobile checks show no script errors or overflow.

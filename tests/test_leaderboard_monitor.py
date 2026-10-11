@@ -33,4 +33,5 @@ def test_discovery_excludes_official_and_unreviewed_feature_scopes(tmp_path: Pat
         run.mkdir()
         write_json(run / "plan.json", {"selection_months": months, "models": {"m": {"kind": "lightgbm"}}})
         write_json(run / "experiment-ledger.json", [{"experiment": "forward-09-m", "features": [feature]}])
+        pd.DataFrame({"prediction": [1.]}).to_parquet(run / "selection-09.parquet")
     assert discover_runs(tmp_path, {"airport"}) == [(tmp_path / "valid").resolve()]

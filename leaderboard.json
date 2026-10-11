@@ -1,6 +1,6 @@
 {
   "schema_version": "prc-forward-leaderboard/1.0",
-  "updated_at_utc": "2026-10-11T19:27:09.719800+00:00",
+  "updated_at_utc": "2026-10-11T19:39:44.879514+00:00",
   "selection_policy": "Rank completed Sep/Oct/Nov purged forward CV by arithmetic mean fold MAE, lower is better",
   "mean_mae_definition": "Equal-weight mean of fold MAEs; median_mae is median of fold MAEs",
   "catastrophic_threshold_seconds": 3600.0,
@@ -22550,5 +22550,5 @@
       "timestamp": "2026-10-09T14:45:42.698103+00:00"
     }
   ],
-  "monitor_source_sha256": "5a391586f808ab83e0d1457c74068fdb48dd7e874c14f8f02c46bec96159aef5"
+  "monitor_source_sha256": "87a221a0b6749fd284efc6120d1e4147bf656a76abc40b5f9dcb0babc18eb108"
 }

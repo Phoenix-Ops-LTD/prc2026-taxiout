@@ -79,7 +79,8 @@ record every completed fixed blend with its validation evidence.
 ## Airport specialist continuation
 
 The live dashboard discovers the latest frozen GPU output batch automatically,
-excluding prepared-input directories. The airport batch reuses the preserved
+excluding prepared-input directories. The leaderboard discovers an experiment
+only when forward prediction files exist; native archive receipts are excluded. The airport batch reuses the preserved
 matching forward-fold global GPU checkpoints, then fits specialists for every
 airport with at least 10,000 fitting rows. Global and local predictions have a
 fixed 50/50 mix. No airport-specific mixture weights are selected. Novel-input

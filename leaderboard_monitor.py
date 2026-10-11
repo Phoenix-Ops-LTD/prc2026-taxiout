@@ -93,6 +93,10 @@ def discover_runs(root: Path, allowed: set[str]) -> list[Path]:
         ledger_path = run / "experiment-ledger.json"
         if not ledger_path.exists():
             continue
+        if not any((run / f"selection-{month:02}.parquet").exists() for month in [9, 10, 11]):
+            # Native archives can contain a frozen plan and copied ledger without
+            # being a new experiment. Require actual forward predictions.
+            continue
         try:
             plan = load_json(plan_path)
             if plan.get("selection_months", plan.get("months")) != [9, 10, 11]:

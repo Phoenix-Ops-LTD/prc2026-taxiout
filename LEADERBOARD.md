@@ -1,6 +1,6 @@
 # PRC forward-validation model leaderboard
 
-Updated UTC: 2026-10-11T19:27:09.719800+00:00
+Updated UTC: 2026-10-11T19:39:44.879514+00:00
 
 Lower mean MAE wins. Only completed, source-bound September/October/November purged forward experiments receive a rank. Official scores and locked December results never enter this board.
 

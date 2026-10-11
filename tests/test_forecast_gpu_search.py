@@ -6,7 +6,7 @@ import pytest
 
 from forecast_gpu_search import candidates, overrides, validate_inputs
 from forecast_gpu_prepare import prepare
-from leaderboard_monitor import measured_execution
+from leaderboard_monitor import discover_runs, measured_execution
 from pipeline import ID, TARGET, TIME, write_json
 
 
@@ -51,3 +51,13 @@ def test_preparation_rejects_changed_feature_cache_before_reading_training(tmp_p
     with pytest.raises(ValueError, match="Feature cache"):
         prepare(tmp_path / "absent-private-data", feature_run, search, tmp_path / "output")
     assert not (tmp_path / "output").exists()
+
+
+def test_model_archive_receipts_do_not_create_phantom_experiments(tmp_path: Path) -> None:
+    for name in ["native-qa", "actual-forward"]:
+        run = tmp_path / name
+        run.mkdir()
+        write_json(run / "plan.json", {"selection_months": [9, 10, 11], "models": {"m": {"kind": "catboost"}}})
+        write_json(run / "experiment-ledger.json", [{"experiment": "forward-09-m", "features": ["hour_utc"]}])
+    (tmp_path / "actual-forward/selection-09.parquet").write_bytes(b"prediction publication marker")
+    assert discover_runs(tmp_path, {"hour_utc"}) == [(tmp_path / "actual-forward").resolve()]
