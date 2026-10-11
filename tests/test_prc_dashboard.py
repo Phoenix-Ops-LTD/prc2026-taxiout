@@ -92,3 +92,11 @@ def test_http_observer_does_not_serve_runtime_files(tmp_path: Path) -> None:
     finally:
         server.shutdown()
         server.server_close()
+
+
+def test_new_gpu_batch_is_visible_without_selecting_a_preparation_directory(tmp_path: Path) -> None:
+    for name, stamp in [("generalization-gpu-search-v1", "2026-10-09"), ("generalization-gpu-airport-v1", "2026-10-11"), ("generalization-gpu-input-new", "2026-10-12")]:
+        run = tmp_path / "runs" / name
+        run.mkdir(parents=True)
+        (run / "plan.json").write_text(json.dumps({"frozen_at_utc": stamp, "execution_unit": "GPU", "selection_months": [9, 10, 11], "models": {}}))
+    assert dashboard.dashboard_state(tmp_path)["gpu_run"] == "generalization-gpu-airport-v1"

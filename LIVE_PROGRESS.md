@@ -75,3 +75,33 @@ and all nine fixed equal pairs among the three GPU candidates and the two frozen
 incumbent components. It never changes the prior selected artifact. Include the
 comparison directory in the leaderboard monitor's `--selections` argument to
 record every completed fixed blend with its validation evidence.
+
+## Airport specialist continuation
+
+The live dashboard discovers the latest frozen GPU output batch automatically,
+excluding prepared-input directories. The airport batch reuses the preserved
+matching forward-fold global GPU checkpoints, then fits specialists for every
+airport with at least 10,000 fitting rows. Global and local predictions have a
+fixed 50/50 mix. No airport-specific mixture weights are selected. Novel-input
+fallbacks remain unchanged. Native specialist artifacts use an explicit policy;
+older loaders reject them instead of silently dropping the specialists.
+
+On an isolated authorized worker containing the original prepared inputs and
+completed global GPU batch, copy `forecast_gpu_airport.py` and
+`forecast_gpu_compare.py` into the prepared input directory, then run:
+
+```sh
+python forecast_gpu_airport.py freeze --inputs /private/prepared-inputs --checkpoints /private/global-gpu-output --output /private/new-airport-plan.json --git-commit COMMIT
+python forecast_gpu_airport.py train --inputs /private/prepared-inputs --checkpoints /private/global-gpu-output --plan /private/new-airport-plan.json --output /private/new-airport-output
+python forecast_gpu_airport.py compare --gpu /private/new-airport-output --incumbent /private/incumbent-forward-run --output /private/new-airport-comparison
+```
+
+The plan binds original input, source and global checkpoint hashes before fits.
+The three candidates use 1,200 trees/depth 6 without and with demand, and 800
+trees/depth 8 with demand; learning rate 0.04, leaf regularization 15, seed 20261011,
+the original bounded GPU memory settings and fixed 50% local prediction weight.
+All head fits are sequential. Each completed model passes exact saved-model
+inference on every fold row and publishes an immutable transfer snapshot.
+Recorded training time includes measured original global fitting plus incremental
+specialist fitting; both contributions remain explicit. Add the completed
+comparison directory to the leaderboard monitor's `--selections` argument.

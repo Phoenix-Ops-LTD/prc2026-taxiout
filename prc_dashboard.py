@@ -105,8 +105,8 @@ def poll_official(root: Path, team: str, interval: float, stop: threading.Event)
         stop.wait(interval)
 
 
-def gpu_progress(root: Path) -> dict[str, Any]:
-    path = root / "runs/generalization-gpu-search-v1.log"
+def gpu_progress(root: Path, run: Path | None = None) -> dict[str, Any]:
+    path = root / "runs" / ((run.name if run else "generalization-gpu-search-v1") + ".log")
     if not path.exists():
         return {"status": "NOT_STARTED"}
     with path.open("rb") as handle:
@@ -119,11 +119,12 @@ def gpu_progress(root: Path) -> dict[str, Any]:
     fits = re.findall(r"(\d{4}-\d\d-\d\dT\S+) FIT (\d+) (gpu_\S+)", text)
     current_text = text.rsplit(" FIT ", 1)[-1] if fits else ""
     steps = re.findall(r"(\d+):\s+learn:\s+([\d.]+).*?remaining:\s*([^\r\n]+)", current_text)
+    airports = re.findall(r"AIRPORT_READY (\d+) (gpu_\S+) (\S+) (\d+)", current_text)
     status = "COMPLETED" if "REMOTE_EXIT 0" in text else "FAILED" if re.search(r"REMOTE_EXIT [1-9]|Traceback", text) else "RUNNING"
     return {"status": status, "model": fits[-1][2] if fits else None,
         "validation_month": int(fits[-1][1]) if fits else None,
         "started_at_utc": fits[-1][0] if fits else None, "iteration": int(steps[-1][0]) if steps else None,
-        "remaining": steps[-1][2] if steps else None}
+        "remaining": steps[-1][2] if steps else None, "airport_models_completed": len(airports)}
 
 
 def dashboard_state(root: Path) -> dict[str, Any]:
@@ -134,8 +135,13 @@ def dashboard_state(root: Path) -> dict[str, Any]:
         "inference_time_seconds", "device", "validation_folds", "timestamp", "status"]
     safe_entries = [{k: e.get(k) for k in keys} for e in entries]
     gpu_run = root / "runs/generalization-gpu-search-v1"
+    gpu_runs = [(p.parent, read_json(p, {})) for p in (root / "runs").glob("generalization-gpu-*/plan.json") if "-input-" not in p.parent.name]
+    gpu_runs = [(p, plan) for p, plan in gpu_runs if plan.get("execution_unit") == "GPU" and plan.get("selection_months") == [9, 10, 11]]
+    if gpu_runs:
+        gpu_run = max(gpu_runs, key=lambda r: r[1].get("frozen_at_utc", ""))[0]
     gpu_report = read_json(gpu_run / "report.json", {})
-    comparison = read_json(root / "runs/generalization-gpu-compare-v1/selection.json", {})
+    comparison_run = "generalization-gpu-airport-compare-v1" if "airport" in gpu_run.name else "generalization-gpu-compare-v1"
+    comparison = read_json(root / "runs" / comparison_run / "selection.json", {})
     compared_scores = comparison.get("scores", {})
     best_new = min(compared_scores, key=lambda n: compared_scores[n]["rmse"]) if compared_scores else None
     ledger = read_json(gpu_run / "experiment-ledger.json", [])
@@ -161,7 +167,7 @@ def dashboard_state(root: Path) -> dict[str, Any]:
         "official": read_json(root / "runs/live-official-ranking.json", {"status": "FIRST_OBSERVATION_PENDING"}),
         "official_history": read_json(root / "runs/live-official-history.json", []),
         "official_fetch": read_json(root / "runs/live-official-fetch.json", {}),
-        "gpu": gpu_progress(root), "gpu_models": gpu_models,
+        "gpu": gpu_progress(root, gpu_run), "gpu_models": gpu_models, "gpu_run": gpu_run.name,
         "gpu_comparison": {"promoted": comparison.get("promoted"), "selected": comparison.get("selected"),
             "best_new_model": best_new, "best_new_rmse": compared_scores[best_new]["rmse"] if best_new else None,
             "gain_vs_incumbent": compared_scores[best_new]["gain_vs_incumbent"] if best_new else None},

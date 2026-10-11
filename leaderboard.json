@@ -1,6 +1,6 @@
 {
   "schema_version": "prc-forward-leaderboard/1.0",
-  "updated_at_utc": "2026-10-09T21:46:41.738482+00:00",
+  "updated_at_utc": "2026-10-11T19:27:09.719800+00:00",
   "selection_policy": "Rank completed Sep/Oct/Nov purged forward CV by arithmetic mean fold MAE, lower is better",
   "mean_mae_definition": "Equal-weight mean of fold MAEs; median_mae is median of fold MAEs",
   "catastrophic_threshold_seconds": 3600.0,
@@ -3761,6 +3761,60 @@
       "champion": false
     },
     {
+      "mean_mae": 219.2646357430375,
+      "median_mae": 217.88383628573672,
+      "worst_fold_mae": 226.83940685735288,
+      "worst_decile_mae": 725.4459564223251,
+      "pooled_mae": 218.93679218385483,
+      "per_fold_mae": {
+        "9": 217.88383628573672,
+        "10": 213.07066408602287,
+        "11": 226.83940685735288
+      },
+      "catastrophic_error_rate": 0.0005000460568736594,
+      "validation_rows": 531951,
+      "unseen_aircraft_mae": 284.62057311848804,
+      "unseen_aircraft_rows": 22,
+      "unseen_airport_stand_mae": 290.23484365746725,
+      "unseen_airport_stand_rows": 116,
+      "model": "deep_no_demand_novel_guarded+gpu_airport_deep_demand_novel_guarded",
+      "model_family": "fixed_equal_ensemble",
+      "experiment_id": "generalization-gpu-airport-compare-v1/deep_no_demand_novel_guarded+gpu_airport_deep_demand_novel_guarded",
+      "status": "COMPLETED_VALIDATED",
+      "validation_folds": ["2025-09", "2025-10", "2025-11"],
+      "device": "GPU RTX4090 + CPU training / CPU inference",
+      "timestamp": "2026-10-11T19:25:31.348155+00:00",
+      "git_commit": "78410ef4df8cb539dfb9e78e3c85048e6363b281",
+      "git_dirty_at_training": true,
+      "source_hashes": {
+        "forecast_novel_finalize.py": "6762637705f7c3421787baaa71db9c9d1cd5ddd983667de73bf91a10c2a19da5",
+        "forecast_novel_guard.py": "5395ddfbc963021665e1ed218e6eb57b9bb2cb6aedbb8d03db27486be484e3ec",
+        "forecast_guard.py": "9db44e5a25bb4b2f3a8b8dbd3b6b282a43274c4b302978828aa755ab79e1ab31",
+        "forward_leaderboard.py": "6ae72c3f92e94900b6cde3cc62dde741de28b9ae18b3e159be509510b29e9d6d",
+        "forecast_search.py": "ff1e564c00fea405606ca99215b85eaeb0680ac3acc82ffb5a1837cdec2fe128",
+        "forecast_features.py": "18faec25384eee09d51499c48db1bd6c67a935f7b24b5dc01518acb5009ec393",
+        "forecast_model.py": "0a0e599c83ffe066074a9fe8977f5e7e5215a61694f7d97669add7743dcbeafb",
+        "forecast_run.py": "8db35217e8476f5954cb4135885037d65c642961e0d24d86cf7e9a6677d92447",
+        "pipeline.py": "17560ba5831eb5ea7e5b7bb3e031bf165959ab186b1249e621b27a0f9f0d195d",
+        "forecast_gpu_airport.py": "5ce33aa5f707ea41e43e7d564cf5d07cc9d5f73a90d1c465492a005832ad6402",
+        "forecast_gpu_search.py": "0890369bf4d6832073be3dce2ba6689cca916d500150f52b45e6e80d24bb835b",
+        "forecast_gpu_compare.py": "efba2c78cdc73d7261a8b0450a6faf446c0b582d71668bd8a980625fd5635586"
+      },
+      "parameters": {
+        "weights": {
+          "deep_no_demand_novel_guarded": 0.5,
+          "gpu_airport_deep_demand_novel_guarded": 0.5
+        }
+      },
+      "frozen_rmse_selection_eligible": false,
+      "training_time_seconds": null,
+      "inference_time_seconds": null,
+      "combined_time_seconds": 495.0002351682633,
+      "timing_status": "SEPARATE_TIMERS_UNAVAILABLE_FOR_LEGACY_CPU_COMPONENT; no retraining for fixed blend",
+      "rank": 75,
+      "champion": false
+    },
+    {
       "mean_mae": 219.26573060051876,
       "median_mae": 217.08463564827713,
       "worst_fold_mae": 227.05126486563302,
@@ -3808,7 +3862,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 257.75,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 75,
+      "rank": 76,
       "champion": false
     },
     {
@@ -3859,7 +3913,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 504.9349999995902,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 76,
+      "rank": 77,
       "champion": false
     },
     {
@@ -3910,7 +3964,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3502.6569999996573,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 77,
+      "rank": 78,
       "champion": false
     },
     {
@@ -3961,7 +4015,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 468.9229999994859,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 78,
+      "rank": 79,
       "champion": false
     },
     {
@@ -4012,7 +4066,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 440.5779999997467,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 79,
+      "rank": 80,
       "champion": false
     },
     {
@@ -4063,7 +4117,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 395.90599999949336,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 80,
+      "rank": 81,
       "champion": false
     },
     {
@@ -4114,7 +4168,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 521.344000000041,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 81,
+      "rank": 82,
       "champion": false
     },
     {
@@ -4165,7 +4219,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 504.9199999999255,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 82,
+      "rank": 83,
       "champion": false
     },
     {
@@ -4216,7 +4270,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 395.9079999998212,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 83,
+      "rank": 84,
       "champion": false
     },
     {
@@ -4267,7 +4321,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 289.96799999987707,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 84,
+      "rank": 85,
       "champion": false
     },
     {
@@ -4318,7 +4372,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 521.344000000041,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 85,
+      "rank": 86,
       "champion": false
     },
     {
@@ -4367,7 +4421,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 86,
+      "rank": 87,
       "champion": false
     },
     {
@@ -4418,7 +4472,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 415.464999999851,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 87,
+      "rank": 88,
       "champion": false
     },
     {
@@ -4469,7 +4523,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 504.8899999996647,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 88,
+      "rank": 89,
       "champion": false
     },
     {
@@ -4520,7 +4574,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 257.7339999997057,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 89,
+      "rank": 90,
       "champion": false
     },
     {
@@ -4571,7 +4625,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 363.6740000001155,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 90,
+      "rank": 91,
       "champion": false
     },
     {
@@ -4622,7 +4676,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 257.75199999986216,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 91,
+      "rank": 92,
       "champion": false
     },
     {
@@ -4673,7 +4727,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 440.5939999995753,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 92,
+      "rank": 93,
       "champion": false
     },
     {
@@ -4724,7 +4778,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 257.7200000002049,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 93,
+      "rank": 94,
       "champion": false
     },
     {
@@ -4775,7 +4829,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3628.1379999998026,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 94,
+      "rank": 95,
       "champion": false
     },
     {
@@ -4829,7 +4883,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 95,
+      "rank": 96,
       "champion": false
     },
     {
@@ -4880,7 +4934,61 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3470.4229999999516,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 96,
+      "rank": 97,
+      "champion": false
+    },
+    {
+      "mean_mae": 219.4663407690647,
+      "median_mae": 218.26189508129568,
+      "worst_fold_mae": 226.98795032528116,
+      "worst_decile_mae": 725.6573351519481,
+      "pooled_mae": 219.14025388346352,
+      "per_fold_mae": {
+        "9": 218.26189508129568,
+        "10": 213.1491769006172,
+        "11": 226.98795032528116
+      },
+      "catastrophic_error_rate": 0.0005038058016621832,
+      "validation_rows": 531951,
+      "unseen_aircraft_mae": 284.62057311848804,
+      "unseen_aircraft_rows": 22,
+      "unseen_airport_stand_mae": 290.5898006636617,
+      "unseen_airport_stand_rows": 116,
+      "model": "deep_no_demand_novel_guarded+gpu_airport_demand_novel_guarded",
+      "model_family": "fixed_equal_ensemble",
+      "experiment_id": "generalization-gpu-airport-compare-v1/deep_no_demand_novel_guarded+gpu_airport_demand_novel_guarded",
+      "status": "COMPLETED_VALIDATED",
+      "validation_folds": ["2025-09", "2025-10", "2025-11"],
+      "device": "GPU RTX4090 + CPU training / CPU inference",
+      "timestamp": "2026-10-11T19:25:31.348155+00:00",
+      "git_commit": "78410ef4df8cb539dfb9e78e3c85048e6363b281",
+      "git_dirty_at_training": true,
+      "source_hashes": {
+        "forecast_novel_finalize.py": "6762637705f7c3421787baaa71db9c9d1cd5ddd983667de73bf91a10c2a19da5",
+        "forecast_novel_guard.py": "5395ddfbc963021665e1ed218e6eb57b9bb2cb6aedbb8d03db27486be484e3ec",
+        "forecast_guard.py": "9db44e5a25bb4b2f3a8b8dbd3b6b282a43274c4b302978828aa755ab79e1ab31",
+        "forward_leaderboard.py": "6ae72c3f92e94900b6cde3cc62dde741de28b9ae18b3e159be509510b29e9d6d",
+        "forecast_search.py": "ff1e564c00fea405606ca99215b85eaeb0680ac3acc82ffb5a1837cdec2fe128",
+        "forecast_features.py": "18faec25384eee09d51499c48db1bd6c67a935f7b24b5dc01518acb5009ec393",
+        "forecast_model.py": "0a0e599c83ffe066074a9fe8977f5e7e5215a61694f7d97669add7743dcbeafb",
+        "forecast_run.py": "8db35217e8476f5954cb4135885037d65c642961e0d24d86cf7e9a6677d92447",
+        "pipeline.py": "17560ba5831eb5ea7e5b7bb3e031bf165959ab186b1249e621b27a0f9f0d195d",
+        "forecast_gpu_airport.py": "5ce33aa5f707ea41e43e7d564cf5d07cc9d5f73a90d1c465492a005832ad6402",
+        "forecast_gpu_search.py": "0890369bf4d6832073be3dce2ba6689cca916d500150f52b45e6e80d24bb835b",
+        "forecast_gpu_compare.py": "efba2c78cdc73d7261a8b0450a6faf446c0b582d71668bd8a980625fd5635586"
+      },
+      "parameters": {
+        "weights": {
+          "deep_no_demand_novel_guarded": 0.5,
+          "gpu_airport_demand_novel_guarded": 0.5
+        }
+      },
+      "frozen_rmse_selection_eligible": false,
+      "training_time_seconds": null,
+      "inference_time_seconds": null,
+      "combined_time_seconds": 489.7977270986885,
+      "timing_status": "SEPARATE_TIMERS_UNAVAILABLE_FOR_LEGACY_CPU_COMPONENT; no retraining for fixed blend",
+      "rank": 98,
       "champion": false
     },
     {
@@ -4931,7 +5039,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 395.8899999996647,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 97,
+      "rank": 99,
       "champion": false
     },
     {
@@ -4982,7 +5090,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 521.3280000002123,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 98,
+      "rank": 100,
       "champion": false
     },
     {
@@ -5029,7 +5137,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 504.875,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 99,
+      "rank": 101,
       "champion": false
     },
     {
@@ -5080,7 +5188,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 395.87599999969825,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 100,
+      "rank": 102,
       "champion": false
     },
     {
@@ -5131,7 +5239,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 363.6739999996498,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 101,
+      "rank": 103,
       "champion": false
     },
     {
@@ -5182,7 +5290,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 504.92199999978766,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 102,
+      "rank": 104,
       "champion": false
     },
     {
@@ -5231,7 +5339,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 103,
+      "rank": 105,
       "champion": false
     },
     {
@@ -5282,7 +5390,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 415.4199999999255,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 104,
+      "rank": 106,
       "champion": false
     },
     {
@@ -5333,7 +5441,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 440.6089999997057,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 105,
+      "rank": 107,
       "champion": false
     },
     {
@@ -5384,7 +5492,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 415.4220000002533,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 106,
+      "rank": 108,
       "champion": false
     },
     {
@@ -5435,7 +5543,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 363.6579999998212,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 107,
+      "rank": 109,
       "champion": false
     },
     {
@@ -5486,7 +5594,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 415.4350000000559,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 108,
+      "rank": 110,
       "champion": false
     },
     {
@@ -5532,7 +5640,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 257.7039999999106,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 109,
+      "rank": 111,
       "champion": false
     },
     {
@@ -5583,7 +5691,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3628.092999999877,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 110,
+      "rank": 112,
       "champion": false
     },
     {
@@ -5634,7 +5742,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 521.3729999996722,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 111,
+      "rank": 113,
       "champion": false
     },
     {
@@ -5685,7 +5793,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3628.152999999933,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 112,
+      "rank": 114,
       "champion": false
     },
     {
@@ -5736,7 +5844,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3470.4069999996573,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 113,
+      "rank": 115,
       "champion": false
     },
     {
@@ -5787,7 +5895,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3628.121999999974,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 114,
+      "rank": 116,
       "champion": false
     },
     {
@@ -5838,7 +5946,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3628.1240000003017,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 115,
+      "rank": 117,
       "champion": false
     },
     {
@@ -5889,7 +5997,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 440.594000000041,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 116,
+      "rank": 118,
       "champion": false
     },
     {
@@ -5940,7 +6048,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3628.0930000003427,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 117,
+      "rank": 119,
       "champion": false
     },
     {
@@ -5991,7 +6099,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3470.438000000082,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 118,
+      "rank": 120,
       "champion": false
     },
     {
@@ -6042,7 +6150,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3608.578999999445,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 119,
+      "rank": 121,
       "champion": false
     },
     {
@@ -6093,7 +6201,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3470.407000000123,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 120,
+      "rank": 122,
       "champion": false
     },
     {
@@ -6140,7 +6248,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 395.8599999998696,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 121,
+      "rank": 123,
       "champion": false
     },
     {
@@ -6191,7 +6299,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 363.6579999998212,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 122,
+      "rank": 124,
       "champion": false
     },
     {
@@ -6242,7 +6350,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3470.4539999999106,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 123,
+      "rank": 125,
       "champion": false
     },
     {
@@ -6293,7 +6401,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3470.4229999999516,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 124,
+      "rank": 126,
       "champion": false
     },
     {
@@ -6344,7 +6452,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 440.5779999997467,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 125,
+      "rank": 127,
       "champion": false
     },
     {
@@ -6391,7 +6499,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 415.3900000001304,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 126,
+      "rank": 128,
       "champion": false
     },
     {
@@ -6442,7 +6550,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3608.6099999998696,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 127,
+      "rank": 129,
       "champion": false
     },
     {
@@ -6493,7 +6601,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3608.5789999999106,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 128,
+      "rank": 130,
       "champion": false
     },
     {
@@ -6544,7 +6652,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 521.3569999998435,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 129,
+      "rank": 131,
       "champion": false
     },
     {
@@ -6595,7 +6703,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 521.3279999997467,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 130,
+      "rank": 132,
       "champion": false
     },
     {
@@ -6646,7 +6754,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3628.1080000000075,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 131,
+      "rank": 133,
       "champion": false
     },
     {
@@ -6693,7 +6801,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3628.0770000000484,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 132,
+      "rank": 134,
       "champion": false
     },
     {
@@ -6744,7 +6852,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 363.6579999998212,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 133,
+      "rank": 135,
       "champion": false
     },
     {
@@ -6795,7 +6903,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 354.35800000000745,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 134,
+      "rank": 136,
       "champion": false
     },
     {
@@ -6846,7 +6954,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3608.5939999995753,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 135,
+      "rank": 137,
       "champion": false
     },
     {
@@ -6897,7 +7005,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3608.5629999996163,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 136,
+      "rank": 138,
       "champion": false
     },
     {
@@ -6948,7 +7056,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3608.5629999996163,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 137,
+      "rank": 139,
       "champion": false
     },
     {
@@ -6999,7 +7107,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 521.3600000003353,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 138,
+      "rank": 140,
       "champion": false
     },
     {
@@ -7050,7 +7158,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3470.4219999997877,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 139,
+      "rank": 141,
       "champion": false
     },
     {
@@ -7097,7 +7205,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 440.56300000008196,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 140,
+      "rank": 142,
       "champion": false
     },
     {
@@ -7143,7 +7251,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3470.3909999998286,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 141,
+      "rank": 143,
       "champion": false
     },
     {
@@ -7194,7 +7302,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 440.60899999924004,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 142,
+      "rank": 144,
       "champion": false
     },
     {
@@ -7245,7 +7353,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 351.125,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 143,
+      "rank": 145,
       "champion": false
     },
     {
@@ -7296,7 +7404,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 354.3430000003427,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 144,
+      "rank": 146,
       "champion": false
     },
     {
@@ -7342,7 +7450,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 521.311999999918,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 145,
+      "rank": 147,
       "champion": false
     },
     {
@@ -7393,7 +7501,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 354.3589999987744,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 146,
+      "rank": 148,
       "champion": false
     },
     {
@@ -7444,7 +7552,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 363.64199999999255,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 147,
+      "rank": 149,
       "champion": false
     },
     {
@@ -7495,7 +7603,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 351.1229999996722,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 148,
+      "rank": 150,
       "champion": false
     },
     {
@@ -7546,7 +7654,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3608.5779999997467,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 149,
+      "rank": 151,
       "champion": false
     },
     {
@@ -7597,7 +7705,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 363.6419999995269,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 150,
+      "rank": 152,
       "champion": false
     },
     {
@@ -7644,7 +7752,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3608.5469999997877,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 151,
+      "rank": 153,
       "champion": false
     },
     {
@@ -7695,7 +7803,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 363.6899999999441,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 152,
+      "rank": 154,
       "champion": false
     },
     {
@@ -7746,7 +7854,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 351.094000000041,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 153,
+      "rank": 155,
       "champion": false
     },
     {
@@ -7797,7 +7905,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3628.1090000001714,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 154,
+      "rank": 156,
       "champion": false
     },
     {
@@ -7848,7 +7956,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3470.43899999978,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 155,
+      "rank": 157,
       "champion": false
     },
     {
@@ -7899,7 +8007,58 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 354.327999999281,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 156,
+      "rank": 158,
+      "champion": false
+    },
+    {
+      "mean_mae": 220.0037814759088,
+      "median_mae": 217.75030150601384,
+      "worst_fold_mae": 227.4926765671619,
+      "worst_decile_mae": 728.5558181595293,
+      "pooled_mae": 219.68255542929518,
+      "per_fold_mae": {
+        "9": 217.75030150601384,
+        "10": 214.7683663545506,
+        "11": 227.4926765671619
+      },
+      "catastrophic_error_rate": 0.0005132051636334926,
+      "validation_rows": 531951,
+      "unseen_aircraft_mae": 389.41638873492445,
+      "unseen_aircraft_rows": 22,
+      "unseen_airport_stand_mae": 290.0576394466809,
+      "unseen_airport_stand_rows": 116,
+      "model": "catboost+gpu_airport_deep_demand_novel_guarded",
+      "model_family": "fixed_equal_ensemble",
+      "experiment_id": "generalization-gpu-airport-compare-v1/catboost+gpu_airport_deep_demand_novel_guarded",
+      "status": "COMPLETED_VALIDATED",
+      "validation_folds": ["2025-09", "2025-10", "2025-11"],
+      "device": "GPU RTX4090 + CPU training / CPU inference",
+      "timestamp": "2026-10-11T19:25:31.348155+00:00",
+      "git_commit": "78410ef4df8cb539dfb9e78e3c85048e6363b281",
+      "git_dirty_at_training": true,
+      "source_hashes": {
+        "forecast_run.py": "8db35217e8476f5954cb4135885037d65c642961e0d24d86cf7e9a6677d92447",
+        "forecast_model.py": "0a0e599c83ffe066074a9fe8977f5e7e5215a61694f7d97669add7743dcbeafb",
+        "forecast_features.py": "18faec25384eee09d51499c48db1bd6c67a935f7b24b5dc01518acb5009ec393",
+        "pipeline.py": "17560ba5831eb5ea7e5b7bb3e031bf165959ab186b1249e621b27a0f9f0d195d",
+        "forecast_gpu_airport.py": "5ce33aa5f707ea41e43e7d564cf5d07cc9d5f73a90d1c465492a005832ad6402",
+        "forecast_gpu_search.py": "0890369bf4d6832073be3dce2ba6689cca916d500150f52b45e6e80d24bb835b",
+        "forecast_gpu_compare.py": "efba2c78cdc73d7261a8b0450a6faf446c0b582d71668bd8a980625fd5635586",
+        "forecast_guard.py": "9db44e5a25bb4b2f3a8b8dbd3b6b282a43274c4b302978828aa755ab79e1ab31",
+        "forecast_novel_guard.py": "5395ddfbc963021665e1ed218e6eb57b9bb2cb6aedbb8d03db27486be484e3ec"
+      },
+      "parameters": {
+        "weights": {
+          "catboost": 0.5,
+          "gpu_airport_deep_demand_novel_guarded": 0.5
+        }
+      },
+      "frozen_rmse_selection_eligible": false,
+      "training_time_seconds": null,
+      "inference_time_seconds": null,
+      "combined_time_seconds": 3582.1902351682074,
+      "timing_status": "SEPARATE_TIMERS_UNAVAILABLE_FOR_LEGACY_CPU_COMPONENT; no retraining for fixed blend",
+      "rank": 159,
       "champion": false
     },
     {
@@ -7946,7 +8105,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 363.62599999969825,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 157,
+      "rank": 160,
       "champion": false
     },
     {
@@ -7997,7 +8156,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 351.09299999987707,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 158,
+      "rank": 161,
       "champion": false
     },
     {
@@ -8048,7 +8207,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3608.5949999997392,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 159,
+      "rank": 162,
       "champion": false
     },
     {
@@ -8099,7 +8258,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 354.34299999894574,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 160,
+      "rank": 163,
       "champion": false
     },
     {
@@ -8150,7 +8309,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 501.82999999960884,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 161,
+      "rank": 164,
       "champion": false
     },
     {
@@ -8201,7 +8360,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 354.327999999281,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 162,
+      "rank": 165,
       "champion": false
     },
     {
@@ -8252,7 +8411,58 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 354.3119999994524,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 163,
+      "rank": 166,
+      "champion": false
+    },
+    {
+      "mean_mae": 220.1899204510585,
+      "median_mae": 218.11614320920336,
+      "worst_fold_mae": 227.62013118305026,
+      "worst_decile_mae": 728.7060181856297,
+      "pooled_mae": 219.8706824621919,
+      "per_fold_mae": {
+        "9": 218.11614320920336,
+        "10": 214.8334869609219,
+        "11": 227.62013118305026
+      },
+      "catastrophic_error_rate": 0.0005038058016621832,
+      "validation_rows": 531951,
+      "unseen_aircraft_mae": 389.41638873492445,
+      "unseen_aircraft_rows": 22,
+      "unseen_airport_stand_mae": 290.10238798730046,
+      "unseen_airport_stand_rows": 116,
+      "model": "catboost+gpu_airport_demand_novel_guarded",
+      "model_family": "fixed_equal_ensemble",
+      "experiment_id": "generalization-gpu-airport-compare-v1/catboost+gpu_airport_demand_novel_guarded",
+      "status": "COMPLETED_VALIDATED",
+      "validation_folds": ["2025-09", "2025-10", "2025-11"],
+      "device": "GPU RTX4090 + CPU training / CPU inference",
+      "timestamp": "2026-10-11T19:25:31.348155+00:00",
+      "git_commit": "78410ef4df8cb539dfb9e78e3c85048e6363b281",
+      "git_dirty_at_training": true,
+      "source_hashes": {
+        "forecast_run.py": "8db35217e8476f5954cb4135885037d65c642961e0d24d86cf7e9a6677d92447",
+        "forecast_model.py": "0a0e599c83ffe066074a9fe8977f5e7e5215a61694f7d97669add7743dcbeafb",
+        "forecast_features.py": "18faec25384eee09d51499c48db1bd6c67a935f7b24b5dc01518acb5009ec393",
+        "pipeline.py": "17560ba5831eb5ea7e5b7bb3e031bf165959ab186b1249e621b27a0f9f0d195d",
+        "forecast_gpu_airport.py": "5ce33aa5f707ea41e43e7d564cf5d07cc9d5f73a90d1c465492a005832ad6402",
+        "forecast_gpu_search.py": "0890369bf4d6832073be3dce2ba6689cca916d500150f52b45e6e80d24bb835b",
+        "forecast_gpu_compare.py": "efba2c78cdc73d7261a8b0450a6faf446c0b582d71668bd8a980625fd5635586",
+        "forecast_guard.py": "9db44e5a25bb4b2f3a8b8dbd3b6b282a43274c4b302978828aa755ab79e1ab31",
+        "forecast_novel_guard.py": "5395ddfbc963021665e1ed218e6eb57b9bb2cb6aedbb8d03db27486be484e3ec"
+      },
+      "parameters": {
+        "weights": {
+          "catboost": 0.5,
+          "gpu_airport_demand_novel_guarded": 0.5
+        }
+      },
+      "frozen_rmse_selection_eligible": false,
+      "training_time_seconds": null,
+      "inference_time_seconds": null,
+      "combined_time_seconds": 3576.9877270986326,
+      "timing_status": "SEPARATE_TIMERS_UNAVAILABLE_FOR_LEGACY_CPU_COMPONENT; no retraining for fixed blend",
+      "rank": 167,
       "champion": false
     },
     {
@@ -8303,7 +8513,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 351.1389999999665,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 164,
+      "rank": 168,
       "champion": false
     },
     {
@@ -8354,7 +8564,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 501.8139999997802,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 165,
+      "rank": 169,
       "champion": false
     },
     {
@@ -8400,7 +8610,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 354.29699999978766,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 166,
+      "rank": 170,
       "champion": false
     },
     {
@@ -8446,7 +8656,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 354.29699999978766,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 167,
+      "rank": 171,
       "champion": false
     },
     {
@@ -8497,7 +8707,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 354.3739999998361,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 168,
+      "rank": 172,
       "champion": false
     },
     {
@@ -8548,7 +8758,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 351.1089999997057,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 169,
+      "rank": 173,
       "champion": false
     },
     {
@@ -8599,7 +8809,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 351.10800000000745,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 170,
+      "rank": 174,
       "champion": false
     },
     {
@@ -8650,7 +8860,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 351.10900000017136,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 171,
+      "rank": 175,
       "champion": false
     },
     {
@@ -8701,7 +8911,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 264.8880000002682,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 172,
+      "rank": 176,
       "champion": false
     },
     {
@@ -8752,7 +8962,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 383.23300000000745,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 173,
+      "rank": 177,
       "champion": false
     },
     {
@@ -8803,7 +9013,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 383.1880000005476,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 174,
+      "rank": 178,
       "champion": false
     },
     {
@@ -8854,7 +9064,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 264.85899999924004,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 175,
+      "rank": 179,
       "champion": false
     },
     {
@@ -8907,7 +9117,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 176,
+      "rank": 180,
       "champion": false
     },
     {
@@ -8961,7 +9171,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 177,
+      "rank": 181,
       "champion": false
     },
     {
@@ -9015,7 +9225,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 178,
+      "rank": 182,
       "champion": false
     },
     {
@@ -9062,7 +9272,61 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 351.07800000021234,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 179,
+      "rank": 183,
+      "champion": false
+    },
+    {
+      "mean_mae": 220.51962317167468,
+      "median_mae": 218.86540551563036,
+      "worst_fold_mae": 228.41748564369814,
+      "worst_decile_mae": 727.8794271911793,
+      "pooled_mae": 220.17849638738727,
+      "per_fold_mae": {
+        "9": 218.86540551563036,
+        "10": 214.2759783556956,
+        "11": 228.41748564369814
+      },
+      "catastrophic_error_rate": 0.0005113252912392307,
+      "validation_rows": 531951,
+      "unseen_aircraft_mae": 284.62057311848804,
+      "unseen_aircraft_rows": 22,
+      "unseen_airport_stand_mae": 289.18768532381193,
+      "unseen_airport_stand_rows": 116,
+      "model": "deep_no_demand_novel_guarded+gpu_airport_no_demand_novel_guarded",
+      "model_family": "fixed_equal_ensemble",
+      "experiment_id": "generalization-gpu-airport-compare-v1/deep_no_demand_novel_guarded+gpu_airport_no_demand_novel_guarded",
+      "status": "COMPLETED_VALIDATED",
+      "validation_folds": ["2025-09", "2025-10", "2025-11"],
+      "device": "GPU RTX4090 + CPU training / CPU inference",
+      "timestamp": "2026-10-11T19:25:31.348155+00:00",
+      "git_commit": "78410ef4df8cb539dfb9e78e3c85048e6363b281",
+      "git_dirty_at_training": true,
+      "source_hashes": {
+        "forecast_novel_finalize.py": "6762637705f7c3421787baaa71db9c9d1cd5ddd983667de73bf91a10c2a19da5",
+        "forecast_novel_guard.py": "5395ddfbc963021665e1ed218e6eb57b9bb2cb6aedbb8d03db27486be484e3ec",
+        "forecast_guard.py": "9db44e5a25bb4b2f3a8b8dbd3b6b282a43274c4b302978828aa755ab79e1ab31",
+        "forward_leaderboard.py": "6ae72c3f92e94900b6cde3cc62dde741de28b9ae18b3e159be509510b29e9d6d",
+        "forecast_search.py": "ff1e564c00fea405606ca99215b85eaeb0680ac3acc82ffb5a1837cdec2fe128",
+        "forecast_features.py": "18faec25384eee09d51499c48db1bd6c67a935f7b24b5dc01518acb5009ec393",
+        "forecast_model.py": "0a0e599c83ffe066074a9fe8977f5e7e5215a61694f7d97669add7743dcbeafb",
+        "forecast_run.py": "8db35217e8476f5954cb4135885037d65c642961e0d24d86cf7e9a6677d92447",
+        "pipeline.py": "17560ba5831eb5ea7e5b7bb3e031bf165959ab186b1249e621b27a0f9f0d195d",
+        "forecast_gpu_airport.py": "5ce33aa5f707ea41e43e7d564cf5d07cc9d5f73a90d1c465492a005832ad6402",
+        "forecast_gpu_search.py": "0890369bf4d6832073be3dce2ba6689cca916d500150f52b45e6e80d24bb835b",
+        "forecast_gpu_compare.py": "efba2c78cdc73d7261a8b0450a6faf446c0b582d71668bd8a980625fd5635586"
+      },
+      "parameters": {
+        "weights": {
+          "deep_no_demand_novel_guarded": 0.5,
+          "gpu_airport_no_demand_novel_guarded": 0.5
+        }
+      },
+      "frozen_rmse_selection_eligible": false,
+      "training_time_seconds": null,
+      "inference_time_seconds": null,
+      "combined_time_seconds": 482.0531341400929,
+      "timing_status": "SEPARATE_TIMERS_UNAVAILABLE_FOR_LEGACY_CPU_COMPONENT; no retraining for fixed blend",
+      "rank": 184,
       "champion": false
     },
     {
@@ -9113,7 +9377,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 383.18800000008196,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 180,
+      "rank": 185,
       "champion": false
     },
     {
@@ -9164,7 +9428,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 264.8279999997467,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 181,
+      "rank": 186,
       "champion": false
     },
     {
@@ -9215,7 +9479,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 383.1720000002533,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 182,
+      "rank": 187,
       "champion": false
     },
     {
@@ -9266,7 +9530,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 225.51800000015646,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 183,
+      "rank": 188,
       "champion": false
     },
     {
@@ -9317,7 +9581,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 264.8580000004731,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 184,
+      "rank": 189,
       "champion": false
     },
     {
@@ -9368,8 +9632,77 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 501.7979999994859,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 185,
+      "rank": 190,
       "champion": false
+    },
+    {
+      "experiment_id": "generalization-gpu-airport-v1/gpu_airport_deep_demand_novel_guarded",
+      "model": "gpu_airport_deep_demand_novel_guarded",
+      "model_family": "catboost",
+      "parameters": {
+        "kind": "catboost",
+        "global_model": "gpu_deep_demand_novel_guarded",
+        "iterations": 800,
+        "depth": 8,
+        "learning_rate": 0.04,
+        "demand": true,
+        "threads": 2,
+        "seed": 20261011,
+        "minimum_airport_rows": 10000,
+        "local_weight": 0.5,
+        "task_type": "GPU",
+        "devices": "0",
+        "gpu_ram_part": 0.35,
+        "gpu_cat_features_storage": "CpuPinnedMemory",
+        "pinned_memory_size": "2gb",
+        "max_ctr_complexity": 1,
+        "border_count": 128,
+        "boosting_type": "Plain",
+        "l2_leaf_reg": 15,
+        "allow_writing_files": false
+      },
+      "device": "GPU RTX4090 / CPU inference",
+      "git_commit": "e7f8258",
+      "git_dirty_at_training": true,
+      "commit_provenance": "EXACT_HEAD_AT_AIRPORT_PLAN_FREEZE; source hashes bind the new specialist implementation",
+      "source_hashes": {
+        "forecast_gpu_airport.py": "5ce33aa5f707ea41e43e7d564cf5d07cc9d5f73a90d1c465492a005832ad6402",
+        "forecast_gpu_search.py": "0890369bf4d6832073be3dce2ba6689cca916d500150f52b45e6e80d24bb835b",
+        "forecast_gpu_compare.py": "efba2c78cdc73d7261a8b0450a6faf446c0b582d71668bd8a980625fd5635586",
+        "forecast_features.py": "18faec25384eee09d51499c48db1bd6c67a935f7b24b5dc01518acb5009ec393",
+        "forecast_model.py": "0a0e599c83ffe066074a9fe8977f5e7e5215a61694f7d97669add7743dcbeafb",
+        "forecast_guard.py": "9db44e5a25bb4b2f3a8b8dbd3b6b282a43274c4b302978828aa755ab79e1ab31",
+        "forecast_novel_guard.py": "5395ddfbc963021665e1ed218e6eb57b9bb2cb6aedbb8d03db27486be484e3ec",
+        "pipeline.py": "17560ba5831eb5ea7e5b7bb3e031bf165959ab186b1249e621b27a0f9f0d195d"
+      },
+      "timestamp": "2026-10-11T19:24:29.371539+00:00",
+      "validation_folds": ["2025-09", "2025-10", "2025-11"],
+      "training_time_seconds": 223.20521155092865,
+      "inference_time_seconds": 1.3290236173197627,
+      "timing_status": "MEASURED_SEPARATELY_SUM_OF_COMPLETED_FOLDS",
+      "combined_time_seconds": 224.53423516824841,
+      "status": "COMPLETED_VALIDATED",
+      "mean_mae": 220.664732174028,
+      "median_mae": 219.7028742105775,
+      "worst_fold_mae": 227.31838161630264,
+      "worst_decile_mae": 732.9170008870649,
+      "unseen_aircraft_mae": 284.62057311848804,
+      "unseen_airport_stand_mae": 296.527352035553,
+      "catastrophic_error_rate": 0.0005545623563072539,
+      "pooled_mae": 220.3759359677981,
+      "per_fold_mae": {
+        "9": 219.7028742105775,
+        "10": 214.97294069520376,
+        "11": 227.31838161630264
+      },
+      "validation_rows": 531951,
+      "unseen_aircraft_rows": 22,
+      "unseen_airport_stand_rows": 116,
+      "rank": 191,
+      "champion": false,
+      "training_time_scope": "TOTAL_MEASURED_GLOBAL_PLUS_SPECIALIST_FITS; global checkpoint reused",
+      "incremental_training_time_seconds": 136.10281448625028,
+      "reused_global_training_seconds": 87.10239706467837
     },
     {
       "mean_mae": 220.66967247145877,
@@ -9420,7 +9753,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 358.50283640855923,
       "timing_status": "SEPARATE_TIMERS_UNAVAILABLE_FOR_LEGACY_CPU_COMPONENT; no retraining for fixed blend",
-      "rank": 186,
+      "rank": 192,
       "champion": false
     },
     {
@@ -9471,7 +9804,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 225.50199999986216,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 187,
+      "rank": 193,
       "champion": false
     },
     {
@@ -9522,7 +9855,58 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 264.8729999992065,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 188,
+      "rank": 194,
+      "champion": false
+    },
+    {
+      "mean_mae": 220.69207897875583,
+      "median_mae": 218.12509645559854,
+      "worst_fold_mae": 228.5321924483841,
+      "worst_decile_mae": 728.9814143920532,
+      "pooled_mae": 220.35646648862348,
+      "per_fold_mae": {
+        "9": 218.12509645559854,
+        "10": 215.41894803228485,
+        "11": 228.5321924483841
+      },
+      "catastrophic_error_rate": 0.0005207246532105401,
+      "validation_rows": 531951,
+      "unseen_aircraft_mae": 389.41638873492445,
+      "unseen_aircraft_rows": 22,
+      "unseen_airport_stand_mae": 287.16643798537297,
+      "unseen_airport_stand_rows": 116,
+      "model": "catboost+gpu_airport_no_demand_novel_guarded",
+      "model_family": "fixed_equal_ensemble",
+      "experiment_id": "generalization-gpu-airport-compare-v1/catboost+gpu_airport_no_demand_novel_guarded",
+      "status": "COMPLETED_VALIDATED",
+      "validation_folds": ["2025-09", "2025-10", "2025-11"],
+      "device": "GPU RTX4090 + CPU training / CPU inference",
+      "timestamp": "2026-10-11T19:25:31.348155+00:00",
+      "git_commit": "78410ef4df8cb539dfb9e78e3c85048e6363b281",
+      "git_dirty_at_training": true,
+      "source_hashes": {
+        "forecast_run.py": "8db35217e8476f5954cb4135885037d65c642961e0d24d86cf7e9a6677d92447",
+        "forecast_model.py": "0a0e599c83ffe066074a9fe8977f5e7e5215a61694f7d97669add7743dcbeafb",
+        "forecast_features.py": "18faec25384eee09d51499c48db1bd6c67a935f7b24b5dc01518acb5009ec393",
+        "pipeline.py": "17560ba5831eb5ea7e5b7bb3e031bf165959ab186b1249e621b27a0f9f0d195d",
+        "forecast_gpu_airport.py": "5ce33aa5f707ea41e43e7d564cf5d07cc9d5f73a90d1c465492a005832ad6402",
+        "forecast_gpu_search.py": "0890369bf4d6832073be3dce2ba6689cca916d500150f52b45e6e80d24bb835b",
+        "forecast_gpu_compare.py": "efba2c78cdc73d7261a8b0450a6faf446c0b582d71668bd8a980625fd5635586",
+        "forecast_guard.py": "9db44e5a25bb4b2f3a8b8dbd3b6b282a43274c4b302978828aa755ab79e1ab31",
+        "forecast_novel_guard.py": "5395ddfbc963021665e1ed218e6eb57b9bb2cb6aedbb8d03db27486be484e3ec"
+      },
+      "parameters": {
+        "weights": {
+          "catboost": 0.5,
+          "gpu_airport_no_demand_novel_guarded": 0.5
+        }
+      },
+      "frozen_rmse_selection_eligible": false,
+      "training_time_seconds": null,
+      "inference_time_seconds": null,
+      "combined_time_seconds": 3569.243134140037,
+      "timing_status": "SEPARATE_TIMERS_UNAVAILABLE_FOR_LEGACY_CPU_COMPONENT; no retraining for fixed blend",
+      "rank": 195,
       "champion": false
     },
     {
@@ -9573,7 +9957,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 383.2170000001788,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 189,
+      "rank": 196,
       "champion": false
     },
     {
@@ -9624,7 +10008,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3563.811999999918,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 190,
+      "rank": 197,
       "champion": false
     },
     {
@@ -9675,7 +10059,57 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 390.35500000044703,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 191,
+      "rank": 198,
+      "champion": false
+    },
+    {
+      "mean_mae": 220.7714920708651,
+      "median_mae": 219.99957806213962,
+      "worst_fold_mae": 227.33167113331817,
+      "worst_decile_mae": 732.7715740346614,
+      "pooled_mae": 220.4861767604615,
+      "per_fold_mae": {
+        "9": 219.99957806213962,
+        "10": 214.98322701713747,
+        "11": 227.33167113331817
+      },
+      "catastrophic_error_rate": 0.000552682483912992,
+      "validation_rows": 531951,
+      "unseen_aircraft_mae": 284.62057311848804,
+      "unseen_aircraft_rows": 22,
+      "unseen_airport_stand_mae": 296.4737655596798,
+      "unseen_airport_stand_rows": 116,
+      "model": "gpu_airport_demand_novel_guarded+gpu_airport_deep_demand_novel_guarded",
+      "model_family": "fixed_equal_ensemble",
+      "experiment_id": "generalization-gpu-airport-compare-v1/gpu_airport_demand_novel_guarded+gpu_airport_deep_demand_novel_guarded",
+      "status": "COMPLETED_VALIDATED",
+      "validation_folds": ["2025-09", "2025-10", "2025-11"],
+      "device": "GPU RTX4090 / CPU inference",
+      "timestamp": "2026-10-11T19:25:31.348155+00:00",
+      "git_commit": "e7f8258",
+      "git_dirty_at_training": true,
+      "source_hashes": {
+        "forecast_gpu_airport.py": "5ce33aa5f707ea41e43e7d564cf5d07cc9d5f73a90d1c465492a005832ad6402",
+        "forecast_gpu_search.py": "0890369bf4d6832073be3dce2ba6689cca916d500150f52b45e6e80d24bb835b",
+        "forecast_gpu_compare.py": "efba2c78cdc73d7261a8b0450a6faf446c0b582d71668bd8a980625fd5635586",
+        "forecast_features.py": "18faec25384eee09d51499c48db1bd6c67a935f7b24b5dc01518acb5009ec393",
+        "forecast_model.py": "0a0e599c83ffe066074a9fe8977f5e7e5215a61694f7d97669add7743dcbeafb",
+        "forecast_guard.py": "9db44e5a25bb4b2f3a8b8dbd3b6b282a43274c4b302978828aa755ab79e1ab31",
+        "forecast_novel_guard.py": "5395ddfbc963021665e1ed218e6eb57b9bb2cb6aedbb8d03db27486be484e3ec",
+        "pipeline.py": "17560ba5831eb5ea7e5b7bb3e031bf165959ab186b1249e621b27a0f9f0d195d"
+      },
+      "parameters": {
+        "weights": {
+          "gpu_airport_demand_novel_guarded": 0.5,
+          "gpu_airport_deep_demand_novel_guarded": 0.5
+        }
+      },
+      "frozen_rmse_selection_eligible": false,
+      "training_time_seconds": 441.24389302683994,
+      "inference_time_seconds": 2.6220692400820553,
+      "combined_time_seconds": 443.865962266922,
+      "timing_status": "SUM_OF_MEASURED_COMPONENT_TIMES; blend composition unmeasured",
+      "rank": 199,
       "champion": false
     },
     {
@@ -9724,7 +10158,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 192,
+      "rank": 200,
       "champion": false
     },
     {
@@ -9775,7 +10209,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 264.84199999971315,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 193,
+      "rank": 201,
       "champion": false
     },
     {
@@ -9826,7 +10260,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 264.87400000030175,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 194,
+      "rank": 202,
       "champion": false
     },
     {
@@ -9877,7 +10311,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 457.06300000008196,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 195,
+      "rank": 203,
       "champion": false
     },
     {
@@ -9928,7 +10362,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 264.8429999994114,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 196,
+      "rank": 204,
       "champion": false
     },
     {
@@ -9979,7 +10413,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 383.1720000002533,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 197,
+      "rank": 205,
       "champion": false
     },
     {
@@ -10030,7 +10464,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 390.31099999975413,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 198,
+      "rank": 206,
       "champion": false
     },
     {
@@ -10084,7 +10518,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 199,
+      "rank": 207,
       "champion": false
     },
     {
@@ -10135,7 +10569,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 383.2009999998845,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 200,
+      "rank": 208,
       "champion": false
     },
     {
@@ -10186,7 +10620,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 390.31000000052154,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 201,
+      "rank": 209,
       "champion": false
     },
     {
@@ -10237,7 +10671,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3563.780999999959,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 202,
+      "rank": 210,
       "champion": false
     },
     {
@@ -10288,7 +10722,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3563.810999999754,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 203,
+      "rank": 211,
       "champion": false
     },
     {
@@ -10339,7 +10773,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3563.8270000000484,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 204,
+      "rank": 212,
       "champion": false
     },
     {
@@ -10390,7 +10824,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3563.779999999795,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 205,
+      "rank": 213,
       "champion": false
     },
     {
@@ -10441,7 +10875,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3563.7960000000894,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 206,
+      "rank": 214,
       "champion": false
     },
     {
@@ -10492,7 +10926,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 383.20400000037625,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 207,
+      "rank": 215,
       "champion": false
     },
     {
@@ -10543,7 +10977,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 457.03099999949336,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 208,
+      "rank": 216,
       "champion": false
     },
     {
@@ -10589,7 +11023,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 264.81199999991804,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 209,
+      "rank": 217,
       "champion": false
     },
     {
@@ -10635,7 +11069,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 264.81199999991804,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 210,
+      "rank": 218,
       "champion": false
     },
     {
@@ -10686,7 +11120,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 390.28000000026077,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 211,
+      "rank": 219,
       "champion": false
     },
     {
@@ -10737,7 +11171,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 457.03200000012293,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 212,
+      "rank": 220,
       "champion": false
     },
     {
@@ -10788,7 +11222,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 225.48600000003353,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 213,
+      "rank": 221,
       "champion": false
     },
     {
@@ -10835,8 +11269,77 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 383.155999999959,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 214,
+      "rank": 222,
       "champion": false
+    },
+    {
+      "experiment_id": "generalization-gpu-airport-v1/gpu_airport_demand_novel_guarded",
+      "model": "gpu_airport_demand_novel_guarded",
+      "model_family": "catboost",
+      "parameters": {
+        "kind": "catboost",
+        "global_model": "gpu_deep_demand_novel_guarded",
+        "iterations": 1200,
+        "depth": 6,
+        "learning_rate": 0.04,
+        "demand": true,
+        "threads": 2,
+        "seed": 20261011,
+        "minimum_airport_rows": 10000,
+        "local_weight": 0.5,
+        "task_type": "GPU",
+        "devices": "0",
+        "gpu_ram_part": 0.35,
+        "gpu_cat_features_storage": "CpuPinnedMemory",
+        "pinned_memory_size": "2gb",
+        "max_ctr_complexity": 1,
+        "border_count": 128,
+        "boosting_type": "Plain",
+        "l2_leaf_reg": 15,
+        "allow_writing_files": false
+      },
+      "device": "GPU RTX4090 / CPU inference",
+      "git_commit": "e7f8258",
+      "git_dirty_at_training": true,
+      "commit_provenance": "EXACT_HEAD_AT_AIRPORT_PLAN_FREEZE; source hashes bind the new specialist implementation",
+      "source_hashes": {
+        "forecast_gpu_airport.py": "5ce33aa5f707ea41e43e7d564cf5d07cc9d5f73a90d1c465492a005832ad6402",
+        "forecast_gpu_search.py": "0890369bf4d6832073be3dce2ba6689cca916d500150f52b45e6e80d24bb835b",
+        "forecast_gpu_compare.py": "efba2c78cdc73d7261a8b0450a6faf446c0b582d71668bd8a980625fd5635586",
+        "forecast_features.py": "18faec25384eee09d51499c48db1bd6c67a935f7b24b5dc01518acb5009ec393",
+        "forecast_model.py": "0a0e599c83ffe066074a9fe8977f5e7e5215a61694f7d97669add7743dcbeafb",
+        "forecast_guard.py": "9db44e5a25bb4b2f3a8b8dbd3b6b282a43274c4b302978828aa755ab79e1ab31",
+        "forecast_novel_guard.py": "5395ddfbc963021665e1ed218e6eb57b9bb2cb6aedbb8d03db27486be484e3ec",
+        "pipeline.py": "17560ba5831eb5ea7e5b7bb3e031bf165959ab186b1249e621b27a0f9f0d195d"
+      },
+      "timestamp": "2026-10-11T19:23:42.124852+00:00",
+      "validation_folds": ["2025-09", "2025-10", "2025-11"],
+      "training_time_seconds": 218.0386814759113,
+      "inference_time_seconds": 1.2930456227622926,
+      "timing_status": "MEASURED_SEPARATELY_SUM_OF_COMPLETED_FOLDS",
+      "combined_time_seconds": 219.33172709867358,
+      "status": "COMPLETED_VALIDATED",
+      "mean_mae": 221.0008296654191,
+      "median_mae": 220.40002120150228,
+      "worst_fold_mae": 227.49424435539797,
+      "worst_decile_mae": 733.0911960927423,
+      "unseen_aircraft_mae": 284.62057311848804,
+      "unseen_airport_stand_mae": 296.62723692555124,
+      "catastrophic_error_rate": 0.0005583221010957776,
+      "pooled_mae": 220.7178850059255,
+      "per_fold_mae": {
+        "9": 220.40002120150228,
+        "10": 215.10822343935703,
+        "11": 227.49424435539797
+      },
+      "validation_rows": 531951,
+      "unseen_aircraft_rows": 22,
+      "unseen_airport_stand_rows": 116,
+      "rank": 223,
+      "champion": false,
+      "training_time_scope": "TOTAL_MEASURED_GLOBAL_PLUS_SPECIALIST_FITS; global checkpoint reused",
+      "incremental_training_time_seconds": 130.93628441123292,
+      "reused_global_training_seconds": 87.10239706467837
     },
     {
       "mean_mae": 221.00452372389995,
@@ -10886,7 +11389,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 476.589999999851,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 215,
+      "rank": 224,
       "champion": false
     },
     {
@@ -10937,7 +11440,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 476.5770000005141,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 216,
+      "rank": 225,
       "champion": false
     },
     {
@@ -10988,7 +11491,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 232.64000000059605,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 217,
+      "rank": 226,
       "champion": false
     },
     {
@@ -11039,7 +11542,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 540.9030000003986,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 218,
+      "rank": 227,
       "champion": false
     },
     {
@@ -11090,7 +11593,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 390.3399999993853,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 219,
+      "rank": 228,
       "champion": false
     },
     {
@@ -11141,7 +11644,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3563.7960000000894,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 220,
+      "rank": 229,
       "champion": false
     },
     {
@@ -11194,7 +11697,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 221,
+      "rank": 230,
       "champion": false
     },
     {
@@ -11248,7 +11751,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 222,
+      "rank": 231,
       "champion": false
     },
     {
@@ -11295,7 +11798,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3563.7650000001304,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 223,
+      "rank": 232,
       "champion": false
     },
     {
@@ -11346,7 +11849,57 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 457.0149999996647,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 224,
+      "rank": 233,
+      "champion": false
+    },
+    {
+      "mean_mae": 221.12485823485426,
+      "median_mae": 219.90191192120403,
+      "worst_fold_mae": 228.05373028000312,
+      "worst_decile_mae": 732.6359023679668,
+      "pooled_mae": 220.82483884249112,
+      "per_fold_mae": {
+        "9": 219.90191192120403,
+        "10": 215.41893250335556,
+        "11": 228.05373028000312
+      },
+      "catastrophic_error_rate": 0.0005602019734900395,
+      "validation_rows": 531951,
+      "unseen_aircraft_mae": 284.62057311848804,
+      "unseen_aircraft_rows": 22,
+      "unseen_airport_stand_mae": 292.78893069277075,
+      "unseen_airport_stand_rows": 116,
+      "model": "gpu_airport_no_demand_novel_guarded+gpu_airport_deep_demand_novel_guarded",
+      "model_family": "fixed_equal_ensemble",
+      "experiment_id": "generalization-gpu-airport-compare-v1/gpu_airport_no_demand_novel_guarded+gpu_airport_deep_demand_novel_guarded",
+      "status": "COMPLETED_VALIDATED",
+      "validation_folds": ["2025-09", "2025-10", "2025-11"],
+      "device": "GPU RTX4090 / CPU inference",
+      "timestamp": "2026-10-11T19:25:31.348155+00:00",
+      "git_commit": "e7f8258",
+      "git_dirty_at_training": true,
+      "source_hashes": {
+        "forecast_gpu_airport.py": "5ce33aa5f707ea41e43e7d564cf5d07cc9d5f73a90d1c465492a005832ad6402",
+        "forecast_gpu_search.py": "0890369bf4d6832073be3dce2ba6689cca916d500150f52b45e6e80d24bb835b",
+        "forecast_gpu_compare.py": "efba2c78cdc73d7261a8b0450a6faf446c0b582d71668bd8a980625fd5635586",
+        "forecast_features.py": "18faec25384eee09d51499c48db1bd6c67a935f7b24b5dc01518acb5009ec393",
+        "forecast_model.py": "0a0e599c83ffe066074a9fe8977f5e7e5215a61694f7d97669add7743dcbeafb",
+        "forecast_guard.py": "9db44e5a25bb4b2f3a8b8dbd3b6b282a43274c4b302978828aa755ab79e1ab31",
+        "forecast_novel_guard.py": "5395ddfbc963021665e1ed218e6eb57b9bb2cb6aedbb8d03db27486be484e3ec",
+        "pipeline.py": "17560ba5831eb5ea7e5b7bb3e031bf165959ab186b1249e621b27a0f9f0d195d"
+      },
+      "parameters": {
+        "weights": {
+          "gpu_airport_no_demand_novel_guarded": 0.5,
+          "gpu_airport_deep_demand_novel_guarded": 0.5
+        }
+      },
+      "frozen_rmse_selection_eligible": false,
+      "training_time_seconds": 433.52103156317025,
+      "inference_time_seconds": 2.600337745156139,
+      "combined_time_seconds": 436.1213693083264,
+      "timing_status": "SUM_OF_MEASURED_COMPONENT_TIMES; blend composition unmeasured",
+      "rank": 234,
       "champion": false
     },
     {
@@ -11397,7 +11950,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 476.5449999999255,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 225,
+      "rank": 235,
       "champion": false
     },
     {
@@ -11448,7 +12001,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 390.30899999989197,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 226,
+      "rank": 236,
       "champion": false
     },
     {
@@ -11499,7 +12052,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 232.64099999936298,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 227,
+      "rank": 237,
       "champion": false
     },
     {
@@ -11548,7 +12101,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 228,
+      "rank": 238,
       "champion": false
     },
     {
@@ -11599,7 +12152,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 476.54600000055507,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 229,
+      "rank": 239,
       "champion": false
     },
     {
@@ -11650,7 +12203,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 540.8580000004731,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 230,
+      "rank": 240,
       "champion": false
     },
     {
@@ -11701,7 +12254,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 390.29499999945983,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 231,
+      "rank": 241,
       "champion": false
     },
     {
@@ -11752,7 +12305,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 232.62400000030175,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 232,
+      "rank": 242,
       "champion": false
     },
     {
@@ -11803,7 +12356,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 457.04699999978766,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 233,
+      "rank": 243,
       "champion": false
     },
     {
@@ -11854,7 +12407,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3563.7959999996237,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 234,
+      "rank": 244,
       "champion": false
     },
     {
@@ -11905,7 +12458,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 390.32600000081584,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 235,
+      "rank": 245,
       "champion": false
     },
     {
@@ -11956,7 +12509,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 232.60999999986961,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 236,
+      "rank": 246,
       "champion": false
     },
     {
@@ -12007,7 +12560,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 318.875,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 237,
+      "rank": 247,
       "champion": false
     },
     {
@@ -12058,7 +12611,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 318.90700000012293,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 238,
+      "rank": 248,
       "champion": false
     },
     {
@@ -12105,7 +12658,57 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 390.2639999999665,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 239,
+      "rank": 249,
+      "champion": false
+    },
+    {
+      "mean_mae": 221.29805398656856,
+      "median_mae": 220.25392985619098,
+      "worst_fold_mae": 228.1377386031476,
+      "worst_decile_mae": 732.7460805715759,
+      "pooled_mae": 221.00136388665993,
+      "per_fold_mae": {
+        "9": 220.25392985619098,
+        "10": 215.50249350036708,
+        "11": 228.1377386031476
+      },
+      "catastrophic_error_rate": 0.0005620818458843014,
+      "validation_rows": 531951,
+      "unseen_aircraft_mae": 284.62057311848804,
+      "unseen_aircraft_rows": 22,
+      "unseen_airport_stand_mae": 292.8298423917149,
+      "unseen_airport_stand_rows": 116,
+      "model": "gpu_airport_no_demand_novel_guarded+gpu_airport_demand_novel_guarded",
+      "model_family": "fixed_equal_ensemble",
+      "experiment_id": "generalization-gpu-airport-compare-v1/gpu_airport_no_demand_novel_guarded+gpu_airport_demand_novel_guarded",
+      "status": "COMPLETED_VALIDATED",
+      "validation_folds": ["2025-09", "2025-10", "2025-11"],
+      "device": "GPU RTX4090 / CPU inference",
+      "timestamp": "2026-10-11T19:25:31.348155+00:00",
+      "git_commit": "e7f8258",
+      "git_dirty_at_training": true,
+      "source_hashes": {
+        "forecast_gpu_airport.py": "5ce33aa5f707ea41e43e7d564cf5d07cc9d5f73a90d1c465492a005832ad6402",
+        "forecast_gpu_search.py": "0890369bf4d6832073be3dce2ba6689cca916d500150f52b45e6e80d24bb835b",
+        "forecast_gpu_compare.py": "efba2c78cdc73d7261a8b0450a6faf446c0b582d71668bd8a980625fd5635586",
+        "forecast_features.py": "18faec25384eee09d51499c48db1bd6c67a935f7b24b5dc01518acb5009ec393",
+        "forecast_model.py": "0a0e599c83ffe066074a9fe8977f5e7e5215a61694f7d97669add7743dcbeafb",
+        "forecast_guard.py": "9db44e5a25bb4b2f3a8b8dbd3b6b282a43274c4b302978828aa755ab79e1ab31",
+        "forecast_novel_guard.py": "5395ddfbc963021665e1ed218e6eb57b9bb2cb6aedbb8d03db27486be484e3ec",
+        "pipeline.py": "17560ba5831eb5ea7e5b7bb3e031bf165959ab186b1249e621b27a0f9f0d195d"
+      },
+      "parameters": {
+        "weights": {
+          "gpu_airport_no_demand_novel_guarded": 0.5,
+          "gpu_airport_demand_novel_guarded": 0.5
+        }
+      },
+      "frozen_rmse_selection_eligible": false,
+      "training_time_seconds": 428.3545014881529,
+      "inference_time_seconds": 2.564359750598669,
+      "combined_time_seconds": 430.91886123875156,
+      "timing_status": "SUM_OF_MEASURED_COMPONENT_TIMES; blend composition unmeasured",
+      "rank": 250,
       "champion": false
     },
     {
@@ -12156,7 +12759,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 232.62499999953434,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 240,
+      "rank": 251,
       "champion": false
     },
     {
@@ -12207,7 +12810,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 457.030999999959,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 241,
+      "rank": 252,
       "champion": false
     },
     {
@@ -12258,7 +12861,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 476.6060000001453,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 242,
+      "rank": 253,
       "champion": false
     },
     {
@@ -12309,7 +12912,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 457.04699999978766,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 243,
+      "rank": 254,
       "champion": false
     },
     {
@@ -12360,7 +12963,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 457.01599999982864,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 244,
+      "rank": 255,
       "champion": false
     },
     {
@@ -12414,7 +13017,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 245,
+      "rank": 256,
       "champion": false
     },
     {
@@ -12465,7 +13068,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 318.8589999997057,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 246,
+      "rank": 257,
       "champion": false
     },
     {
@@ -12516,7 +13119,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 318.8760000001639,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 247,
+      "rank": 258,
       "champion": false
     },
     {
@@ -12567,7 +13170,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 232.59400000004098,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 248,
+      "rank": 259,
       "champion": false
     },
     {
@@ -12618,7 +13221,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 232.60899999924004,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 249,
+      "rank": 260,
       "champion": false
     },
     {
@@ -12669,7 +13272,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 476.5610000002198,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 250,
+      "rank": 261,
       "champion": false
     },
     {
@@ -12720,7 +13323,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 476.57500000018626,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 251,
+      "rank": 262,
       "champion": false
     },
     {
@@ -12766,7 +13369,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 457.0,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 252,
+      "rank": 263,
       "champion": false
     },
     {
@@ -12817,7 +13420,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 540.8870000001043,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 253,
+      "rank": 264,
       "champion": false
     },
     {
@@ -12868,7 +13471,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 476.5610000002198,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 254,
+      "rank": 265,
       "champion": false
     },
     {
@@ -12919,7 +13522,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 232.65600000042468,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 255,
+      "rank": 266,
       "champion": false
     },
     {
@@ -12972,7 +13575,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 256,
+      "rank": 267,
       "champion": false
     },
     {
@@ -13026,7 +13629,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 257,
+      "rank": 268,
       "champion": false
     },
     {
@@ -13077,7 +13680,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 370.7960000000894,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 258,
+      "rank": 269,
       "champion": false
     },
     {
@@ -13123,7 +13726,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 232.57799999974668,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 259,
+      "rank": 270,
       "champion": false
     },
     {
@@ -13174,7 +13777,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 370.796999999322,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 260,
+      "rank": 271,
       "champion": false
     },
     {
@@ -13225,7 +13828,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 318.8910000002943,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 261,
+      "rank": 272,
       "champion": false
     },
     {
@@ -13274,7 +13877,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3445.6928364085034,
       "timing_status": "SEPARATE_TIMERS_UNAVAILABLE_FOR_LEGACY_CPU_COMPONENT; no retraining for fixed blend",
-      "rank": 262,
+      "rank": 273,
       "champion": false
     },
     {
@@ -13320,7 +13923,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 476.53000000026077,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 263,
+      "rank": 274,
       "champion": false
     },
     {
@@ -13369,7 +13972,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 264,
+      "rank": 275,
       "champion": false
     },
     {
@@ -13420,7 +14023,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 370.78000000026077,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 265,
+      "rank": 276,
       "champion": false
     },
     {
@@ -13471,7 +14074,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 370.76599999982864,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 266,
+      "rank": 277,
       "champion": false
     },
     {
@@ -13522,7 +14125,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 318.875,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 267,
+      "rank": 278,
       "champion": false
     },
     {
@@ -13573,7 +14176,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 318.8600000003353,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 268,
+      "rank": 279,
       "champion": false
     },
     {
@@ -13625,7 +14228,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 351.4837381024845,
       "timing_status": "SEPARATE_TIMERS_UNAVAILABLE_FOR_LEGACY_CPU_COMPONENT; no retraining for fixed blend",
-      "rank": 269,
+      "rank": 280,
       "champion": false
     },
     {
@@ -13676,7 +14279,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 318.89099999982864,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 270,
+      "rank": 281,
       "champion": false
     },
     {
@@ -13727,7 +14330,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 370.7809999990277,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 271,
+      "rank": 282,
       "champion": false
     },
     {
@@ -13774,7 +14377,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 318.844000000041,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 272,
+      "rank": 283,
       "champion": false
     },
     {
@@ -13825,7 +14428,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 6715.358999999706,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 273,
+      "rank": 284,
       "champion": false
     },
     {
@@ -13876,7 +14479,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 6715.327999999747,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 274,
+      "rank": 285,
       "champion": false
     },
     {
@@ -13927,7 +14530,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 370.74999999953434,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 275,
+      "rank": 286,
       "champion": false
     },
     {
@@ -13981,7 +14584,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 276,
+      "rank": 287,
       "champion": false
     },
     {
@@ -14032,7 +14635,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 6715.342999999877,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 277,
+      "rank": 288,
       "champion": false
     },
     {
@@ -14081,7 +14684,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 278,
+      "rank": 289,
       "champion": false
     },
     {
@@ -14132,7 +14735,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 370.76499999919906,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 279,
+      "rank": 290,
       "champion": false
     },
     {
@@ -14183,7 +14786,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 370.8120000003837,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 280,
+      "rank": 291,
       "champion": false
     },
     {
@@ -14230,7 +14833,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 370.7339999997057,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 281,
+      "rank": 292,
       "champion": false
     },
     {
@@ -14281,7 +14884,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3477.545999999158,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 282,
+      "rank": 293,
       "champion": false
     },
     {
@@ -14330,7 +14933,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3438.6737381024286,
       "timing_status": "SEPARATE_TIMERS_UNAVAILABLE_FOR_LEGACY_CPU_COMPONENT; no retraining for fixed blend",
-      "rank": 283,
+      "rank": 294,
       "champion": false
     },
     {
@@ -14381,7 +14984,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3477.57600000035,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 284,
+      "rank": 295,
       "champion": false
     },
     {
@@ -14432,7 +15035,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3477.545000000391,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 285,
+      "rank": 296,
       "champion": false
     },
     {
@@ -14486,7 +15089,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 286,
+      "rank": 297,
       "champion": false
     },
     {
@@ -14537,7 +15140,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3477.5149999996647,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 287,
+      "rank": 298,
       "champion": false
     },
     {
@@ -14588,7 +15191,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3477.5609999992885,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 288,
+      "rank": 299,
       "champion": false
     },
     {
@@ -14639,7 +15242,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3477.5299999993294,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 289,
+      "rank": 300,
       "champion": false
     },
     {
@@ -14691,7 +15294,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 370.44388641929254,
       "timing_status": "SEPARATE_TIMERS_UNAVAILABLE_FOR_LEGACY_CPU_COMPONENT; no retraining for fixed blend",
-      "rank": 290,
+      "rank": 301,
       "champion": false
     },
     {
@@ -14742,7 +15345,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3477.529999999795,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 291,
+      "rank": 302,
       "champion": false
     },
     {
@@ -14788,7 +15391,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3477.498999999836,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 292,
+      "rank": 303,
       "champion": false
     },
     {
@@ -14834,8 +15437,77 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3477.498999999836,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 293,
+      "rank": 304,
       "champion": false
+    },
+    {
+      "experiment_id": "generalization-gpu-airport-v1/gpu_airport_no_demand_novel_guarded",
+      "model": "gpu_airport_no_demand_novel_guarded",
+      "model_family": "catboost",
+      "parameters": {
+        "kind": "catboost",
+        "global_model": "gpu_deep_no_demand_novel_guarded",
+        "iterations": 1200,
+        "depth": 6,
+        "learning_rate": 0.04,
+        "demand": false,
+        "threads": 2,
+        "seed": 20261011,
+        "minimum_airport_rows": 10000,
+        "local_weight": 0.5,
+        "task_type": "GPU",
+        "devices": "0",
+        "gpu_ram_part": 0.35,
+        "gpu_cat_features_storage": "CpuPinnedMemory",
+        "pinned_memory_size": "2gb",
+        "max_ctr_complexity": 1,
+        "border_count": 128,
+        "boosting_type": "Plain",
+        "l2_leaf_reg": 15,
+        "allow_writing_files": false
+      },
+      "device": "GPU RTX4090 / CPU inference",
+      "git_commit": "e7f8258",
+      "git_dirty_at_training": true,
+      "commit_provenance": "EXACT_HEAD_AT_AIRPORT_PLAN_FREEZE; source hashes bind the new specialist implementation",
+      "source_hashes": {
+        "forecast_gpu_airport.py": "5ce33aa5f707ea41e43e7d564cf5d07cc9d5f73a90d1c465492a005832ad6402",
+        "forecast_gpu_search.py": "0890369bf4d6832073be3dce2ba6689cca916d500150f52b45e6e80d24bb835b",
+        "forecast_gpu_compare.py": "efba2c78cdc73d7261a8b0450a6faf446c0b582d71668bd8a980625fd5635586",
+        "forecast_features.py": "18faec25384eee09d51499c48db1bd6c67a935f7b24b5dc01518acb5009ec393",
+        "forecast_model.py": "0a0e599c83ffe066074a9fe8977f5e7e5215a61694f7d97669add7743dcbeafb",
+        "forecast_guard.py": "9db44e5a25bb4b2f3a8b8dbd3b6b282a43274c4b302978828aa755ab79e1ab31",
+        "forecast_novel_guard.py": "5395ddfbc963021665e1ed218e6eb57b9bb2cb6aedbb8d03db27486be484e3ec",
+        "pipeline.py": "17560ba5831eb5ea7e5b7bb3e031bf165959ab186b1249e621b27a0f9f0d195d"
+      },
+      "timestamp": "2026-10-11T19:22:56.300247+00:00",
+      "validation_folds": ["2025-09", "2025-10", "2025-11"],
+      "training_time_seconds": 210.3158200122416,
+      "inference_time_seconds": 1.2713141278363764,
+      "timing_status": "MEASURED_SEPARATELY_SUM_OF_COMPLETED_FOLDS",
+      "combined_time_seconds": 211.58713414007798,
+      "status": "COMPLETED_VALIDATED",
+      "mean_mae": 222.53834027121061,
+      "median_mae": 220.94369862342384,
+      "worst_fold_mae": 229.85938647760267,
+      "worst_decile_mae": 735.7222493949313,
+      "unseen_aircraft_mae": 284.62057311848804,
+      "unseen_airport_stand_mae": 291.54179623872614,
+      "catastrophic_error_rate": 0.0005940396765867533,
+      "pooled_mae": 222.22232746943942,
+      "per_fold_mae": {
+        "9": 220.94369862342384,
+        "10": 216.81193571260536,
+        "11": 229.85938647760267
+      },
+      "validation_rows": 531951,
+      "unseen_aircraft_rows": 22,
+      "unseen_airport_stand_rows": 116,
+      "rank": 305,
+      "champion": false,
+      "training_time_scope": "TOTAL_MEASURED_GLOBAL_PLUS_SPECIALIST_FITS; global checkpoint reused",
+      "incremental_training_time_seconds": 130.20548788039014,
+      "reused_global_training_seconds": 80.11033213185146
     },
     {
       "mean_mae": 222.55958791966904,
@@ -14885,7 +15557,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3477.56100000022,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 294,
+      "rank": 306,
       "champion": false
     },
     {
@@ -14936,7 +15608,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 326.0290000005625,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 295,
+      "rank": 307,
       "champion": false
     },
     {
@@ -14987,7 +15659,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 325.9979999992065,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 296,
+      "rank": 308,
       "champion": false
     },
     {
@@ -15038,7 +15710,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 325.9980000006035,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 297,
+      "rank": 309,
       "champion": false
     },
     {
@@ -15089,7 +15761,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 325.96699999971315,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 298,
+      "rank": 310,
       "champion": false
     },
     {
@@ -15138,7 +15810,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3457.6338864192367,
       "timing_status": "SEPARATE_TIMERS_UNAVAILABLE_FOR_LEGACY_CPU_COMPONENT; no retraining for fixed blend",
-      "rank": 299,
+      "rank": 311,
       "champion": false
     },
     {
@@ -15189,7 +15861,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 412.2639999999665,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 300,
+      "rank": 312,
       "champion": false
     },
     {
@@ -15240,7 +15912,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 326.0139999995008,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 301,
+      "rank": 313,
       "champion": false
     },
     {
@@ -15291,7 +15963,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 325.98300000000745,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 302,
+      "rank": 314,
       "champion": false
     },
     {
@@ -15342,7 +16014,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 412.23300000000745,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 303,
+      "rank": 315,
       "champion": false
     },
     {
@@ -15393,7 +16065,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 325.9829999995418,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 304,
+      "rank": 316,
       "champion": false
     },
     {
@@ -15444,7 +16116,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 326.0130000002682,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 305,
+      "rank": 317,
       "champion": false
     },
     {
@@ -15491,7 +16163,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 325.95200000004843,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 306,
+      "rank": 318,
       "champion": false
     },
     {
@@ -15545,7 +16217,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 307,
+      "rank": 319,
       "champion": false
     },
     {
@@ -15596,7 +16268,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 412.24900000030175,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 308,
+      "rank": 320,
       "champion": false
     },
     {
@@ -15649,7 +16321,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 309,
+      "rank": 321,
       "champion": false
     },
     {
@@ -15703,7 +16375,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 310,
+      "rank": 322,
       "champion": false
     },
     {
@@ -15752,7 +16424,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 311,
+      "rank": 323,
       "champion": false
     },
     {
@@ -15813,7 +16485,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 312,
+      "rank": 324,
       "champion": false
     },
     {
@@ -15861,7 +16533,7 @@
       "inference_time_seconds": 1.8418453144840896,
       "combined_time_seconds": 169.05457451101393,
       "timing_status": "SUM_OF_MEASURED_COMPONENT_TIMES; blend composition unmeasured",
-      "rank": 313,
+      "rank": 325,
       "champion": false
     },
     {
@@ -15909,7 +16581,7 @@
       "inference_time_seconds": 2.0920823831111193,
       "combined_time_seconds": 188.01472282782197,
       "timing_status": "SUM_OF_MEASURED_COMPONENT_TIMES; blend composition unmeasured",
-      "rank": 314,
+      "rank": 326,
       "champion": false
     },
     {
@@ -15960,7 +16632,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 239.76299999980256,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 315,
+      "rank": 327,
       "champion": false
     },
     {
@@ -16011,7 +16683,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 239.7320000003092,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 316,
+      "rank": 328,
       "champion": false
     },
     {
@@ -16065,7 +16737,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 317,
+      "rank": 329,
       "champion": false
     },
     {
@@ -16119,7 +16791,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 318,
+      "rank": 330,
       "champion": false
     },
     {
@@ -16180,7 +16852,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 319,
+      "rank": 331,
       "champion": false
     },
     {
@@ -16231,7 +16903,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 239.7169999992475,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 320,
+      "rank": 332,
       "champion": false
     },
     {
@@ -16280,7 +16952,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 321,
+      "rank": 333,
       "champion": false
     },
     {
@@ -16328,7 +17000,7 @@
       "inference_time_seconds": 2.065049009863287,
       "combined_time_seconds": 180.99562452174723,
       "timing_status": "SUM_OF_MEASURED_COMPONENT_TIMES; blend composition unmeasured",
-      "rank": 322,
+      "rank": 334,
       "champion": false
     },
     {
@@ -16389,7 +17061,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 323,
+      "rank": 335,
       "champion": false
     },
     {
@@ -16438,7 +17110,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 324,
+      "rank": 336,
       "champion": false
     },
     {
@@ -16487,7 +17159,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 325,
+      "rank": 337,
       "champion": false
     },
     {
@@ -16536,7 +17208,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 326,
+      "rank": 338,
       "champion": false
     },
     {
@@ -20983,6 +21655,510 @@
         "l2_leaf_reg": 30,
         "allow_writing_files": false
       }
+    },
+    {
+      "model": "gpu_airport_no_demand_novel_guarded",
+      "model_family": "catboost",
+      "device": "GPU RTX4090 / CPU inference",
+      "git_commit": "e7f8258",
+      "git_dirty_at_training": true,
+      "commit_provenance": "EXACT_HEAD_AT_AIRPORT_PLAN_FREEZE; source hashes bind the new specialist implementation",
+      "source_hashes": {
+        "forecast_gpu_airport.py": "5ce33aa5f707ea41e43e7d564cf5d07cc9d5f73a90d1c465492a005832ad6402",
+        "forecast_gpu_search.py": "0890369bf4d6832073be3dce2ba6689cca916d500150f52b45e6e80d24bb835b",
+        "forecast_gpu_compare.py": "efba2c78cdc73d7261a8b0450a6faf446c0b582d71668bd8a980625fd5635586",
+        "forecast_features.py": "18faec25384eee09d51499c48db1bd6c67a935f7b24b5dc01518acb5009ec393",
+        "forecast_model.py": "0a0e599c83ffe066074a9fe8977f5e7e5215a61694f7d97669add7743dcbeafb",
+        "forecast_guard.py": "9db44e5a25bb4b2f3a8b8dbd3b6b282a43274c4b302978828aa755ab79e1ab31",
+        "forecast_novel_guard.py": "5395ddfbc963021665e1ed218e6eb57b9bb2cb6aedbb8d03db27486be484e3ec",
+        "pipeline.py": "17560ba5831eb5ea7e5b7bb3e031bf165959ab186b1249e621b27a0f9f0d195d"
+      },
+      "training_time_seconds": 66.06592679489404,
+      "inference_time_seconds": 0.42142302822321653,
+      "timing_status": "MEASURED_SEPARATELY_SUM_OF_COMPLETED_FOLDS",
+      "combined_time_seconds": 66.48734982311726,
+      "mean_mae": 220.94369862342384,
+      "median_mae": 220.94369862342384,
+      "worst_fold_mae": 220.94369862342384,
+      "worst_decile_mae": 720.1485704336226,
+      "pooled_mae": 220.94369862342384,
+      "per_fold_mae": {
+        "9": 220.94369862342384
+      },
+      "catastrophic_error_rate": 0.0006741365343945547,
+      "validation_rows": 183939,
+      "unseen_aircraft_mae": 254.62428206788218,
+      "unseen_aircraft_rows": 10,
+      "unseen_airport_stand_mae": 285.6613378357867,
+      "unseen_airport_stand_rows": 54,
+      "experiment_id": "generalization-gpu-airport-v1/forward-09-gpu_airport_no_demand_novel_guarded",
+      "rank": null,
+      "status": "COMPLETED_SINGLE_FOLD_NOT_COMPARABLE_TO_FULL_CV",
+      "validation_folds": ["2025-09"],
+      "timestamp": "2026-10-11T19:18:22.814862+00:00",
+      "parameters": {
+        "task_type": "GPU",
+        "devices": "0",
+        "gpu_ram_part": 0.35,
+        "gpu_cat_features_storage": "CpuPinnedMemory",
+        "pinned_memory_size": "2gb",
+        "max_ctr_complexity": 1,
+        "border_count": 128,
+        "boosting_type": "Plain",
+        "l2_leaf_reg": 15,
+        "allow_writing_files": false
+      },
+      "training_time_scope": "TOTAL_MEASURED_GLOBAL_PLUS_SPECIALIST_FITS; global checkpoint reused",
+      "incremental_training_time_seconds": 42.30398233002052,
+      "reused_global_training_seconds": 23.761944464873523
+    },
+    {
+      "model": "gpu_airport_no_demand_novel_guarded",
+      "model_family": "catboost",
+      "device": "GPU RTX4090 / CPU inference",
+      "git_commit": "e7f8258",
+      "git_dirty_at_training": true,
+      "commit_provenance": "EXACT_HEAD_AT_AIRPORT_PLAN_FREEZE; source hashes bind the new specialist implementation",
+      "source_hashes": {
+        "forecast_gpu_airport.py": "5ce33aa5f707ea41e43e7d564cf5d07cc9d5f73a90d1c465492a005832ad6402",
+        "forecast_gpu_search.py": "0890369bf4d6832073be3dce2ba6689cca916d500150f52b45e6e80d24bb835b",
+        "forecast_gpu_compare.py": "efba2c78cdc73d7261a8b0450a6faf446c0b582d71668bd8a980625fd5635586",
+        "forecast_features.py": "18faec25384eee09d51499c48db1bd6c67a935f7b24b5dc01518acb5009ec393",
+        "forecast_model.py": "0a0e599c83ffe066074a9fe8977f5e7e5215a61694f7d97669add7743dcbeafb",
+        "forecast_guard.py": "9db44e5a25bb4b2f3a8b8dbd3b6b282a43274c4b302978828aa755ab79e1ab31",
+        "forecast_novel_guard.py": "5395ddfbc963021665e1ed218e6eb57b9bb2cb6aedbb8d03db27486be484e3ec",
+        "pipeline.py": "17560ba5831eb5ea7e5b7bb3e031bf165959ab186b1249e621b27a0f9f0d195d"
+      },
+      "training_time_seconds": 68.56285623181611,
+      "inference_time_seconds": 0.4370172778144479,
+      "timing_status": "MEASURED_SEPARATELY_SUM_OF_COMPLETED_FOLDS",
+      "combined_time_seconds": 68.99987350963056,
+      "mean_mae": 216.81193571260536,
+      "median_mae": 216.81193571260536,
+      "worst_fold_mae": 216.81193571260536,
+      "worst_decile_mae": 716.8155920252365,
+      "pooled_mae": 216.81193571260536,
+      "per_fold_mae": {
+        "10": 216.81193571260536
+      },
+      "catastrophic_error_rate": 0.0006032012753398393,
+      "validation_rows": 185676,
+      "unseen_aircraft_mae": 403.44980363812476,
+      "unseen_aircraft_rows": 4,
+      "unseen_airport_stand_mae": 358.01791763572083,
+      "unseen_airport_stand_rows": 14,
+      "experiment_id": "generalization-gpu-airport-v1/forward-10-gpu_airport_no_demand_novel_guarded",
+      "rank": null,
+      "status": "COMPLETED_SINGLE_FOLD_NOT_COMPARABLE_TO_FULL_CV",
+      "validation_folds": ["2025-10"],
+      "timestamp": "2026-10-11T19:20:37.630781+00:00",
+      "parameters": {
+        "task_type": "GPU",
+        "devices": "0",
+        "gpu_ram_part": 0.35,
+        "gpu_cat_features_storage": "CpuPinnedMemory",
+        "pinned_memory_size": "2gb",
+        "max_ctr_complexity": 1,
+        "border_count": 128,
+        "boosting_type": "Plain",
+        "l2_leaf_reg": 15,
+        "allow_writing_files": false
+      },
+      "training_time_scope": "TOTAL_MEASURED_GLOBAL_PLUS_SPECIALIST_FITS; global checkpoint reused",
+      "incremental_training_time_seconds": 43.1688510379754,
+      "reused_global_training_seconds": 25.394005193840712
+    },
+    {
+      "model": "gpu_airport_no_demand_novel_guarded",
+      "model_family": "catboost",
+      "device": "GPU RTX4090 / CPU inference",
+      "git_commit": "e7f8258",
+      "git_dirty_at_training": true,
+      "commit_provenance": "EXACT_HEAD_AT_AIRPORT_PLAN_FREEZE; source hashes bind the new specialist implementation",
+      "source_hashes": {
+        "forecast_gpu_airport.py": "5ce33aa5f707ea41e43e7d564cf5d07cc9d5f73a90d1c465492a005832ad6402",
+        "forecast_gpu_search.py": "0890369bf4d6832073be3dce2ba6689cca916d500150f52b45e6e80d24bb835b",
+        "forecast_gpu_compare.py": "efba2c78cdc73d7261a8b0450a6faf446c0b582d71668bd8a980625fd5635586",
+        "forecast_features.py": "18faec25384eee09d51499c48db1bd6c67a935f7b24b5dc01518acb5009ec393",
+        "forecast_model.py": "0a0e599c83ffe066074a9fe8977f5e7e5215a61694f7d97669add7743dcbeafb",
+        "forecast_guard.py": "9db44e5a25bb4b2f3a8b8dbd3b6b282a43274c4b302978828aa755ab79e1ab31",
+        "forecast_novel_guard.py": "5395ddfbc963021665e1ed218e6eb57b9bb2cb6aedbb8d03db27486be484e3ec",
+        "pipeline.py": "17560ba5831eb5ea7e5b7bb3e031bf165959ab186b1249e621b27a0f9f0d195d"
+      },
+      "training_time_seconds": 75.68703698553145,
+      "inference_time_seconds": 0.412873821798712,
+      "timing_status": "MEASURED_SEPARATELY_SUM_OF_COMPLETED_FOLDS",
+      "combined_time_seconds": 76.09991080733016,
+      "mean_mae": 229.85938647760267,
+      "median_mae": 229.85938647760267,
+      "worst_fold_mae": 229.85938647760267,
+      "worst_decile_mae": 773.6108863447332,
+      "pooled_mae": 229.85938647760267,
+      "per_fold_mae": {
+        "11": 229.85938647760267
+      },
+      "catastrophic_error_rate": 0.0004928050463236743,
+      "validation_rows": 162336,
+      "unseen_aircraft_mae": 262.70132167192685,
+      "unseen_aircraft_rows": 8,
+      "unseen_airport_stand_mae": 278.76844320124275,
+      "unseen_airport_stand_rows": 48,
+      "experiment_id": "generalization-gpu-airport-v1/forward-11-gpu_airport_no_demand_novel_guarded",
+      "rank": null,
+      "status": "COMPLETED_SINGLE_FOLD_NOT_COMPARABLE_TO_FULL_CV",
+      "validation_folds": ["2025-11"],
+      "timestamp": "2026-10-11T19:22:56.300247+00:00",
+      "parameters": {
+        "task_type": "GPU",
+        "devices": "0",
+        "gpu_ram_part": 0.35,
+        "gpu_cat_features_storage": "CpuPinnedMemory",
+        "pinned_memory_size": "2gb",
+        "max_ctr_complexity": 1,
+        "border_count": 128,
+        "boosting_type": "Plain",
+        "l2_leaf_reg": 15,
+        "allow_writing_files": false
+      },
+      "training_time_scope": "TOTAL_MEASURED_GLOBAL_PLUS_SPECIALIST_FITS; global checkpoint reused",
+      "incremental_training_time_seconds": 44.73265451239422,
+      "reused_global_training_seconds": 30.95438247313723
+    },
+    {
+      "model": "gpu_airport_demand_novel_guarded",
+      "model_family": "catboost",
+      "device": "GPU RTX4090 / CPU inference",
+      "git_commit": "e7f8258",
+      "git_dirty_at_training": true,
+      "commit_provenance": "EXACT_HEAD_AT_AIRPORT_PLAN_FREEZE; source hashes bind the new specialist implementation",
+      "source_hashes": {
+        "forecast_gpu_airport.py": "5ce33aa5f707ea41e43e7d564cf5d07cc9d5f73a90d1c465492a005832ad6402",
+        "forecast_gpu_search.py": "0890369bf4d6832073be3dce2ba6689cca916d500150f52b45e6e80d24bb835b",
+        "forecast_gpu_compare.py": "efba2c78cdc73d7261a8b0450a6faf446c0b582d71668bd8a980625fd5635586",
+        "forecast_features.py": "18faec25384eee09d51499c48db1bd6c67a935f7b24b5dc01518acb5009ec393",
+        "forecast_model.py": "0a0e599c83ffe066074a9fe8977f5e7e5215a61694f7d97669add7743dcbeafb",
+        "forecast_guard.py": "9db44e5a25bb4b2f3a8b8dbd3b6b282a43274c4b302978828aa755ab79e1ab31",
+        "forecast_novel_guard.py": "5395ddfbc963021665e1ed218e6eb57b9bb2cb6aedbb8d03db27486be484e3ec",
+        "pipeline.py": "17560ba5831eb5ea7e5b7bb3e031bf165959ab186b1249e621b27a0f9f0d195d"
+      },
+      "training_time_seconds": 67.6537682088092,
+      "inference_time_seconds": 0.4308284046128392,
+      "timing_status": "MEASURED_SEPARATELY_SUM_OF_COMPLETED_FOLDS",
+      "combined_time_seconds": 68.08459661342204,
+      "mean_mae": 220.40002120150228,
+      "median_mae": 220.40002120150228,
+      "worst_fold_mae": 220.40002120150228,
+      "worst_decile_mae": 719.8719098173782,
+      "pooled_mae": 220.40002120150228,
+      "per_fold_mae": {
+        "9": 220.40002120150228
+      },
+      "catastrophic_error_rate": 0.0006686999494397599,
+      "validation_rows": 183939,
+      "unseen_aircraft_mae": 254.62428206788218,
+      "unseen_aircraft_rows": 10,
+      "unseen_airport_stand_mae": 292.5320052304466,
+      "unseen_airport_stand_rows": 54,
+      "experiment_id": "generalization-gpu-airport-v1/forward-09-gpu_airport_demand_novel_guarded",
+      "rank": null,
+      "status": "COMPLETED_SINGLE_FOLD_NOT_COMPARABLE_TO_FULL_CV",
+      "validation_folds": ["2025-09"],
+      "timestamp": "2026-10-11T19:19:07.034752+00:00",
+      "parameters": {
+        "task_type": "GPU",
+        "devices": "0",
+        "gpu_ram_part": 0.35,
+        "gpu_cat_features_storage": "CpuPinnedMemory",
+        "pinned_memory_size": "2gb",
+        "max_ctr_complexity": 1,
+        "border_count": 128,
+        "boosting_type": "Plain",
+        "l2_leaf_reg": 15,
+        "allow_writing_files": false
+      },
+      "training_time_scope": "TOTAL_MEASURED_GLOBAL_PLUS_SPECIALIST_FITS; global checkpoint reused",
+      "incremental_training_time_seconds": 42.85964012006298,
+      "reused_global_training_seconds": 24.79412808874622
+    },
+    {
+      "model": "gpu_airport_demand_novel_guarded",
+      "model_family": "catboost",
+      "device": "GPU RTX4090 / CPU inference",
+      "git_commit": "e7f8258",
+      "git_dirty_at_training": true,
+      "commit_provenance": "EXACT_HEAD_AT_AIRPORT_PLAN_FREEZE; source hashes bind the new specialist implementation",
+      "source_hashes": {
+        "forecast_gpu_airport.py": "5ce33aa5f707ea41e43e7d564cf5d07cc9d5f73a90d1c465492a005832ad6402",
+        "forecast_gpu_search.py": "0890369bf4d6832073be3dce2ba6689cca916d500150f52b45e6e80d24bb835b",
+        "forecast_gpu_compare.py": "efba2c78cdc73d7261a8b0450a6faf446c0b582d71668bd8a980625fd5635586",
+        "forecast_features.py": "18faec25384eee09d51499c48db1bd6c67a935f7b24b5dc01518acb5009ec393",
+        "forecast_model.py": "0a0e599c83ffe066074a9fe8977f5e7e5215a61694f7d97669add7743dcbeafb",
+        "forecast_guard.py": "9db44e5a25bb4b2f3a8b8dbd3b6b282a43274c4b302978828aa755ab79e1ab31",
+        "forecast_novel_guard.py": "5395ddfbc963021665e1ed218e6eb57b9bb2cb6aedbb8d03db27486be484e3ec",
+        "pipeline.py": "17560ba5831eb5ea7e5b7bb3e031bf165959ab186b1249e621b27a0f9f0d195d"
+      },
+      "training_time_seconds": 70.60104599082842,
+      "inference_time_seconds": 0.4517963989637792,
+      "timing_status": "MEASURED_SEPARATELY_SUM_OF_COMPLETED_FOLDS",
+      "combined_time_seconds": 71.0528423897922,
+      "mean_mae": 215.10822343935703,
+      "median_mae": 215.10822343935703,
+      "worst_fold_mae": 215.10822343935703,
+      "worst_decile_mae": 713.1491867003147,
+      "pooled_mae": 215.10822343935703,
+      "per_fold_mae": {
+        "10": 215.10822343935703
+      },
+      "catastrophic_error_rate": 0.0006139727266851935,
+      "validation_rows": 185676,
+      "unseen_aircraft_mae": 403.44980363812476,
+      "unseen_aircraft_rows": 4,
+      "unseen_airport_stand_mae": 383.3511378380013,
+      "unseen_airport_stand_rows": 14,
+      "experiment_id": "generalization-gpu-airport-v1/forward-10-gpu_airport_demand_novel_guarded",
+      "rank": null,
+      "status": "COMPLETED_SINGLE_FOLD_NOT_COMPARABLE_TO_FULL_CV",
+      "validation_folds": ["2025-10"],
+      "timestamp": "2026-10-11T19:21:22.689144+00:00",
+      "parameters": {
+        "task_type": "GPU",
+        "devices": "0",
+        "gpu_ram_part": 0.35,
+        "gpu_cat_features_storage": "CpuPinnedMemory",
+        "pinned_memory_size": "2gb",
+        "max_ctr_complexity": 1,
+        "border_count": 128,
+        "boosting_type": "Plain",
+        "l2_leaf_reg": 15,
+        "allow_writing_files": false
+      },
+      "training_time_scope": "TOTAL_MEASURED_GLOBAL_PLUS_SPECIALIST_FITS; global checkpoint reused",
+      "incremental_training_time_seconds": 43.63664463488385,
+      "reused_global_training_seconds": 26.964401355944574
+    },
+    {
+      "model": "gpu_airport_demand_novel_guarded",
+      "model_family": "catboost",
+      "device": "GPU RTX4090 / CPU inference",
+      "git_commit": "e7f8258",
+      "git_dirty_at_training": true,
+      "commit_provenance": "EXACT_HEAD_AT_AIRPORT_PLAN_FREEZE; source hashes bind the new specialist implementation",
+      "source_hashes": {
+        "forecast_gpu_airport.py": "5ce33aa5f707ea41e43e7d564cf5d07cc9d5f73a90d1c465492a005832ad6402",
+        "forecast_gpu_search.py": "0890369bf4d6832073be3dce2ba6689cca916d500150f52b45e6e80d24bb835b",
+        "forecast_gpu_compare.py": "efba2c78cdc73d7261a8b0450a6faf446c0b582d71668bd8a980625fd5635586",
+        "forecast_features.py": "18faec25384eee09d51499c48db1bd6c67a935f7b24b5dc01518acb5009ec393",
+        "forecast_model.py": "0a0e599c83ffe066074a9fe8977f5e7e5215a61694f7d97669add7743dcbeafb",
+        "forecast_guard.py": "9db44e5a25bb4b2f3a8b8dbd3b6b282a43274c4b302978828aa755ab79e1ab31",
+        "forecast_novel_guard.py": "5395ddfbc963021665e1ed218e6eb57b9bb2cb6aedbb8d03db27486be484e3ec",
+        "pipeline.py": "17560ba5831eb5ea7e5b7bb3e031bf165959ab186b1249e621b27a0f9f0d195d"
+      },
+      "training_time_seconds": 79.78386727627367,
+      "inference_time_seconds": 0.4104208191856742,
+      "timing_status": "MEASURED_SEPARATELY_SUM_OF_COMPLETED_FOLDS",
+      "combined_time_seconds": 80.19428809545934,
+      "mean_mae": 227.49424435539797,
+      "median_mae": 227.49424435539797,
+      "worst_fold_mae": 227.49424435539797,
+      "worst_decile_mae": 769.6014560861613,
+      "pooled_mae": 227.49424435539797,
+      "per_fold_mae": {
+        "11": 227.49424435539797
+      },
+      "catastrophic_error_rate": 0.0003696037847427558,
+      "validation_rows": 162336,
+      "unseen_aircraft_mae": 262.70132167192685,
+      "unseen_aircraft_rows": 8,
+      "unseen_airport_stand_mae": 275.93990148307944,
+      "unseen_airport_stand_rows": 48,
+      "experiment_id": "generalization-gpu-airport-v1/forward-11-gpu_airport_demand_novel_guarded",
+      "rank": null,
+      "status": "COMPLETED_SINGLE_FOLD_NOT_COMPARABLE_TO_FULL_CV",
+      "validation_folds": ["2025-11"],
+      "timestamp": "2026-10-11T19:23:42.124852+00:00",
+      "parameters": {
+        "task_type": "GPU",
+        "devices": "0",
+        "gpu_ram_part": 0.35,
+        "gpu_cat_features_storage": "CpuPinnedMemory",
+        "pinned_memory_size": "2gb",
+        "max_ctr_complexity": 1,
+        "border_count": 128,
+        "boosting_type": "Plain",
+        "l2_leaf_reg": 15,
+        "allow_writing_files": false
+      },
+      "training_time_scope": "TOTAL_MEASURED_GLOBAL_PLUS_SPECIALIST_FITS; global checkpoint reused",
+      "incremental_training_time_seconds": 44.43999965628609,
+      "reused_global_training_seconds": 35.34386761998758
+    },
+    {
+      "model": "gpu_airport_deep_demand_novel_guarded",
+      "model_family": "catboost",
+      "device": "GPU RTX4090 / CPU inference",
+      "git_commit": "e7f8258",
+      "git_dirty_at_training": true,
+      "commit_provenance": "EXACT_HEAD_AT_AIRPORT_PLAN_FREEZE; source hashes bind the new specialist implementation",
+      "source_hashes": {
+        "forecast_gpu_airport.py": "5ce33aa5f707ea41e43e7d564cf5d07cc9d5f73a90d1c465492a005832ad6402",
+        "forecast_gpu_search.py": "0890369bf4d6832073be3dce2ba6689cca916d500150f52b45e6e80d24bb835b",
+        "forecast_gpu_compare.py": "efba2c78cdc73d7261a8b0450a6faf446c0b582d71668bd8a980625fd5635586",
+        "forecast_features.py": "18faec25384eee09d51499c48db1bd6c67a935f7b24b5dc01518acb5009ec393",
+        "forecast_model.py": "0a0e599c83ffe066074a9fe8977f5e7e5215a61694f7d97669add7743dcbeafb",
+        "forecast_guard.py": "9db44e5a25bb4b2f3a8b8dbd3b6b282a43274c4b302978828aa755ab79e1ab31",
+        "forecast_novel_guard.py": "5395ddfbc963021665e1ed218e6eb57b9bb2cb6aedbb8d03db27486be484e3ec",
+        "pipeline.py": "17560ba5831eb5ea7e5b7bb3e031bf165959ab186b1249e621b27a0f9f0d195d"
+      },
+      "training_time_seconds": 69.31624324992299,
+      "inference_time_seconds": 0.443322716280818,
+      "timing_status": "MEASURED_SEPARATELY_SUM_OF_COMPLETED_FOLDS",
+      "combined_time_seconds": 69.75956596620381,
+      "mean_mae": 219.7028742105775,
+      "median_mae": 219.7028742105775,
+      "worst_fold_mae": 219.7028742105775,
+      "worst_decile_mae": 719.4116080624939,
+      "pooled_mae": 219.7028742105775,
+      "per_fold_mae": {
+        "9": 219.7028742105775
+      },
+      "catastrophic_error_rate": 0.0006795731193493495,
+      "validation_rows": 183939,
+      "unseen_aircraft_mae": 254.62428206788218,
+      "unseen_aircraft_rows": 10,
+      "unseen_airport_stand_mae": 290.36939706780976,
+      "unseen_airport_stand_rows": 54,
+      "experiment_id": "generalization-gpu-airport-v1/forward-09-gpu_airport_deep_demand_novel_guarded",
+      "rank": null,
+      "status": "COMPLETED_SINGLE_FOLD_NOT_COMPARABLE_TO_FULL_CV",
+      "validation_folds": ["2025-09"],
+      "timestamp": "2026-10-11T19:19:52.968991+00:00",
+      "parameters": {
+        "task_type": "GPU",
+        "devices": "0",
+        "gpu_ram_part": 0.35,
+        "gpu_cat_features_storage": "CpuPinnedMemory",
+        "pinned_memory_size": "2gb",
+        "max_ctr_complexity": 1,
+        "border_count": 128,
+        "boosting_type": "Plain",
+        "l2_leaf_reg": 15,
+        "allow_writing_files": false
+      },
+      "training_time_scope": "TOTAL_MEASURED_GLOBAL_PLUS_SPECIALIST_FITS; global checkpoint reused",
+      "incremental_training_time_seconds": 44.52211516117677,
+      "reused_global_training_seconds": 24.79412808874622
+    },
+    {
+      "model": "gpu_airport_deep_demand_novel_guarded",
+      "model_family": "catboost",
+      "device": "GPU RTX4090 / CPU inference",
+      "git_commit": "e7f8258",
+      "git_dirty_at_training": true,
+      "commit_provenance": "EXACT_HEAD_AT_AIRPORT_PLAN_FREEZE; source hashes bind the new specialist implementation",
+      "source_hashes": {
+        "forecast_gpu_airport.py": "5ce33aa5f707ea41e43e7d564cf5d07cc9d5f73a90d1c465492a005832ad6402",
+        "forecast_gpu_search.py": "0890369bf4d6832073be3dce2ba6689cca916d500150f52b45e6e80d24bb835b",
+        "forecast_gpu_compare.py": "efba2c78cdc73d7261a8b0450a6faf446c0b582d71668bd8a980625fd5635586",
+        "forecast_features.py": "18faec25384eee09d51499c48db1bd6c67a935f7b24b5dc01518acb5009ec393",
+        "forecast_model.py": "0a0e599c83ffe066074a9fe8977f5e7e5215a61694f7d97669add7743dcbeafb",
+        "forecast_guard.py": "9db44e5a25bb4b2f3a8b8dbd3b6b282a43274c4b302978828aa755ab79e1ab31",
+        "forecast_novel_guard.py": "5395ddfbc963021665e1ed218e6eb57b9bb2cb6aedbb8d03db27486be484e3ec",
+        "pipeline.py": "17560ba5831eb5ea7e5b7bb3e031bf165959ab186b1249e621b27a0f9f0d195d"
+      },
+      "training_time_seconds": 72.78234892291948,
+      "inference_time_seconds": 0.4556237431243062,
+      "timing_status": "MEASURED_SEPARATELY_SUM_OF_COMPLETED_FOLDS",
+      "combined_time_seconds": 73.23797266604379,
+      "mean_mae": 214.97294069520376,
+      "median_mae": 214.97294069520376,
+      "worst_fold_mae": 214.97294069520376,
+      "worst_decile_mae": 712.0392098958583,
+      "pooled_mae": 214.97294069520376,
+      "per_fold_mae": {
+        "10": 214.97294069520376
+      },
+      "catastrophic_error_rate": 0.0005978155496671622,
+      "validation_rows": 185676,
+      "unseen_aircraft_mae": 403.44980363812476,
+      "unseen_aircraft_rows": 4,
+      "unseen_airport_stand_mae": 377.58031733540105,
+      "unseen_airport_stand_rows": 14,
+      "experiment_id": "generalization-gpu-airport-v1/forward-10-gpu_airport_deep_demand_novel_guarded",
+      "rank": null,
+      "status": "COMPLETED_SINGLE_FOLD_NOT_COMPARABLE_TO_FULL_CV",
+      "validation_folds": ["2025-10"],
+      "timestamp": "2026-10-11T19:22:09.999748+00:00",
+      "parameters": {
+        "task_type": "GPU",
+        "devices": "0",
+        "gpu_ram_part": 0.35,
+        "gpu_cat_features_storage": "CpuPinnedMemory",
+        "pinned_memory_size": "2gb",
+        "max_ctr_complexity": 1,
+        "border_count": 128,
+        "boosting_type": "Plain",
+        "l2_leaf_reg": 15,
+        "allow_writing_files": false
+      },
+      "training_time_scope": "TOTAL_MEASURED_GLOBAL_PLUS_SPECIALIST_FITS; global checkpoint reused",
+      "incremental_training_time_seconds": 45.81794756697491,
+      "reused_global_training_seconds": 26.964401355944574
+    },
+    {
+      "model": "gpu_airport_deep_demand_novel_guarded",
+      "model_family": "catboost",
+      "device": "GPU RTX4090 / CPU inference",
+      "git_commit": "e7f8258",
+      "git_dirty_at_training": true,
+      "commit_provenance": "EXACT_HEAD_AT_AIRPORT_PLAN_FREEZE; source hashes bind the new specialist implementation",
+      "source_hashes": {
+        "forecast_gpu_airport.py": "5ce33aa5f707ea41e43e7d564cf5d07cc9d5f73a90d1c465492a005832ad6402",
+        "forecast_gpu_search.py": "0890369bf4d6832073be3dce2ba6689cca916d500150f52b45e6e80d24bb835b",
+        "forecast_gpu_compare.py": "efba2c78cdc73d7261a8b0450a6faf446c0b582d71668bd8a980625fd5635586",
+        "forecast_features.py": "18faec25384eee09d51499c48db1bd6c67a935f7b24b5dc01518acb5009ec393",
+        "forecast_model.py": "0a0e599c83ffe066074a9fe8977f5e7e5215a61694f7d97669add7743dcbeafb",
+        "forecast_guard.py": "9db44e5a25bb4b2f3a8b8dbd3b6b282a43274c4b302978828aa755ab79e1ab31",
+        "forecast_novel_guard.py": "5395ddfbc963021665e1ed218e6eb57b9bb2cb6aedbb8d03db27486be484e3ec",
+        "pipeline.py": "17560ba5831eb5ea7e5b7bb3e031bf165959ab186b1249e621b27a0f9f0d195d"
+      },
+      "training_time_seconds": 81.10661937808618,
+      "inference_time_seconds": 0.4300771579146385,
+      "timing_status": "MEASURED_SEPARATELY_SUM_OF_COMPLETED_FOLDS",
+      "combined_time_seconds": 81.53669653600082,
+      "mean_mae": 227.31838161630264,
+      "median_mae": 227.31838161630264,
+      "worst_fold_mae": 227.31838161630264,
+      "worst_decile_mae": 770.7485005129016,
+      "pooled_mae": 227.31838161630264,
+      "per_fold_mae": {
+        "11": 227.31838161630264
+      },
+      "catastrophic_error_rate": 0.0003634437216637098,
+      "validation_rows": 162336,
+      "unseen_aircraft_mae": 262.70132167192685,
+      "unseen_aircraft_rows": 8,
+      "unseen_airport_stand_mae": 279.8146031618084,
+      "unseen_airport_stand_rows": 48,
+      "experiment_id": "generalization-gpu-airport-v1/forward-11-gpu_airport_deep_demand_novel_guarded",
+      "rank": null,
+      "status": "COMPLETED_SINGLE_FOLD_NOT_COMPARABLE_TO_FULL_CV",
+      "validation_folds": ["2025-11"],
+      "timestamp": "2026-10-11T19:24:29.371539+00:00",
+      "parameters": {
+        "task_type": "GPU",
+        "devices": "0",
+        "gpu_ram_part": 0.35,
+        "gpu_cat_features_storage": "CpuPinnedMemory",
+        "pinned_memory_size": "2gb",
+        "max_ctr_complexity": 1,
+        "border_count": 128,
+        "boosting_type": "Plain",
+        "l2_leaf_reg": 15,
+        "allow_writing_files": false
+      },
+      "training_time_scope": "TOTAL_MEASURED_GLOBAL_PLUS_SPECIALIST_FITS; global checkpoint reused",
+      "incremental_training_time_seconds": 45.7627517580986,
+      "reused_global_training_seconds": 35.34386761998758
     }
   ],
   "warnings": [],
@@ -21374,5 +22550,5 @@
       "timestamp": "2026-10-09T14:45:42.698103+00:00"
     }
   ],
-  "monitor_source_sha256": "58895ef3dbc2e745e463c33114d7ecb15dbc57207e4dd13c25d0e9a4b6d86e5a"
+  "monitor_source_sha256": "5a391586f808ab83e0d1457c74068fdb48dd7e874c14f8f02c46bec96159aef5"
 }

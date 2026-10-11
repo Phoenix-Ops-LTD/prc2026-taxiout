@@ -129,6 +129,10 @@ def measured_execution(report: dict[str, Any], runs: list[Path]) -> None:
                 entry["inference_time_seconds"] = sum(r["inference_time_seconds"] for r in records)
                 entry["timing_status"] = "MEASURED_SEPARATELY_SUM_OF_COMPLETED_FOLDS"
                 entry["timestamp"] = max(r["completed_at_utc"] for r in records)
+                if any("reused_global_training_seconds" in r for r in records):
+                    entry["training_time_scope"] = "TOTAL_MEASURED_GLOBAL_PLUS_SPECIALIST_FITS; global checkpoint reused"
+                    entry["incremental_training_time_seconds"] = sum(r["incremental_training_time_seconds"] for r in records)
+                    entry["reused_global_training_seconds"] = sum(r["reused_global_training_seconds"] for r in records)
     singles = {e["model"]: e for e in report["entries"] if e.get("status") == "COMPLETED_VALIDATED" and e.get("model_family") != "fixed_equal_ensemble"}
     for entry in report["entries"]:
         weights = entry.get("parameters", {}).get("weights", {})
