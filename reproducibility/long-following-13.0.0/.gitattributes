@@ -1,0 +1,2 @@
+# Preserve hash-bound historical module bytes, including CRLF.
+*.py -text whitespace=cr-at-eol
