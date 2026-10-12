@@ -100,3 +100,19 @@ def test_new_gpu_batch_is_visible_without_selecting_a_preparation_directory(tmp_
         run.mkdir(parents=True)
         (run / "plan.json").write_text(json.dumps({"frozen_at_utc": stamp, "execution_unit": "GPU", "selection_months": [9, 10, 11], "models": {}}))
     assert dashboard.dashboard_state(tmp_path)["gpu_run"] == "generalization-gpu-airport-v1"
+
+
+def test_uploaded_result_is_visible_without_changing_validation_or_exposing_private_paths(tmp_path: Path) -> None:
+    assert dashboard.dashboard_state(tmp_path)["submission_uploaded"] is False
+    runs = tmp_path / "runs"
+    runs.mkdir()
+    (runs / "latest-ranking-submission.json").write_text(json.dumps({
+        "submission_uploaded": True, "key": "own_v13.parquet", "official_score": 572.3617,
+        "status": "OFFICIALLY_SCORED_REMOTE_BYTES_EXACT", "release_directory": "private/path"}))
+    state = dashboard.dashboard_state(tmp_path)
+    assert state["submission_uploaded"] is True
+    assert state["submission"]["key"] == "own_v13.parquet"
+    assert state["submission"]["official_score"] == 572.3617
+    assert "release_directory" not in state["submission"]
+    assert state["official_feedback_used_for_selection"] is False
+    assert state["completed_candidates"] == 0 and state["champion"] is None

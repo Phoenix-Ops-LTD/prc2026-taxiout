@@ -10,6 +10,11 @@ Open <http://127.0.0.1:8786/> on the same computer. The server binds only to
 loopback, serves the dashboard and its status API, and has no upload or mutation
 actions. Use `--no-official` for local-only observation.
 
+The dashboard also reads the private `runs/latest-ranking-submission.json` receipt
+to show the latest upload and its scored RMSE separately from the team's best
+official standing. Only safe aggregate fields are exposed; private paths and
+bucket contents are not served. It remains a read-only observer.
+
 Local data refreshes every five seconds. The independent leaderboard monitor
 validates source-bound prediction/ledger pairs before updating `LEADERBOARD.md`
 and `leaderboard.json`. Completed September, October and November folds are

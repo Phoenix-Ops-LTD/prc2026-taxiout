@@ -159,6 +159,9 @@ def dashboard_state(root: Path) -> dict[str, Any]:
                        "training_seconds": r["training_time_seconds"]} for r in records],
             "pooled_rmse": score.get("rmse"),
             "gain_vs_incumbent": incumbent["BEST_CV_RMSE"] - score["rmse"] if "rmse" in score and "BEST_CV_RMSE" in incumbent else None})
+    submission = read_json(root / "runs/latest-ranking-submission.json", {})
+    safe_submission = {key: submission.get(key) for key in ["status", "key", "rows", "verified_at_utc",
+        "official_score", "result_observed_at_utc", "result_status"]}
     return {"served_at_utc": now(), "local_refresh_seconds": 5, "official_refresh_seconds": 180,
         "board_updated_at_utc": board.get("updated_at_utc"), "local_models": safe_entries[:20],
         "completed_candidates": sum(e["rank"] is not None for e in entries),
@@ -172,7 +175,8 @@ def dashboard_state(root: Path) -> dict[str, Any]:
             "best_new_model": best_new, "best_new_rmse": compared_scores[best_new]["rmse"] if best_new else None,
             "gain_vs_incumbent": compared_scores[best_new]["gain_vs_incumbent"] if best_new else None},
         "incumbent_cv_rmse": incumbent.get("BEST_CV_RMSE"), "incumbent_model": incumbent.get("BEST_MODEL"),
-        "official_feedback_used_for_selection": False, "submission_uploaded": False}
+        "official_feedback_used_for_selection": False, "submission_uploaded": submission.get("submission_uploaded") is True,
+        "submission": safe_submission}
 
 
 def handler(root: Path) -> type[BaseHTTPRequestHandler]:
