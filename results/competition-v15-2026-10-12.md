@@ -42,3 +42,15 @@ First reproduce every historical ranking chain stage against its original bytes,
 then independently reload and repeat all final predictions. The final file is
 not uploaded during preparation. Competition models remain outside RALE,
 NewWorld and customer production.
+
+## Duplicate-artifact correction
+
+After scoring, full artifact comparison proves v15 is byte-identical to the
+historical v2 submission, which had already scored 297.5883. The duplicate should
+have been identified before upload; it consumed a ranking slot without testing a
+new candidate. Future ranking uploads compare SHA256 of complete same-sized
+previous remote predictions across every listed page and all dates. Matching
+bytes stop before any write; unknown or changed remote content fails closed.
+Nine targeted bucket tests pass, including later-page old duplicates, distinct
+same-size files and changed remote sizes. Strict affected-module typecheck passes.
+The preserved historical source snapshot and all fitted model source remain unchanged.

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 from datetime import datetime, timedelta, timezone
@@ -71,11 +72,33 @@ def upload(s3: Any, path: Path, template: Path) -> None:
         raise ValueError("Five-submission rolling 24-hour limit reached")
     if sum(int(item["Size"]) for item in objects) + path.stat().st_size > 1_000_000_000:
         raise ValueError("Submission would exceed the one GB team-bucket limit")
+    # Versions and ETags do not prove that predictions are new. Check full bytes
+    # of every same-sized previous prediction, including versions outside quota.
+    duplicate_checks = 0
+    for item in objects:
+        if not re.fullmatch(r"zestful-fountain_v[1-9][0-9]*\.parquet", item["Key"]) or int(item["Size"]) != path.stat().st_size:
+            continue
+        previous = s3.get_object(Bucket=TEAM_BUCKET, Key=item["Key"])
+        body = previous["Body"]
+        digest = hashlib.sha256()
+        size = 0
+        try:
+            while chunk := body.read(1024 * 1024):
+                digest.update(chunk)
+                size += len(chunk)
+        finally:
+            body.close()
+        if size != int(item["Size"]):
+            raise ValueError("Previous submission size changed during duplicate check")
+        duplicate_checks += 1
+        if digest.hexdigest() == manifest["submission_sha256"]:
+            raise ValueError(f"Identical predictions already uploaded as {item['Key']}; reuse its score receipt")
     # Conditional create prevents accidental replacement of a previous submission.
     with path.open("rb") as body:
         response = s3.put_object(Bucket=TEAM_BUCKET, Key=path.name, Body=body, ContentType="application/vnd.apache.parquet", IfNoneMatch="*")
     write_json(path.with_suffix(".upload.json"), {"bucket": TEAM_BUCKET, "key": path.name, "submission_sha256": manifest["submission_sha256"], "etag": response.get("ETag"), "status": "UPLOADED_SCORE_PENDING",
-        "limits_checked_at_utc": now.isoformat(), "previous_submissions_in_24h": recent})
+        "limits_checked_at_utc": now.isoformat(), "previous_submissions_in_24h": recent,
+        "same_size_previous_predictions_checked": duplicate_checks})
 
 
 def main() -> None:

@@ -1,5 +1,23 @@
 # Generalization-first forecast, 9 October 2026
 
+## Current official standing - 12 October 2026
+
+Retain **v14 / 272.8483 seconds RMSE** as the best scored submission. Complete
+public pagination at **13:57:44 UTC** confirms **78 of 244 scored teams** and
+**5,487 submission entries**. It improves v12 by 0.7074 seconds; first place is
+unachieved. The predeparture forecast submitted as v13 scored 572.3617. The
+verified NM standalone v15 scored 297.5883 and is byte-identical to historical
+v2; its upload used a slot without adding a candidate. Upload controls now
+compare complete same-sized prior remote objects and reject duplicate bytes.
+See [v14 evidence](results/competition-v14-2026-10-12.md) and
+[v15 evidence](results/competition-v15-2026-10-12.md).
+
+The competition-only operational-observation models remain outside production.
+Their official-score retention does not change the purged forward MAE board,
+its 340 comparable candidates, or its CHAMPION. A distinct final file is being
+prepared from v14 with complete original ranking-chain parity and independently
+repeated native inference. The original forecast final remains separately saved.
+
 This is a separate predeparture research pipeline. Existing retrospective competition
 modules, models, submissions and rejected experiments are preserved. The dedicated
 `worker/prc-final` worktree changes no production application or customer code.

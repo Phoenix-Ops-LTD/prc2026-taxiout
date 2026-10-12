@@ -1,10 +1,28 @@
 # PRC 2026: retrospective NM residual model
 
+## Current official standing - 12 October 2026
+
+Retain **v14 / 272.8483 seconds RMSE** as the best scored submission. Complete
+public pagination at **13:57:44 UTC** confirms **78 of 244 scored teams** and
+**5,487 submission entries**. It improves v12 by 0.7074 seconds; first place is
+unachieved. The predeparture forecast submitted as v13 scored 572.3617. The
+verified NM standalone v15 scored 297.5883 and is byte-identical to historical
+v2; its upload used a slot without adding a candidate. Upload controls now
+compare complete same-sized prior remote objects and reject duplicate bytes.
+See [v14 evidence](results/competition-v14-2026-10-12.md) and
+[v15 evidence](results/competition-v15-2026-10-12.md).
+
+The competition-only operational-observation models remain outside production.
+Their official-score retention does not change the purged forward MAE board,
+its 340 comparable candidates, or its CHAMPION. A distinct final file is being
+prepared from v14 with complete original ranking-chain parity and independently
+repeated native inference. The original forecast final remains separately saved.
+
 Team: **zestful-fountain**. Original independent GPL-3.0-only implementation.
 
 ## Official result
 
-Latest v11: **274.9738 seconds RMSE**, **14 of 130** at **12:34 UTC on 2026-09-13**. All 344,841 pairs scored; leader 245.0207. [Dated snapshot](results/leaderboard-2026-09-13.md). First place through the deadline remains incomplete.
+Historical v11: **274.9738 seconds RMSE**, **14 of 130** at **12:34 UTC on 2026-09-13**. All 344,841 pairs scored; leader 245.0207. [Dated snapshot](results/leaderboard-2026-09-13.md). First place through the deadline remains incomplete.
 
 Earlier official scores: v4 291.4829, v3 292.4043, v2 297.5883, v1 461.4635 seconds RMSE. Historical ranks and processing times remain in the [8 September](results/leaderboard-2026-09-08.md) and [7 September](results/leaderboard-2026-09-07.md) snapshots. Rankings change; these are dated measurements.
 

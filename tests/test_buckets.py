@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-only
 import json
+from io import BytesIO
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
@@ -12,8 +13,9 @@ from pipeline import ID, TARGET, sha256
 
 
 class FakeS3:
-    def __init__(self, objects: list[dict[str, Any]]) -> None:
+    def __init__(self, objects: list[dict[str, Any]], bodies: dict[str, bytes] | None = None) -> None:
         self.objects = objects
+        self.bodies = bodies or {}
         self.puts: list[dict[str, Any]] = []
 
     def get_paginator(self, name: str) -> "FakeS3":
@@ -29,6 +31,10 @@ class FakeS3:
         assert kwargs["IfNoneMatch"] == "*"
         assert kwargs["Body"].read()
         return {"ETag": "synthetic-etag"}
+
+    def get_object(self, **kwargs: Any) -> dict[str, Any]:
+        assert kwargs["Bucket"] == TEAM_BUCKET
+        return {"Body": BytesIO(self.bodies[kwargs["Key"]])}
 
 
 def files(tmp_path: Path) -> tuple[Path, Path]:
@@ -55,6 +61,44 @@ def test_upload_checks_all_pages_and_allows_fifth_submission(tmp_path: Path) -> 
     receipt = json.loads(output.with_suffix(".upload.json").read_text())
     assert receipt["previous_submissions_in_24h"] == 4
     assert receipt["status"] == "UPLOADED_SCORE_PENDING"
+
+
+def test_upload_rejects_old_duplicate_on_later_page_before_writing(tmp_path: Path) -> None:
+    output, template = files(tmp_path)
+    items = objects(3)
+    items[2].update(Size=output.stat().st_size,
+        LastModified=datetime.now(timezone.utc) - timedelta(days=30))
+    s3 = FakeS3(items, {items[2]["Key"]: output.read_bytes()})
+    with pytest.raises(ValueError, match="Identical predictions already uploaded as zestful-fountain_v3"):
+        upload(s3, output, template)
+    assert not s3.puts
+    assert not output.with_suffix(".upload.json").exists()
+
+
+def test_upload_allows_different_predictions_with_same_size(tmp_path: Path) -> None:
+    output, template = files(tmp_path)
+    frame = pd.read_parquet(output)
+    frame[TARGET] = frame[TARGET].iloc[::-1].to_numpy()
+    stream = BytesIO()
+    frame.to_parquet(stream, index=False)
+    previous = stream.getvalue()
+    assert len(previous) == output.stat().st_size and previous != output.read_bytes()
+    items = objects(1)
+    items[0]["Size"] = len(previous)
+    s3 = FakeS3(items, {items[0]["Key"]: previous})
+    upload(s3, output, template)
+    assert len(s3.puts) == 1
+    assert json.loads(output.with_suffix(".upload.json").read_text())["same_size_previous_predictions_checked"] == 1
+
+
+def test_upload_rejects_changed_remote_size_before_writing(tmp_path: Path) -> None:
+    output, template = files(tmp_path)
+    items = objects(1)
+    items[0]["Size"] = output.stat().st_size
+    s3 = FakeS3(items, {items[0]["Key"]: output.read_bytes()[:-1]})
+    with pytest.raises(ValueError, match="size changed"):
+        upload(s3, output, template)
+    assert not s3.puts
 
 
 @pytest.mark.parametrize("case,message", [("quota", "24-hour"), ("version", "version"),

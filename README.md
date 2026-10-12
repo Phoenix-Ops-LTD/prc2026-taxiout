@@ -1,5 +1,23 @@
 # PhoenixAI PRC 2026 taxi-out research
 
+## Current official standing - 12 October 2026
+
+Retain **v14 / 272.8483 seconds RMSE** as the best scored submission. Complete
+public pagination at **13:57:44 UTC** confirms **78 of 244 scored teams** and
+**5,487 submission entries**. It improves v12 by 0.7074 seconds; first place is
+unachieved. The predeparture forecast submitted as v13 scored 572.3617. The
+verified NM standalone v15 scored 297.5883 and is byte-identical to historical
+v2; its upload used a slot without adding a candidate. Upload controls now
+compare complete same-sized prior remote objects and reject duplicate bytes.
+See [v14 evidence](results/competition-v14-2026-10-12.md) and
+[v15 evidence](results/competition-v15-2026-10-12.md).
+
+The competition-only operational-observation models remain outside production.
+Their official-score retention does not change the purged forward MAE board,
+its 340 comparable candidates, or its CHAMPION. A distinct final file is being
+prepared from v14 with complete original ranking-chain parity and independently
+repeated native inference. The original forecast final remains separately saved.
+
 The **9 October generalization-first forecast** is implemented in `forecast_run.py`,
 `forecast_features.py` and `forecast_model.py`. It preserves the retrospective work
 below and selects models using forward September–November validation, then reports
@@ -11,7 +29,7 @@ The completed frozen ensemble has 403.769790-second forward RMSE. Both final
 (670,790 rows) and ranking (344,841 rows) files pass exact fresh saved-model checks.
 The continuously updated [MAE leaderboard](LEADERBOARD.md) reports its own CHAMPION;
 [complete aggregate validation and delivery evidence](results/generalization-2026-10-09.md)
-retain weaker seasonal outcomes and all limitations. No new official score is claimed.
+retain weaker seasonal outcomes and all limitations. Official submissions are documented separately above.
 
 Independent, original research for team **zestful-fountain**. V12 scored **273.5557 seconds RMSE** on all **344,841 pairs**, improving v11 by **1.4181 seconds**. Complete public pagination at **2026-09-13T16:53:37.305711+00:00** ranks the team **12/131**, up from 14/131 immediately before submission. Leader 245.0207; remaining gap **28.5350 seconds**. First place remains incomplete. [Official result](results/leaderboard-2026-09-13.md#v12-following-context-catboost-replacement). See [METHOD.md](METHOD.md) for validation, availability limits and reproduction.
 
