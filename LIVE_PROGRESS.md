@@ -114,11 +114,14 @@ comparison directory to the leaderboard monitor's `--selections` argument.
 
 ## Unique final submission
 
-The current retained best is competition v14 / 272.8483 RMSE. Exact reconstruction
-of every original ranking stage passes. The distinct final file requires two
-complete native runs on all 670,790 rows. A local deadline guard reserves the
-unique conditional final upload for 14 October 08:00 UTC, two hours before the
-deadline; it rechecks the authoritative best score and every artifact binding.
-See [FINAL_DELIVERY.md](FINAL_DELIVERY.md). Its private status is
-`runs/final-deadline-guard.json`. The computer and guard process must remain running.
-The dashboard observes ranking changes and has no upload action.
+The current retained best is competition v14 / 272.8483 RMSE. Every original
+ranking stage and two complete native final runs match exactly. The distinct final
+file was uploaded on 12 October at 16:38:29 UTC; the organizer confirms Succeeded
+on all 670,790 pairs. Its result contains no final score. The scheduled upload guard
+is stopped, and the unique final object is never replaced automatically.
+See [FINAL_DELIVERY.md](FINAL_DELIVERY.md). The private receipt is
+`runs/latest-final-submission.json`. A read-only result observer checks for a
+published final score every minute; public rank and local leaderboard observation
+continue independently. These local observers require the computer to remain
+running. The accepted remote file is already stored. The dashboard has no upload
+action.

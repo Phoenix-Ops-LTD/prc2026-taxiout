@@ -1,4 +1,4 @@
-# Best scored model: final artifact ready - 12 October 2026 UTC
+# Best scored model: final accepted - 12 October 2026 UTC
 
 The retained competition ranking submission is **v14 / 272.8483 seconds RMSE**.
 It improves v12's previous best by **0.7074 seconds**. V15 scores 297.5883 and
@@ -29,23 +29,27 @@ on CPU, with no fitting or GPU rental.
 | Final ranking input | `4b0692a792846079516a2749e034b0abda55df72c213eabdcda52a4d1f6bc69f` |
 | Final template | `b3445d80e29bf599a5583ca9675f63ddf57b51fdf1ca3f498facb38ea84f3924` |
 
-The named local artifact is
-`runs/final-ready-20261012-v14/zestful-fountain_final.parquet`; it remains private
-and **not uploaded**. The original forecast final is retained separately. A full
-read-only upload preflight passes: v14 is still the authoritative own-bucket best,
-its complete remote bytes match the reconstructed ranking artifact, all training
-hashes and final template checks pass, the unique final key is absent, three
-ranking predictions fall in the previous 24 hours, and bucket usage is 70,619,903
-bytes. These checks repeat immediately before any future write.
+The separate final artifact was conditionally uploaded as
+`zestful-fountain_final.parquet` on **12 October 2026 at 16:38:29 UTC**.
+The complete 8,641,691-byte remote object matches the verified prediction SHA256.
+The organizer returns **Succeeded / 670,790 used pairs**, observed at 16:39 UTC.
+Its receipt contains no score: final acceptance is confirmed, while final score
+and final rank remain unknown. The original forecast final is retained separately.
 
-The active isolated local guard schedules the unique conditional final upload for
-**14 October 2026, 08:00 UTC**, two hours before the organizer's **10:00 UTC**
-deadline. It requires the best still to be v14; a changed best requires new final
-preparation. Existing ranking and final objects are never replaced. Verify complete
-remote bytes before recording upload success. Official final evaluation remains
-unknown until the platform produces its result. The host and guard process must
-remain running. The read-only dashboard shows guard status, schedule and a stale
-heartbeat warning, alongside rank, scored-team count and submission-entry count.
+The fresh authoritative preflight confirms v14 remains the own-bucket best,
+its remote bytes match the reconstructed ranking artifact, all training hashes,
+106 source/native/report/input bindings and template checks pass, and the unique
+final key is absent before creation. Three ranking predictions precede this upload
+in the rolling 24-hour window; bucket usage before upload is 70,619,903 bytes.
+Existing ranking objects remain unchanged. The earlier local scheduled wait is
+superseded and its guard stopped; no automatic final replacement is permitted.
+A read-only final-result observer checks for a published score every minute.
+Public rank observation continues separately. The accepted file is already stored
+remotely and does not depend on the local computer staying on for upload.
+
+Detailed receipts, manifest and the exact source/model/data bindings remain in
+ignored `runs/final-release-20261012-v14`; the dashboard reads the safe aggregate
+acceptance state from `runs/latest-final-submission.json`.
 
 All original model source is openly published with its exact 22-module hash
 snapshot. The complete source ZIP includes that snapshot and passes **168 tests**

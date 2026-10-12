@@ -48,13 +48,18 @@ inputs twice in independent fresh directories. Verify exact equality of all
 source, native-model, report and evaluation input hash after inference. Independently
 verify all twelve original training input digests against the fitted-model report.
 
-## Deadline guard
+## Final upload accepted
 
-An isolated local process waits for completed native verification, then reserves
-the unique final upload for **2026-10-14 08:00 UTC**, with the organizer deadline
-at **10:00 UTC**. This avoids filling the unique final slot two days early.
-Its private status is `runs/final-deadline-guard.json`. The computer and process
-must remain running; this is not a cloud scheduler or production service.
+The verified unique final file was uploaded immediately on **12 October 2026 at
+16:38:29 UTC**, replacing the earlier local scheduled wait. The organizer returned
+**Succeeded / 670,790 used pairs**, observed at 16:39 UTC. Its result contains no
+score: final acceptance is confirmed, while final score and final rank remain
+unknown. The complete remote object matches the verified SHA256 below.
+
+The scheduled upload guard is stopped, and its stop marker remains present.
+Read-only final-result observation and public rank monitoring continue. Their
+local processes require this computer to remain running, but the accepted final
+file is already stored remotely and no longer depends on a scheduled upload.
 
 Immediately before writing, recheck authoritative own-bucket score receipts: the
 retained best must still be v14 / 272.8483. A changed best requires a newly verified
@@ -63,6 +68,9 @@ template alignment, bucket capacity, quota and absence of an existing final obje
 Create only `zestful-fountain_final.parquet`, conditionally with `IfNoneMatch: *`.
 Read back the complete object and verify SHA256 before recording upload success.
 An upload is not an official final score; final evaluation may remain pending.
+The private `runs/latest-final-submission.json` receipt records acceptance,
+artifact/manifest/result hashes and full row count. Detailed source/native/data
+bindings remain in the release manifest and original native verification report.
 
 The local stop marker is `runs/final-deadline-guard.stop`. A possible completed
 write is never retried blindly: reconcile the existing remote key and its complete
