@@ -111,3 +111,14 @@ inference on every fold row and publishes an immutable transfer snapshot.
 Recorded training time includes measured original global fitting plus incremental
 specialist fitting; both contributions remain explicit. Add the completed
 comparison directory to the leaderboard monitor's `--selections` argument.
+
+## Unique final submission
+
+The current retained best is competition v14 / 272.8483 RMSE. Exact reconstruction
+of every original ranking stage passes. The distinct final file requires two
+complete native runs on all 670,790 rows. A local deadline guard reserves the
+unique conditional final upload for 14 October 08:00 UTC, two hours before the
+deadline; it rechecks the authoritative best score and every artifact binding.
+See [FINAL_DELIVERY.md](FINAL_DELIVERY.md). Its private status is
+`runs/final-deadline-guard.json`. The computer and guard process must remain running.
+The dashboard observes ranking changes and has no upload action.
