@@ -44,3 +44,22 @@ Validation before the trial: 162 research tests and 42 strict maintained Python
 modules pass. The CPU monitor carries separate measured fit/inference clocks and
 fitting-cap parameters. Partially completed runs remain unranked. Production,
 customer aviation, private data rights and original artifacts are unchanged.
+
+## Completed robust-fitting pilot
+
+All three native fold predictions reproduce exactly on reload. The capped model
+scores 421.151655561 seconds pooled forward RMSE; the fixed CatBoost/capped model
+pair scores 411.827190814. Pair September/October/November RMSE is
+448.345162087 / 334.359000787 / 447.355002803 seconds. The preset September maximum
+is 447.949249385 seconds, so the pair misses qualification by 0.395912701 seconds.
+The fixed qualification rule is retained. There is no refit or trial upload.
+
+Both completed candidates are ranked on the local mean-MAE board, now 340 validated
+candidates and three unranked older partials. CPU fitting totals 266.624 seconds
+and inference 46.563 seconds; reused CatBoost legacy clocks remain explicitly
+unavailable in the blend record. The local MAE CHAMPION remains 218.202389046.
+V12 remains the best officially scored submission; the final-evaluation artifact
+is unchanged and separate. Further similar searches have no validated evidence
+of an economic chance to beat the official incumbent. Monitoring remains active.
+A competition-only operational-observation scope clarification is pending because
+the earlier owner mission imposed predeparture availability restrictions.

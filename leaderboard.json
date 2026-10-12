@@ -1,6 +1,6 @@
 {
   "schema_version": "prc-forward-leaderboard/1.0",
-  "updated_at_utc": "2026-10-11T19:39:44.879514+00:00",
+  "updated_at_utc": "2026-10-12T13:09:30.892560+00:00",
   "selection_policy": "Rank completed Sep/Oct/Nov purged forward CV by arithmetic mean fold MAE, lower is better",
   "mean_mae_definition": "Equal-weight mean of fold MAEs; median_mae is median of fold MAEs",
   "catastrophic_threshold_seconds": 3600.0,
@@ -1535,6 +1535,57 @@
       "champion": false
     },
     {
+      "mean_mae": 218.83443292524055,
+      "median_mae": 216.34869072858038,
+      "worst_fold_mae": 227.02912690754397,
+      "worst_decile_mae": 720.6450432685064,
+      "pooled_mae": 218.48299750477634,
+      "per_fold_mae": {
+        "9": 216.34869072858038,
+        "10": 213.12548113959727,
+        "11": 227.02912690754397
+      },
+      "catastrophic_error_rate": 0.0004511693746228506,
+      "validation_rows": 531951,
+      "unseen_aircraft_mae": 389.4047802813859,
+      "unseen_aircraft_rows": 22,
+      "unseen_airport_stand_mae": 286.2941887195218,
+      "unseen_airport_stand_rows": 116,
+      "model": "catboost+robust_deep_cap7200_novel_guarded",
+      "model_family": "fixed_equal_ensemble",
+      "experiment_id": "generalization-robust-v1/catboost+robust_deep_cap7200_novel_guarded",
+      "status": "COMPLETED_VALIDATED",
+      "validation_folds": ["2025-09", "2025-10", "2025-11"],
+      "device": "CPU",
+      "timestamp": "2026-10-12T13:08:27.048259+00:00",
+      "git_commit": "78410ef4df8cb539dfb9e78e3c85048e6363b281",
+      "git_dirty_at_training": true,
+      "source_hashes": {
+        "forecast_run.py": "8db35217e8476f5954cb4135885037d65c642961e0d24d86cf7e9a6677d92447",
+        "forecast_model.py": "0a0e599c83ffe066074a9fe8977f5e7e5215a61694f7d97669add7743dcbeafb",
+        "forecast_features.py": "18faec25384eee09d51499c48db1bd6c67a935f7b24b5dc01518acb5009ec393",
+        "pipeline.py": "17560ba5831eb5ea7e5b7bb3e031bf165959ab186b1249e621b27a0f9f0d195d",
+        "forecast_robust.py": "28bb63ce279521120a75c55feeebfa93b79f69280f080c735006889e9fcd5a7e",
+        "forecast_delivery.py": "cbeeb8ba0c2052ba0005f859ab50c2c5cfb22f8eae0c45b141e21cff746a54eb",
+        "forecast_novel_finalize.py": "6762637705f7c3421787baaa71db9c9d1cd5ddd983667de73bf91a10c2a19da5",
+        "forecast_novel_guard.py": "5395ddfbc963021665e1ed218e6eb57b9bb2cb6aedbb8d03db27486be484e3ec",
+        "forecast_guard.py": "9db44e5a25bb4b2f3a8b8dbd3b6b282a43274c4b302978828aa755ab79e1ab31"
+      },
+      "parameters": {
+        "weights": {
+          "catboost": 0.5,
+          "robust_deep_cap7200_novel_guarded": 0.5
+        }
+      },
+      "frozen_rmse_selection_eligible": false,
+      "training_time_seconds": null,
+      "inference_time_seconds": null,
+      "combined_time_seconds": 3670.842999999877,
+      "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
+      "rank": 31,
+      "champion": false
+    },
+    {
       "mean_mae": 218.83933119305027,
       "median_mae": 216.19532378095474,
       "worst_fold_mae": 226.97162981169362,
@@ -1582,7 +1633,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3502.6709999996237,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 31,
+      "rank": 32,
       "champion": false
     },
     {
@@ -1629,7 +1680,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 485.34499999973923,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 32,
+      "rank": 33,
       "champion": false
     },
     {
@@ -1675,7 +1726,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 379.42299999995157,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 33,
+      "rank": 34,
       "champion": false
     },
     {
@@ -1721,7 +1772,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 379.42299999995157,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 34,
+      "rank": 35,
       "champion": false
     },
     {
@@ -1772,7 +1823,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 347.21999999973923,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 35,
+      "rank": 36,
       "champion": false
     },
     {
@@ -1823,7 +1874,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 257.7360000000335,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 36,
+      "rank": 37,
       "champion": false
     },
     {
@@ -1874,7 +1925,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 289.9539999999106,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 37,
+      "rank": 38,
       "champion": false
     },
     {
@@ -1925,7 +1976,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 468.95399999897927,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 38,
+      "rank": 39,
       "champion": false
     },
     {
@@ -1976,7 +2027,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 395.92199999978766,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 39,
+      "rank": 40,
       "champion": false
     },
     {
@@ -2027,7 +2078,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 395.8919999995269,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 40,
+      "rank": 41,
       "champion": false
     },
     {
@@ -2078,7 +2129,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3502.6719999997877,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 41,
+      "rank": 42,
       "champion": false
     },
     {
@@ -2129,7 +2180,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 347.2050000000745,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 42,
+      "rank": 43,
       "champion": false
     },
     {
@@ -2180,7 +2231,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3502.6409999998286,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 43,
+      "rank": 44,
       "champion": false
     },
     {
@@ -2231,7 +2282,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 257.76599999982864,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 44,
+      "rank": 45,
       "champion": false
     },
     {
@@ -2282,7 +2333,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 468.93899999931455,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 45,
+      "rank": 46,
       "champion": false
     },
     {
@@ -2333,7 +2384,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3502.6409999998286,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 46,
+      "rank": 47,
       "champion": false
     },
     {
@@ -2384,7 +2435,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 347.20399999944493,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 47,
+      "rank": 48,
       "champion": false
     },
     {
@@ -2435,7 +2486,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3502.685999999754,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 48,
+      "rank": 49,
       "champion": false
     },
     {
@@ -2486,7 +2537,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 504.905999999959,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 49,
+      "rank": 50,
       "champion": false
     },
     {
@@ -2537,7 +2588,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3502.654999999795,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 50,
+      "rank": 51,
       "champion": false
     },
     {
@@ -2588,7 +2639,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 504.95099999941885,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 51,
+      "rank": 52,
       "champion": false
     },
     {
@@ -2639,7 +2690,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 415.4509999998845,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 52,
+      "rank": 53,
       "champion": false
     },
     {
@@ -2690,7 +2741,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 257.71999999973923,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 53,
+      "rank": 54,
       "champion": false
     },
     {
@@ -2741,7 +2792,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3592.1569999991916,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 54,
+      "rank": 55,
       "champion": false
     },
     {
@@ -2792,7 +2843,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 395.87599999969825,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 55,
+      "rank": 56,
       "champion": false
     },
     {
@@ -2843,7 +2894,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 395.89199999999255,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 56,
+      "rank": 57,
       "champion": false
     },
     {
@@ -2889,7 +2940,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 347.1889999997802,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 57,
+      "rank": 58,
       "champion": false
     },
     {
@@ -2940,7 +2991,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 504.8910000002943,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 58,
+      "rank": 59,
       "champion": false
     },
     {
@@ -2991,7 +3042,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 415.4360000002198,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 59,
+      "rank": 60,
       "champion": false
     },
     {
@@ -3042,7 +3093,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 347.2519999993965,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 60,
+      "rank": 61,
       "champion": false
     },
     {
@@ -3093,7 +3144,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 257.7360000000335,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 61,
+      "rank": 62,
       "champion": false
     },
     {
@@ -3144,7 +3195,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 504.90599999949336,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 62,
+      "rank": 63,
       "champion": false
     },
     {
@@ -3195,7 +3246,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3502.655999999959,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 63,
+      "rank": 64,
       "champion": false
     },
     {
@@ -3246,7 +3297,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 415.405999999959,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 64,
+      "rank": 65,
       "champion": false
     },
     {
@@ -3292,7 +3343,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3502.625,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 65,
+      "rank": 66,
       "champion": false
     },
     {
@@ -3338,7 +3389,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3502.625,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 66,
+      "rank": 67,
       "champion": false
     },
     {
@@ -3391,7 +3442,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 67,
+      "rank": 68,
       "champion": false
     },
     {
@@ -3445,7 +3496,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 68,
+      "rank": 69,
       "champion": false
     },
     {
@@ -3499,7 +3550,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 69,
+      "rank": 70,
       "champion": false
     },
     {
@@ -3553,7 +3604,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 70,
+      "rank": 71,
       "champion": false
     },
     {
@@ -3604,7 +3655,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 521.3889999999665,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 71,
+      "rank": 72,
       "champion": false
     },
     {
@@ -3655,7 +3706,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 440.5929999994114,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 72,
+      "rank": 73,
       "champion": false
     },
     {
@@ -3706,7 +3757,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 440.62499999953434,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 73,
+      "rank": 74,
       "champion": false
     },
     {
@@ -3757,7 +3808,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 415.4060000004247,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 74,
+      "rank": 75,
       "champion": false
     },
     {
@@ -3811,7 +3862,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 495.0002351682633,
       "timing_status": "SEPARATE_TIMERS_UNAVAILABLE_FOR_LEGACY_CPU_COMPONENT; no retraining for fixed blend",
-      "rank": 75,
+      "rank": 76,
       "champion": false
     },
     {
@@ -3862,7 +3913,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 257.75,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 76,
+      "rank": 77,
       "champion": false
     },
     {
@@ -3913,7 +3964,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 504.9349999995902,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 77,
+      "rank": 78,
       "champion": false
     },
     {
@@ -3964,7 +4015,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3502.6569999996573,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 78,
+      "rank": 79,
       "champion": false
     },
     {
@@ -4015,7 +4066,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 468.9229999994859,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 79,
+      "rank": 80,
       "champion": false
     },
     {
@@ -4066,7 +4117,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 440.5779999997467,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 80,
+      "rank": 81,
       "champion": false
     },
     {
@@ -4117,7 +4168,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 395.90599999949336,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 81,
+      "rank": 82,
       "champion": false
     },
     {
@@ -4168,7 +4219,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 521.344000000041,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 82,
+      "rank": 83,
       "champion": false
     },
     {
@@ -4219,7 +4270,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 504.9199999999255,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 83,
+      "rank": 84,
       "champion": false
     },
     {
@@ -4270,7 +4321,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 395.9079999998212,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 84,
+      "rank": 85,
       "champion": false
     },
     {
@@ -4321,7 +4372,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 289.96799999987707,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 85,
+      "rank": 86,
       "champion": false
     },
     {
@@ -4372,7 +4423,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 521.344000000041,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 86,
+      "rank": 87,
       "champion": false
     },
     {
@@ -4421,7 +4472,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 87,
+      "rank": 88,
       "champion": false
     },
     {
@@ -4472,7 +4523,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 415.464999999851,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 88,
+      "rank": 89,
       "champion": false
     },
     {
@@ -4523,7 +4574,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 504.8899999996647,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 89,
+      "rank": 90,
       "champion": false
     },
     {
@@ -4574,7 +4625,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 257.7339999997057,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 90,
+      "rank": 91,
       "champion": false
     },
     {
@@ -4625,7 +4676,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 363.6740000001155,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 91,
+      "rank": 92,
       "champion": false
     },
     {
@@ -4676,7 +4727,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 257.75199999986216,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 92,
+      "rank": 93,
       "champion": false
     },
     {
@@ -4727,7 +4778,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 440.5939999995753,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 93,
+      "rank": 94,
       "champion": false
     },
     {
@@ -4778,7 +4829,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 257.7200000002049,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 94,
+      "rank": 95,
       "champion": false
     },
     {
@@ -4829,7 +4880,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3628.1379999998026,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 95,
+      "rank": 96,
       "champion": false
     },
     {
@@ -4883,7 +4934,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 96,
+      "rank": 97,
       "champion": false
     },
     {
@@ -4934,7 +4985,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3470.4229999999516,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 97,
+      "rank": 98,
       "champion": false
     },
     {
@@ -4988,7 +5039,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 489.7977270986885,
       "timing_status": "SEPARATE_TIMERS_UNAVAILABLE_FOR_LEGACY_CPU_COMPONENT; no retraining for fixed blend",
-      "rank": 98,
+      "rank": 99,
       "champion": false
     },
     {
@@ -5039,7 +5090,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 395.8899999996647,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 99,
+      "rank": 100,
       "champion": false
     },
     {
@@ -5090,7 +5141,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 521.3280000002123,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 100,
+      "rank": 101,
       "champion": false
     },
     {
@@ -5137,7 +5188,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 504.875,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 101,
+      "rank": 102,
       "champion": false
     },
     {
@@ -5188,7 +5239,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 395.87599999969825,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 102,
+      "rank": 103,
       "champion": false
     },
     {
@@ -5239,7 +5290,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 363.6739999996498,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 103,
+      "rank": 104,
       "champion": false
     },
     {
@@ -5290,7 +5341,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 504.92199999978766,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 104,
+      "rank": 105,
       "champion": false
     },
     {
@@ -5339,7 +5390,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 105,
+      "rank": 106,
       "champion": false
     },
     {
@@ -5390,7 +5441,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 415.4199999999255,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 106,
+      "rank": 107,
       "champion": false
     },
     {
@@ -5441,7 +5492,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 440.6089999997057,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 107,
+      "rank": 108,
       "champion": false
     },
     {
@@ -5492,7 +5543,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 415.4220000002533,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 108,
+      "rank": 109,
       "champion": false
     },
     {
@@ -5543,7 +5594,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 363.6579999998212,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 109,
+      "rank": 110,
       "champion": false
     },
     {
@@ -5594,7 +5645,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 415.4350000000559,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 110,
+      "rank": 111,
       "champion": false
     },
     {
@@ -5640,7 +5691,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 257.7039999999106,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 111,
+      "rank": 112,
       "champion": false
     },
     {
@@ -5691,7 +5742,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3628.092999999877,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 112,
+      "rank": 113,
       "champion": false
     },
     {
@@ -5742,7 +5793,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 521.3729999996722,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 113,
+      "rank": 114,
       "champion": false
     },
     {
@@ -5793,7 +5844,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3628.152999999933,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 114,
+      "rank": 115,
       "champion": false
     },
     {
@@ -5844,7 +5895,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3470.4069999996573,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 115,
+      "rank": 116,
       "champion": false
     },
     {
@@ -5895,7 +5946,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3628.121999999974,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 116,
+      "rank": 117,
       "champion": false
     },
     {
@@ -5946,7 +5997,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3628.1240000003017,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 117,
+      "rank": 118,
       "champion": false
     },
     {
@@ -5997,7 +6048,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 440.594000000041,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 118,
+      "rank": 119,
       "champion": false
     },
     {
@@ -6048,7 +6099,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3628.0930000003427,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 119,
+      "rank": 120,
       "champion": false
     },
     {
@@ -6099,7 +6150,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3470.438000000082,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 120,
+      "rank": 121,
       "champion": false
     },
     {
@@ -6150,7 +6201,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3608.578999999445,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 121,
+      "rank": 122,
       "champion": false
     },
     {
@@ -6201,7 +6252,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3470.407000000123,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 122,
+      "rank": 123,
       "champion": false
     },
     {
@@ -6248,7 +6299,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 395.8599999998696,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 123,
+      "rank": 124,
       "champion": false
     },
     {
@@ -6299,7 +6350,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 363.6579999998212,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 124,
+      "rank": 125,
       "champion": false
     },
     {
@@ -6350,7 +6401,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3470.4539999999106,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 125,
+      "rank": 126,
       "champion": false
     },
     {
@@ -6401,7 +6452,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3470.4229999999516,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 126,
+      "rank": 127,
       "champion": false
     },
     {
@@ -6452,7 +6503,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 440.5779999997467,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 127,
+      "rank": 128,
       "champion": false
     },
     {
@@ -6499,7 +6550,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 415.3900000001304,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 128,
+      "rank": 129,
       "champion": false
     },
     {
@@ -6550,7 +6601,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3608.6099999998696,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 129,
+      "rank": 130,
       "champion": false
     },
     {
@@ -6601,7 +6652,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3608.5789999999106,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 130,
+      "rank": 131,
       "champion": false
     },
     {
@@ -6652,7 +6703,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 521.3569999998435,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 131,
+      "rank": 132,
       "champion": false
     },
     {
@@ -6703,7 +6754,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 521.3279999997467,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 132,
+      "rank": 133,
       "champion": false
     },
     {
@@ -6754,7 +6805,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3628.1080000000075,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 133,
+      "rank": 134,
       "champion": false
     },
     {
@@ -6801,7 +6852,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3628.0770000000484,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 134,
+      "rank": 135,
       "champion": false
     },
     {
@@ -6852,7 +6903,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 363.6579999998212,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 135,
+      "rank": 136,
       "champion": false
     },
     {
@@ -6903,7 +6954,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 354.35800000000745,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 136,
+      "rank": 137,
       "champion": false
     },
     {
@@ -6954,7 +7005,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3608.5939999995753,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 137,
+      "rank": 138,
       "champion": false
     },
     {
@@ -7005,7 +7056,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3608.5629999996163,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 138,
+      "rank": 139,
       "champion": false
     },
     {
@@ -7056,7 +7107,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3608.5629999996163,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 139,
+      "rank": 140,
       "champion": false
     },
     {
@@ -7107,7 +7158,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 521.3600000003353,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 140,
+      "rank": 141,
       "champion": false
     },
     {
@@ -7158,7 +7209,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3470.4219999997877,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 141,
+      "rank": 142,
       "champion": false
     },
     {
@@ -7205,7 +7256,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 440.56300000008196,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 142,
+      "rank": 143,
       "champion": false
     },
     {
@@ -7251,7 +7302,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3470.3909999998286,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 143,
+      "rank": 144,
       "champion": false
     },
     {
@@ -7302,7 +7353,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 440.60899999924004,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 144,
+      "rank": 145,
       "champion": false
     },
     {
@@ -7353,7 +7404,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 351.125,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 145,
+      "rank": 146,
       "champion": false
     },
     {
@@ -7404,7 +7455,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 354.3430000003427,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 146,
+      "rank": 147,
       "champion": false
     },
     {
@@ -7450,7 +7501,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 521.311999999918,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 147,
+      "rank": 148,
       "champion": false
     },
     {
@@ -7501,7 +7552,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 354.3589999987744,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 148,
+      "rank": 149,
       "champion": false
     },
     {
@@ -7552,7 +7603,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 363.64199999999255,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 149,
+      "rank": 150,
       "champion": false
     },
     {
@@ -7603,7 +7654,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 351.1229999996722,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 150,
+      "rank": 151,
       "champion": false
     },
     {
@@ -7654,7 +7705,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3608.5779999997467,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 151,
+      "rank": 152,
       "champion": false
     },
     {
@@ -7705,7 +7756,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 363.6419999995269,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 152,
+      "rank": 153,
       "champion": false
     },
     {
@@ -7752,7 +7803,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3608.5469999997877,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 153,
+      "rank": 154,
       "champion": false
     },
     {
@@ -7803,7 +7854,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 363.6899999999441,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 154,
+      "rank": 155,
       "champion": false
     },
     {
@@ -7854,7 +7905,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 351.094000000041,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 155,
+      "rank": 156,
       "champion": false
     },
     {
@@ -7905,7 +7956,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3628.1090000001714,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 156,
+      "rank": 157,
       "champion": false
     },
     {
@@ -7956,7 +8007,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3470.43899999978,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 157,
+      "rank": 158,
       "champion": false
     },
     {
@@ -8007,7 +8058,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 354.327999999281,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 158,
+      "rank": 159,
       "champion": false
     },
     {
@@ -8058,7 +8109,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3582.1902351682074,
       "timing_status": "SEPARATE_TIMERS_UNAVAILABLE_FOR_LEGACY_CPU_COMPONENT; no retraining for fixed blend",
-      "rank": 159,
+      "rank": 160,
       "champion": false
     },
     {
@@ -8105,7 +8156,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 363.62599999969825,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 160,
+      "rank": 161,
       "champion": false
     },
     {
@@ -8156,7 +8207,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 351.09299999987707,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 161,
+      "rank": 162,
       "champion": false
     },
     {
@@ -8207,7 +8258,61 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3608.5949999997392,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 162,
+      "rank": 163,
+      "champion": false
+    },
+    {
+      "experiment_id": "generalization-robust-v1/robust_deep_cap7200_novel_guarded",
+      "model": "robust_deep_cap7200_novel_guarded",
+      "model_family": "lightgbm",
+      "parameters": {
+        "kind": "lightgbm",
+        "iterations": 1000,
+        "depth": 9,
+        "learning_rate": 0.035,
+        "threads": 2,
+        "seed": 20261009,
+        "demand": false,
+        "fit_target_cap_seconds": 7200.0
+      },
+      "device": "CPU",
+      "git_commit": "67df5fb087536ae1502b4f032f23798d25e61c8c",
+      "git_dirty_at_training": true,
+      "source_hashes": {
+        "forecast_robust.py": "28bb63ce279521120a75c55feeebfa93b79f69280f080c735006889e9fcd5a7e",
+        "forecast_delivery.py": "cbeeb8ba0c2052ba0005f859ab50c2c5cfb22f8eae0c45b141e21cff746a54eb",
+        "forecast_novel_finalize.py": "6762637705f7c3421787baaa71db9c9d1cd5ddd983667de73bf91a10c2a19da5",
+        "forecast_novel_guard.py": "5395ddfbc963021665e1ed218e6eb57b9bb2cb6aedbb8d03db27486be484e3ec",
+        "forecast_guard.py": "9db44e5a25bb4b2f3a8b8dbd3b6b282a43274c4b302978828aa755ab79e1ab31",
+        "forecast_model.py": "0a0e599c83ffe066074a9fe8977f5e7e5215a61694f7d97669add7743dcbeafb",
+        "forecast_features.py": "18faec25384eee09d51499c48db1bd6c67a935f7b24b5dc01518acb5009ec393",
+        "forecast_run.py": "8db35217e8476f5954cb4135885037d65c642961e0d24d86cf7e9a6677d92447",
+        "pipeline.py": "17560ba5831eb5ea7e5b7bb3e031bf165959ab186b1249e621b27a0f9f0d195d"
+      },
+      "timestamp": "2026-10-12T13:08:24.858396+00:00",
+      "validation_folds": ["2025-09", "2025-10", "2025-11"],
+      "training_time_seconds": 266.6239999998361,
+      "inference_time_seconds": 46.563000000081956,
+      "timing_status": "MEASURED_SEPARATELY_SUM_OF_COMPLETED_FOLDS",
+      "combined_time_seconds": 313.18699999991804,
+      "status": "COMPLETED_VALIDATED",
+      "mean_mae": 220.06022480626189,
+      "median_mae": 218.80571120456491,
+      "worst_fold_mae": 227.88994834403212,
+      "worst_decile_mae": 724.3312037041003,
+      "unseen_aircraft_mae": 284.5973562114111,
+      "unseen_airport_stand_mae": 296.0351062073864,
+      "catastrophic_error_rate": 0.00042109141631466054,
+      "pooled_mae": 219.7207825319821,
+      "per_fold_mae": {
+        "9": 218.80571120456491,
+        "10": 213.48501487018862,
+        "11": 227.88994834403212
+      },
+      "validation_rows": 531951,
+      "unseen_aircraft_rows": 22,
+      "unseen_airport_stand_rows": 116,
+      "rank": 164,
       "champion": false
     },
     {
@@ -8258,7 +8363,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 354.34299999894574,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 163,
+      "rank": 165,
       "champion": false
     },
     {
@@ -8309,7 +8414,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 501.82999999960884,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 164,
+      "rank": 166,
       "champion": false
     },
     {
@@ -8360,7 +8465,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 354.327999999281,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 165,
+      "rank": 167,
       "champion": false
     },
     {
@@ -8411,7 +8516,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 354.3119999994524,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 166,
+      "rank": 168,
       "champion": false
     },
     {
@@ -8462,7 +8567,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3576.9877270986326,
       "timing_status": "SEPARATE_TIMERS_UNAVAILABLE_FOR_LEGACY_CPU_COMPONENT; no retraining for fixed blend",
-      "rank": 167,
+      "rank": 169,
       "champion": false
     },
     {
@@ -8513,7 +8618,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 351.1389999999665,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 168,
+      "rank": 170,
       "champion": false
     },
     {
@@ -8564,7 +8669,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 501.8139999997802,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 169,
+      "rank": 171,
       "champion": false
     },
     {
@@ -8610,7 +8715,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 354.29699999978766,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 170,
+      "rank": 172,
       "champion": false
     },
     {
@@ -8656,7 +8761,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 354.29699999978766,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 171,
+      "rank": 173,
       "champion": false
     },
     {
@@ -8707,7 +8812,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 354.3739999998361,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 172,
+      "rank": 174,
       "champion": false
     },
     {
@@ -8758,7 +8863,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 351.1089999997057,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 173,
+      "rank": 175,
       "champion": false
     },
     {
@@ -8809,7 +8914,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 351.10800000000745,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 174,
+      "rank": 176,
       "champion": false
     },
     {
@@ -8860,7 +8965,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 351.10900000017136,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 175,
+      "rank": 177,
       "champion": false
     },
     {
@@ -8911,7 +9016,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 264.8880000002682,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 176,
+      "rank": 178,
       "champion": false
     },
     {
@@ -8962,7 +9067,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 383.23300000000745,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 177,
+      "rank": 179,
       "champion": false
     },
     {
@@ -9013,7 +9118,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 383.1880000005476,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 178,
+      "rank": 180,
       "champion": false
     },
     {
@@ -9064,7 +9169,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 264.85899999924004,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 179,
+      "rank": 181,
       "champion": false
     },
     {
@@ -9117,7 +9222,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 180,
+      "rank": 182,
       "champion": false
     },
     {
@@ -9171,7 +9276,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 181,
+      "rank": 183,
       "champion": false
     },
     {
@@ -9225,7 +9330,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 182,
+      "rank": 184,
       "champion": false
     },
     {
@@ -9272,7 +9377,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 351.07800000021234,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 183,
+      "rank": 185,
       "champion": false
     },
     {
@@ -9326,7 +9431,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 482.0531341400929,
       "timing_status": "SEPARATE_TIMERS_UNAVAILABLE_FOR_LEGACY_CPU_COMPONENT; no retraining for fixed blend",
-      "rank": 184,
+      "rank": 186,
       "champion": false
     },
     {
@@ -9377,7 +9482,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 383.18800000008196,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 185,
+      "rank": 187,
       "champion": false
     },
     {
@@ -9428,7 +9533,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 264.8279999997467,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 186,
+      "rank": 188,
       "champion": false
     },
     {
@@ -9479,7 +9584,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 383.1720000002533,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 187,
+      "rank": 189,
       "champion": false
     },
     {
@@ -9530,7 +9635,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 225.51800000015646,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 188,
+      "rank": 190,
       "champion": false
     },
     {
@@ -9581,7 +9686,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 264.8580000004731,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 189,
+      "rank": 191,
       "champion": false
     },
     {
@@ -9632,7 +9737,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 501.7979999994859,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 190,
+      "rank": 192,
       "champion": false
     },
     {
@@ -9698,7 +9803,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 191,
+      "rank": 193,
       "champion": false,
       "training_time_scope": "TOTAL_MEASURED_GLOBAL_PLUS_SPECIALIST_FITS; global checkpoint reused",
       "incremental_training_time_seconds": 136.10281448625028,
@@ -9753,7 +9858,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 358.50283640855923,
       "timing_status": "SEPARATE_TIMERS_UNAVAILABLE_FOR_LEGACY_CPU_COMPONENT; no retraining for fixed blend",
-      "rank": 192,
+      "rank": 194,
       "champion": false
     },
     {
@@ -9804,7 +9909,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 225.50199999986216,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 193,
+      "rank": 195,
       "champion": false
     },
     {
@@ -9855,7 +9960,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 264.8729999992065,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 194,
+      "rank": 196,
       "champion": false
     },
     {
@@ -9906,7 +10011,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3569.243134140037,
       "timing_status": "SEPARATE_TIMERS_UNAVAILABLE_FOR_LEGACY_CPU_COMPONENT; no retraining for fixed blend",
-      "rank": 195,
+      "rank": 197,
       "champion": false
     },
     {
@@ -9957,7 +10062,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 383.2170000001788,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 196,
+      "rank": 198,
       "champion": false
     },
     {
@@ -10008,7 +10113,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3563.811999999918,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 197,
+      "rank": 199,
       "champion": false
     },
     {
@@ -10059,7 +10164,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 390.35500000044703,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 198,
+      "rank": 200,
       "champion": false
     },
     {
@@ -10109,7 +10214,7 @@
       "inference_time_seconds": 2.6220692400820553,
       "combined_time_seconds": 443.865962266922,
       "timing_status": "SUM_OF_MEASURED_COMPONENT_TIMES; blend composition unmeasured",
-      "rank": 199,
+      "rank": 201,
       "champion": false
     },
     {
@@ -10158,7 +10263,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 200,
+      "rank": 202,
       "champion": false
     },
     {
@@ -10209,7 +10314,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 264.84199999971315,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 201,
+      "rank": 203,
       "champion": false
     },
     {
@@ -10260,7 +10365,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 264.87400000030175,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 202,
+      "rank": 204,
       "champion": false
     },
     {
@@ -10311,7 +10416,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 457.06300000008196,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 203,
+      "rank": 205,
       "champion": false
     },
     {
@@ -10362,7 +10467,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 264.8429999994114,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 204,
+      "rank": 206,
       "champion": false
     },
     {
@@ -10413,7 +10518,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 383.1720000002533,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 205,
+      "rank": 207,
       "champion": false
     },
     {
@@ -10464,7 +10569,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 390.31099999975413,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 206,
+      "rank": 208,
       "champion": false
     },
     {
@@ -10518,7 +10623,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 207,
+      "rank": 209,
       "champion": false
     },
     {
@@ -10569,7 +10674,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 383.2009999998845,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 208,
+      "rank": 210,
       "champion": false
     },
     {
@@ -10620,7 +10725,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 390.31000000052154,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 209,
+      "rank": 211,
       "champion": false
     },
     {
@@ -10671,7 +10776,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3563.780999999959,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 210,
+      "rank": 212,
       "champion": false
     },
     {
@@ -10722,7 +10827,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3563.810999999754,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 211,
+      "rank": 213,
       "champion": false
     },
     {
@@ -10773,7 +10878,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3563.8270000000484,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 212,
+      "rank": 214,
       "champion": false
     },
     {
@@ -10824,7 +10929,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3563.779999999795,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 213,
+      "rank": 215,
       "champion": false
     },
     {
@@ -10875,7 +10980,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3563.7960000000894,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 214,
+      "rank": 216,
       "champion": false
     },
     {
@@ -10926,7 +11031,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 383.20400000037625,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 215,
+      "rank": 217,
       "champion": false
     },
     {
@@ -10977,7 +11082,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 457.03099999949336,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 216,
+      "rank": 218,
       "champion": false
     },
     {
@@ -11023,7 +11128,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 264.81199999991804,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 217,
+      "rank": 219,
       "champion": false
     },
     {
@@ -11069,7 +11174,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 264.81199999991804,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 218,
+      "rank": 220,
       "champion": false
     },
     {
@@ -11120,7 +11225,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 390.28000000026077,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 219,
+      "rank": 221,
       "champion": false
     },
     {
@@ -11171,7 +11276,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 457.03200000012293,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 220,
+      "rank": 222,
       "champion": false
     },
     {
@@ -11222,7 +11327,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 225.48600000003353,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 221,
+      "rank": 223,
       "champion": false
     },
     {
@@ -11269,7 +11374,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 383.155999999959,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 222,
+      "rank": 224,
       "champion": false
     },
     {
@@ -11335,7 +11440,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 223,
+      "rank": 225,
       "champion": false,
       "training_time_scope": "TOTAL_MEASURED_GLOBAL_PLUS_SPECIALIST_FITS; global checkpoint reused",
       "incremental_training_time_seconds": 130.93628441123292,
@@ -11389,7 +11494,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 476.589999999851,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 224,
+      "rank": 226,
       "champion": false
     },
     {
@@ -11440,7 +11545,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 476.5770000005141,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 225,
+      "rank": 227,
       "champion": false
     },
     {
@@ -11491,7 +11596,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 232.64000000059605,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 226,
+      "rank": 228,
       "champion": false
     },
     {
@@ -11542,7 +11647,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 540.9030000003986,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 227,
+      "rank": 229,
       "champion": false
     },
     {
@@ -11593,7 +11698,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 390.3399999993853,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 228,
+      "rank": 230,
       "champion": false
     },
     {
@@ -11644,7 +11749,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3563.7960000000894,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 229,
+      "rank": 231,
       "champion": false
     },
     {
@@ -11697,7 +11802,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 230,
+      "rank": 232,
       "champion": false
     },
     {
@@ -11751,7 +11856,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 231,
+      "rank": 233,
       "champion": false
     },
     {
@@ -11798,7 +11903,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3563.7650000001304,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 232,
+      "rank": 234,
       "champion": false
     },
     {
@@ -11849,7 +11954,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 457.0149999996647,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 233,
+      "rank": 235,
       "champion": false
     },
     {
@@ -11899,7 +12004,7 @@
       "inference_time_seconds": 2.600337745156139,
       "combined_time_seconds": 436.1213693083264,
       "timing_status": "SUM_OF_MEASURED_COMPONENT_TIMES; blend composition unmeasured",
-      "rank": 234,
+      "rank": 236,
       "champion": false
     },
     {
@@ -11950,7 +12055,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 476.5449999999255,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 235,
+      "rank": 237,
       "champion": false
     },
     {
@@ -12001,7 +12106,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 390.30899999989197,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 236,
+      "rank": 238,
       "champion": false
     },
     {
@@ -12052,7 +12157,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 232.64099999936298,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 237,
+      "rank": 239,
       "champion": false
     },
     {
@@ -12101,7 +12206,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 238,
+      "rank": 240,
       "champion": false
     },
     {
@@ -12152,7 +12257,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 476.54600000055507,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 239,
+      "rank": 241,
       "champion": false
     },
     {
@@ -12203,7 +12308,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 540.8580000004731,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 240,
+      "rank": 242,
       "champion": false
     },
     {
@@ -12254,7 +12359,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 390.29499999945983,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 241,
+      "rank": 243,
       "champion": false
     },
     {
@@ -12305,7 +12410,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 232.62400000030175,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 242,
+      "rank": 244,
       "champion": false
     },
     {
@@ -12356,7 +12461,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 457.04699999978766,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 243,
+      "rank": 245,
       "champion": false
     },
     {
@@ -12407,7 +12512,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3563.7959999996237,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 244,
+      "rank": 246,
       "champion": false
     },
     {
@@ -12458,7 +12563,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 390.32600000081584,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 245,
+      "rank": 247,
       "champion": false
     },
     {
@@ -12509,7 +12614,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 232.60999999986961,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 246,
+      "rank": 248,
       "champion": false
     },
     {
@@ -12560,7 +12665,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 318.875,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 247,
+      "rank": 249,
       "champion": false
     },
     {
@@ -12611,7 +12716,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 318.90700000012293,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 248,
+      "rank": 250,
       "champion": false
     },
     {
@@ -12658,7 +12763,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 390.2639999999665,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 249,
+      "rank": 251,
       "champion": false
     },
     {
@@ -12708,7 +12813,7 @@
       "inference_time_seconds": 2.564359750598669,
       "combined_time_seconds": 430.91886123875156,
       "timing_status": "SUM_OF_MEASURED_COMPONENT_TIMES; blend composition unmeasured",
-      "rank": 250,
+      "rank": 252,
       "champion": false
     },
     {
@@ -12759,7 +12864,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 232.62499999953434,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 251,
+      "rank": 253,
       "champion": false
     },
     {
@@ -12810,7 +12915,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 457.030999999959,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 252,
+      "rank": 254,
       "champion": false
     },
     {
@@ -12861,7 +12966,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 476.6060000001453,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 253,
+      "rank": 255,
       "champion": false
     },
     {
@@ -12912,7 +13017,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 457.04699999978766,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 254,
+      "rank": 256,
       "champion": false
     },
     {
@@ -12963,7 +13068,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 457.01599999982864,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 255,
+      "rank": 257,
       "champion": false
     },
     {
@@ -13017,7 +13122,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 256,
+      "rank": 258,
       "champion": false
     },
     {
@@ -13068,7 +13173,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 318.8589999997057,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 257,
+      "rank": 259,
       "champion": false
     },
     {
@@ -13119,7 +13224,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 318.8760000001639,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 258,
+      "rank": 260,
       "champion": false
     },
     {
@@ -13170,7 +13275,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 232.59400000004098,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 259,
+      "rank": 261,
       "champion": false
     },
     {
@@ -13221,7 +13326,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 232.60899999924004,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 260,
+      "rank": 262,
       "champion": false
     },
     {
@@ -13272,7 +13377,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 476.5610000002198,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 261,
+      "rank": 263,
       "champion": false
     },
     {
@@ -13323,7 +13428,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 476.57500000018626,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 262,
+      "rank": 264,
       "champion": false
     },
     {
@@ -13369,7 +13474,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 457.0,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 263,
+      "rank": 265,
       "champion": false
     },
     {
@@ -13420,7 +13525,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 540.8870000001043,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 264,
+      "rank": 266,
       "champion": false
     },
     {
@@ -13471,7 +13576,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 476.5610000002198,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 265,
+      "rank": 267,
       "champion": false
     },
     {
@@ -13522,7 +13627,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 232.65600000042468,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 266,
+      "rank": 268,
       "champion": false
     },
     {
@@ -13575,7 +13680,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 267,
+      "rank": 269,
       "champion": false
     },
     {
@@ -13629,7 +13734,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 268,
+      "rank": 270,
       "champion": false
     },
     {
@@ -13680,7 +13785,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 370.7960000000894,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 269,
+      "rank": 271,
       "champion": false
     },
     {
@@ -13726,7 +13831,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 232.57799999974668,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 270,
+      "rank": 272,
       "champion": false
     },
     {
@@ -13777,7 +13882,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 370.796999999322,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 271,
+      "rank": 273,
       "champion": false
     },
     {
@@ -13828,7 +13933,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 318.8910000002943,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 272,
+      "rank": 274,
       "champion": false
     },
     {
@@ -13877,7 +13982,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3445.6928364085034,
       "timing_status": "SEPARATE_TIMERS_UNAVAILABLE_FOR_LEGACY_CPU_COMPONENT; no retraining for fixed blend",
-      "rank": 273,
+      "rank": 275,
       "champion": false
     },
     {
@@ -13923,7 +14028,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 476.53000000026077,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 274,
+      "rank": 276,
       "champion": false
     },
     {
@@ -13972,7 +14077,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 275,
+      "rank": 277,
       "champion": false
     },
     {
@@ -14023,7 +14128,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 370.78000000026077,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 276,
+      "rank": 278,
       "champion": false
     },
     {
@@ -14074,7 +14179,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 370.76599999982864,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 277,
+      "rank": 279,
       "champion": false
     },
     {
@@ -14125,7 +14230,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 318.875,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 278,
+      "rank": 280,
       "champion": false
     },
     {
@@ -14176,7 +14281,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 318.8600000003353,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 279,
+      "rank": 281,
       "champion": false
     },
     {
@@ -14228,7 +14333,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 351.4837381024845,
       "timing_status": "SEPARATE_TIMERS_UNAVAILABLE_FOR_LEGACY_CPU_COMPONENT; no retraining for fixed blend",
-      "rank": 280,
+      "rank": 282,
       "champion": false
     },
     {
@@ -14279,7 +14384,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 318.89099999982864,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 281,
+      "rank": 283,
       "champion": false
     },
     {
@@ -14330,7 +14435,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 370.7809999990277,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 282,
+      "rank": 284,
       "champion": false
     },
     {
@@ -14377,7 +14482,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 318.844000000041,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 283,
+      "rank": 285,
       "champion": false
     },
     {
@@ -14428,7 +14533,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 6715.358999999706,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 284,
+      "rank": 286,
       "champion": false
     },
     {
@@ -14479,7 +14584,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 6715.327999999747,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 285,
+      "rank": 287,
       "champion": false
     },
     {
@@ -14530,7 +14635,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 370.74999999953434,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 286,
+      "rank": 288,
       "champion": false
     },
     {
@@ -14584,7 +14689,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 287,
+      "rank": 289,
       "champion": false
     },
     {
@@ -14635,7 +14740,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 6715.342999999877,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 288,
+      "rank": 290,
       "champion": false
     },
     {
@@ -14684,7 +14789,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 289,
+      "rank": 291,
       "champion": false
     },
     {
@@ -14735,7 +14840,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 370.76499999919906,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 290,
+      "rank": 292,
       "champion": false
     },
     {
@@ -14786,7 +14891,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 370.8120000003837,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 291,
+      "rank": 293,
       "champion": false
     },
     {
@@ -14833,7 +14938,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 370.7339999997057,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 292,
+      "rank": 294,
       "champion": false
     },
     {
@@ -14884,7 +14989,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3477.545999999158,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 293,
+      "rank": 295,
       "champion": false
     },
     {
@@ -14933,7 +15038,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3438.6737381024286,
       "timing_status": "SEPARATE_TIMERS_UNAVAILABLE_FOR_LEGACY_CPU_COMPONENT; no retraining for fixed blend",
-      "rank": 294,
+      "rank": 296,
       "champion": false
     },
     {
@@ -14984,7 +15089,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3477.57600000035,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 295,
+      "rank": 297,
       "champion": false
     },
     {
@@ -15035,7 +15140,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3477.545000000391,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 296,
+      "rank": 298,
       "champion": false
     },
     {
@@ -15089,7 +15194,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 297,
+      "rank": 299,
       "champion": false
     },
     {
@@ -15140,7 +15245,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3477.5149999996647,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 298,
+      "rank": 300,
       "champion": false
     },
     {
@@ -15191,7 +15296,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3477.5609999992885,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 299,
+      "rank": 301,
       "champion": false
     },
     {
@@ -15242,7 +15347,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3477.5299999993294,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 300,
+      "rank": 302,
       "champion": false
     },
     {
@@ -15294,7 +15399,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 370.44388641929254,
       "timing_status": "SEPARATE_TIMERS_UNAVAILABLE_FOR_LEGACY_CPU_COMPONENT; no retraining for fixed blend",
-      "rank": 301,
+      "rank": 303,
       "champion": false
     },
     {
@@ -15345,7 +15450,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3477.529999999795,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 302,
+      "rank": 304,
       "champion": false
     },
     {
@@ -15391,7 +15496,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3477.498999999836,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 303,
+      "rank": 305,
       "champion": false
     },
     {
@@ -15437,7 +15542,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3477.498999999836,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 304,
+      "rank": 306,
       "champion": false
     },
     {
@@ -15503,7 +15608,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 305,
+      "rank": 307,
       "champion": false,
       "training_time_scope": "TOTAL_MEASURED_GLOBAL_PLUS_SPECIALIST_FITS; global checkpoint reused",
       "incremental_training_time_seconds": 130.20548788039014,
@@ -15557,7 +15662,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3477.56100000022,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 306,
+      "rank": 308,
       "champion": false
     },
     {
@@ -15608,7 +15713,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 326.0290000005625,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 307,
+      "rank": 309,
       "champion": false
     },
     {
@@ -15659,7 +15764,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 325.9979999992065,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 308,
+      "rank": 310,
       "champion": false
     },
     {
@@ -15710,7 +15815,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 325.9980000006035,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 309,
+      "rank": 311,
       "champion": false
     },
     {
@@ -15761,7 +15866,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 325.96699999971315,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 310,
+      "rank": 312,
       "champion": false
     },
     {
@@ -15810,7 +15915,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 3457.6338864192367,
       "timing_status": "SEPARATE_TIMERS_UNAVAILABLE_FOR_LEGACY_CPU_COMPONENT; no retraining for fixed blend",
-      "rank": 311,
+      "rank": 313,
       "champion": false
     },
     {
@@ -15861,7 +15966,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 412.2639999999665,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 312,
+      "rank": 314,
       "champion": false
     },
     {
@@ -15912,7 +16017,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 326.0139999995008,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 313,
+      "rank": 315,
       "champion": false
     },
     {
@@ -15963,7 +16068,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 325.98300000000745,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 314,
+      "rank": 316,
       "champion": false
     },
     {
@@ -16014,7 +16119,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 412.23300000000745,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 315,
+      "rank": 317,
       "champion": false
     },
     {
@@ -16065,7 +16170,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 325.9829999995418,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 316,
+      "rank": 318,
       "champion": false
     },
     {
@@ -16116,7 +16221,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 326.0130000002682,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 317,
+      "rank": 319,
       "champion": false
     },
     {
@@ -16163,7 +16268,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 325.95200000004843,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 318,
+      "rank": 320,
       "champion": false
     },
     {
@@ -16217,7 +16322,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 319,
+      "rank": 321,
       "champion": false
     },
     {
@@ -16268,7 +16373,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 412.24900000030175,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 320,
+      "rank": 322,
       "champion": false
     },
     {
@@ -16321,7 +16426,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 321,
+      "rank": 323,
       "champion": false
     },
     {
@@ -16375,7 +16480,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 322,
+      "rank": 324,
       "champion": false
     },
     {
@@ -16424,7 +16529,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 323,
+      "rank": 325,
       "champion": false
     },
     {
@@ -16485,7 +16590,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 324,
+      "rank": 326,
       "champion": false
     },
     {
@@ -16533,7 +16638,7 @@
       "inference_time_seconds": 1.8418453144840896,
       "combined_time_seconds": 169.05457451101393,
       "timing_status": "SUM_OF_MEASURED_COMPONENT_TIMES; blend composition unmeasured",
-      "rank": 325,
+      "rank": 327,
       "champion": false
     },
     {
@@ -16581,7 +16686,7 @@
       "inference_time_seconds": 2.0920823831111193,
       "combined_time_seconds": 188.01472282782197,
       "timing_status": "SUM_OF_MEASURED_COMPONENT_TIMES; blend composition unmeasured",
-      "rank": 326,
+      "rank": 328,
       "champion": false
     },
     {
@@ -16632,7 +16737,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 239.76299999980256,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 327,
+      "rank": 329,
       "champion": false
     },
     {
@@ -16683,7 +16788,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 239.7320000003092,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 328,
+      "rank": 330,
       "champion": false
     },
     {
@@ -16737,7 +16842,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 329,
+      "rank": 331,
       "champion": false
     },
     {
@@ -16791,7 +16896,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 330,
+      "rank": 332,
       "champion": false
     },
     {
@@ -16852,7 +16957,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 331,
+      "rank": 333,
       "champion": false
     },
     {
@@ -16903,7 +17008,7 @@
       "inference_time_seconds": null,
       "combined_time_seconds": 239.7169999992475,
       "timing_status": "SUM_OF_LEGACY_COMPONENT_TIMES; no retraining for fixed blend",
-      "rank": 332,
+      "rank": 334,
       "champion": false
     },
     {
@@ -16952,7 +17057,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 333,
+      "rank": 335,
       "champion": false
     },
     {
@@ -17000,7 +17105,7 @@
       "inference_time_seconds": 2.065049009863287,
       "combined_time_seconds": 180.99562452174723,
       "timing_status": "SUM_OF_MEASURED_COMPONENT_TIMES; blend composition unmeasured",
-      "rank": 334,
+      "rank": 336,
       "champion": false
     },
     {
@@ -17061,7 +17166,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 335,
+      "rank": 337,
       "champion": false
     },
     {
@@ -17110,7 +17215,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 336,
+      "rank": 338,
       "champion": false
     },
     {
@@ -17159,7 +17264,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 337,
+      "rank": 339,
       "champion": false
     },
     {
@@ -17208,7 +17313,7 @@
       "validation_rows": 531951,
       "unseen_aircraft_rows": 22,
       "unseen_airport_stand_rows": 116,
-      "rank": 338,
+      "rank": 340,
       "champion": false
     },
     {
@@ -22159,6 +22264,138 @@
       "training_time_scope": "TOTAL_MEASURED_GLOBAL_PLUS_SPECIALIST_FITS; global checkpoint reused",
       "incremental_training_time_seconds": 45.7627517580986,
       "reused_global_training_seconds": 35.34386761998758
+    },
+    {
+      "model": "robust_deep_cap7200_novel_guarded",
+      "model_family": "lightgbm",
+      "device": "CPU",
+      "git_commit": "67df5fb087536ae1502b4f032f23798d25e61c8c",
+      "git_dirty_at_training": true,
+      "source_hashes": {
+        "forecast_robust.py": "28bb63ce279521120a75c55feeebfa93b79f69280f080c735006889e9fcd5a7e",
+        "forecast_delivery.py": "cbeeb8ba0c2052ba0005f859ab50c2c5cfb22f8eae0c45b141e21cff746a54eb",
+        "forecast_novel_finalize.py": "6762637705f7c3421787baaa71db9c9d1cd5ddd983667de73bf91a10c2a19da5",
+        "forecast_novel_guard.py": "5395ddfbc963021665e1ed218e6eb57b9bb2cb6aedbb8d03db27486be484e3ec",
+        "forecast_guard.py": "9db44e5a25bb4b2f3a8b8dbd3b6b282a43274c4b302978828aa755ab79e1ab31",
+        "forecast_model.py": "0a0e599c83ffe066074a9fe8977f5e7e5215a61694f7d97669add7743dcbeafb",
+        "forecast_features.py": "18faec25384eee09d51499c48db1bd6c67a935f7b24b5dc01518acb5009ec393",
+        "forecast_run.py": "8db35217e8476f5954cb4135885037d65c642961e0d24d86cf7e9a6677d92447",
+        "pipeline.py": "17560ba5831eb5ea7e5b7bb3e031bf165959ab186b1249e621b27a0f9f0d195d"
+      },
+      "training_time_seconds": 75.25,
+      "inference_time_seconds": 14.844000000040978,
+      "timing_status": "MEASURED_SEPARATELY_SUM_OF_COMPLETED_FOLDS",
+      "combined_time_seconds": 90.09400000004098,
+      "mean_mae": 218.80571120456491,
+      "median_mae": 218.80571120456491,
+      "worst_fold_mae": 218.80571120456491,
+      "worst_decile_mae": 711.0372775924118,
+      "pooled_mae": 218.80571120456491,
+      "per_fold_mae": {
+        "9": 218.80571120456491
+      },
+      "catastrophic_error_rate": 0.00048385606097673685,
+      "validation_rows": 183939,
+      "unseen_aircraft_mae": 254.62428206788218,
+      "unseen_aircraft_rows": 10,
+      "unseen_airport_stand_mae": 284.34945474165806,
+      "unseen_airport_stand_rows": 54,
+      "experiment_id": "generalization-robust-v1/forward-09-robust_deep_cap7200_novel_guarded",
+      "rank": null,
+      "status": "COMPLETED_SINGLE_FOLD_NOT_COMPARABLE_TO_FULL_CV",
+      "validation_folds": ["2025-09"],
+      "timestamp": "2026-10-12T13:04:29.767580+00:00",
+      "parameters": {
+        "fit_target_cap_seconds": 7200.0
+      }
+    },
+    {
+      "model": "robust_deep_cap7200_novel_guarded",
+      "model_family": "lightgbm",
+      "device": "CPU",
+      "git_commit": "67df5fb087536ae1502b4f032f23798d25e61c8c",
+      "git_dirty_at_training": true,
+      "source_hashes": {
+        "forecast_robust.py": "28bb63ce279521120a75c55feeebfa93b79f69280f080c735006889e9fcd5a7e",
+        "forecast_delivery.py": "cbeeb8ba0c2052ba0005f859ab50c2c5cfb22f8eae0c45b141e21cff746a54eb",
+        "forecast_novel_finalize.py": "6762637705f7c3421787baaa71db9c9d1cd5ddd983667de73bf91a10c2a19da5",
+        "forecast_novel_guard.py": "5395ddfbc963021665e1ed218e6eb57b9bb2cb6aedbb8d03db27486be484e3ec",
+        "forecast_guard.py": "9db44e5a25bb4b2f3a8b8dbd3b6b282a43274c4b302978828aa755ab79e1ab31",
+        "forecast_model.py": "0a0e599c83ffe066074a9fe8977f5e7e5215a61694f7d97669add7743dcbeafb",
+        "forecast_features.py": "18faec25384eee09d51499c48db1bd6c67a935f7b24b5dc01518acb5009ec393",
+        "forecast_run.py": "8db35217e8476f5954cb4135885037d65c642961e0d24d86cf7e9a6677d92447",
+        "pipeline.py": "17560ba5831eb5ea7e5b7bb3e031bf165959ab186b1249e621b27a0f9f0d195d"
+      },
+      "training_time_seconds": 83.4839999997057,
+      "inference_time_seconds": 18.188000000081956,
+      "timing_status": "MEASURED_SEPARATELY_SUM_OF_COMPLETED_FOLDS",
+      "combined_time_seconds": 101.67199999978766,
+      "mean_mae": 213.48501487018862,
+      "median_mae": 213.48501487018862,
+      "worst_fold_mae": 213.48501487018862,
+      "worst_decile_mae": 703.153032499878,
+      "pooled_mae": 213.48501487018862,
+      "per_fold_mae": {
+        "10": 213.48501487018862
+      },
+      "catastrophic_error_rate": 0.0004577866821775566,
+      "validation_rows": 185676,
+      "unseen_aircraft_mae": 403.38229701631934,
+      "unseen_aircraft_rows": 4,
+      "unseen_airport_stand_mae": 355.4989733686707,
+      "unseen_airport_stand_rows": 14,
+      "experiment_id": "generalization-robust-v1/forward-10-robust_deep_cap7200_novel_guarded",
+      "rank": null,
+      "status": "COMPLETED_SINGLE_FOLD_NOT_COMPARABLE_TO_FULL_CV",
+      "validation_folds": ["2025-10"],
+      "timestamp": "2026-10-12T13:06:17.734817+00:00",
+      "parameters": {
+        "fit_target_cap_seconds": 7200.0
+      }
+    },
+    {
+      "model": "robust_deep_cap7200_novel_guarded",
+      "model_family": "lightgbm",
+      "device": "CPU",
+      "git_commit": "67df5fb087536ae1502b4f032f23798d25e61c8c",
+      "git_dirty_at_training": true,
+      "source_hashes": {
+        "forecast_robust.py": "28bb63ce279521120a75c55feeebfa93b79f69280f080c735006889e9fcd5a7e",
+        "forecast_delivery.py": "cbeeb8ba0c2052ba0005f859ab50c2c5cfb22f8eae0c45b141e21cff746a54eb",
+        "forecast_novel_finalize.py": "6762637705f7c3421787baaa71db9c9d1cd5ddd983667de73bf91a10c2a19da5",
+        "forecast_novel_guard.py": "5395ddfbc963021665e1ed218e6eb57b9bb2cb6aedbb8d03db27486be484e3ec",
+        "forecast_guard.py": "9db44e5a25bb4b2f3a8b8dbd3b6b282a43274c4b302978828aa755ab79e1ab31",
+        "forecast_model.py": "0a0e599c83ffe066074a9fe8977f5e7e5215a61694f7d97669add7743dcbeafb",
+        "forecast_features.py": "18faec25384eee09d51499c48db1bd6c67a935f7b24b5dc01518acb5009ec393",
+        "forecast_run.py": "8db35217e8476f5954cb4135885037d65c642961e0d24d86cf7e9a6677d92447",
+        "pipeline.py": "17560ba5831eb5ea7e5b7bb3e031bf165959ab186b1249e621b27a0f9f0d195d"
+      },
+      "training_time_seconds": 107.89000000013039,
+      "inference_time_seconds": 13.530999999959022,
+      "timing_status": "MEASURED_SEPARATELY_SUM_OF_COMPLETED_FOLDS",
+      "combined_time_seconds": 121.4210000000894,
+      "mean_mae": 227.88994834403212,
+      "median_mae": 227.88994834403212,
+      "worst_fold_mae": 227.88994834403212,
+      "worst_decile_mae": 762.1384375839867,
+      "pooled_mae": 227.88994834403212,
+      "per_fold_mae": {
+        "11": 227.88994834403212
+      },
+      "catastrophic_error_rate": 0.0003080031539522965,
+      "validation_rows": 162336,
+      "unseen_aircraft_mae": 262.671228488368,
+      "unseen_aircraft_rows": 8,
+      "unseen_airport_stand_mae": 291.8378361842895,
+      "unseen_airport_stand_rows": 48,
+      "experiment_id": "generalization-robust-v1/forward-11-robust_deep_cap7200_novel_guarded",
+      "rank": null,
+      "status": "COMPLETED_SINGLE_FOLD_NOT_COMPARABLE_TO_FULL_CV",
+      "validation_folds": ["2025-11"],
+      "timestamp": "2026-10-12T13:08:24.858396+00:00",
+      "parameters": {
+        "fit_target_cap_seconds": 7200.0
+      }
     }
   ],
   "warnings": [],
@@ -22550,5 +22787,5 @@
       "timestamp": "2026-10-09T14:45:42.698103+00:00"
     }
   ],
-  "monitor_source_sha256": "87a221a0b6749fd284efc6120d1e4147bf656a76abc40b5f9dcb0babc18eb108"
+  "monitor_source_sha256": "cae5ef34304cd6e62624c8ea9b0828b7cd2890cbed49d2e5322efc8bb3a05a03"
 }
