@@ -113,10 +113,10 @@ def discover_runs(root: Path, allowed: set[str]) -> list[Path]:
 
 
 def measured_execution(report: dict[str, Any], runs: list[Path]) -> None:
-    """Carry real GPU identity and separate clocks without rewriting legacy evidence."""
+    """Carry recorded execution identity and separate clocks without rewriting legacy evidence."""
     for run in runs:
         plan = load_json(run / "plan.json")
-        if plan.get("execution_unit") != "GPU":
+        if plan.get("execution_unit") not in ["CPU", "GPU"]:
             continue
         ledger_path = run / "experiment-ledger.json"
         ledger = load_json(ledger_path) if ledger_path.exists() else []
@@ -126,7 +126,7 @@ def measured_execution(report: dict[str, Any], runs: list[Path]) -> None:
             model = entry["model"]
             records = [r for r in ledger if r.get("experiment", "").startswith("forward-")
                        and r.get("model") == model and f"2025-{r['validation_month']:02}" in entry["validation_folds"]]
-            entry["device"] = "GPU RTX4090 / CPU inference"
+            entry["device"] = "GPU RTX4090 / CPU inference" if plan["execution_unit"] == "GPU" else "CPU"
             entry["parameters"] = {**entry.get("parameters", {}), **plan.get("training_overrides", {}).get(model, {})}
             if records:
                 entry["training_time_seconds"] = sum(r["training_time_seconds"] for r in records)
