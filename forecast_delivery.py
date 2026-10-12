@@ -86,6 +86,17 @@ def export_source(source: Path, output: Path, inference_only: bool = False) -> d
         paths.append(source / "leaderboard.json")
     if (source / "dashboard.html").exists():
         paths.append(source / "dashboard.html")
+    preserved = source / "reproducibility/long-following-13.0.0"
+    preserved_hashes: dict[str, str] = {}
+    if preserved.exists() and not inference_only:
+        preserved_hashes = json.loads((preserved / "source-hashes.json").read_text(encoding="utf-8"))
+        if not isinstance(preserved_hashes, dict) or not preserved_hashes:
+            raise ValueError("Preserved source hash manifest is empty or invalid")
+        for name, digest in preserved_hashes.items():
+            if not isinstance(name, str) or Path(name).name != name or not name.endswith(".py") or not isinstance(digest, str) or not re.fullmatch(r"[0-9a-f]{64}", digest):
+                raise ValueError("Invalid preserved source binding")
+            paths.append(preserved / name)
+        paths.extend(preserved / name for name in ["README.md", "LICENSE", "requirements.lock.txt", "source-hashes.json", ".gitattributes"])
     if inference_only:
         allowed = {"taxiout.py", "forecast_model.py", "forecast_guard.py", "forecast_novel_guard.py", "forecast_features.py", "pipeline.py", "LICENSE",
                    "requirements.lock.txt", "DATA_USE.md", "GENERALIZATION.md", "INFERENCE.md"}
@@ -93,6 +104,8 @@ def export_source(source: Path, output: Path, inference_only: bool = False) -> d
     pattern = re.compile(r"(api[_-]?key|client[_-]?secret|access[_-]?token|private[_-]?key|password|secret[_-]?key)\b[\"']?\s*[:=]\s*[\"']?[A-Za-z0-9+/_.-]{12,}", re.I)
     # Snapshot changing live leaderboard files once; manifests describe ZIP bytes.
     payloads = {p: p.read_bytes() for p in paths}
+    if any(hashlib.sha256(payloads[preserved / name]).hexdigest() != digest for name, digest in preserved_hashes.items()):
+        raise ValueError("Preserved source bytes differ from their hash manifest")
     findings: list[str] = []
     for path in paths:
         text = payloads[path].decode("utf-8")

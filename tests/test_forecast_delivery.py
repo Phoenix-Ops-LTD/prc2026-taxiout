@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: GPL-3.0-only
 from pathlib import Path
 import hashlib
+import json
 import zipfile
 
 import pytest
@@ -39,3 +40,27 @@ def test_export_stops_before_writing_source_with_credentials(tmp_path: Path) -> 
     with pytest.raises(ValueError, match="credentials"):
         export_source(tmp_path, output)
     assert not output.exists()
+
+
+def test_complete_export_preserves_hash_bound_legacy_bytes_and_excludes_extras(tmp_path: Path) -> None:
+    for name in ["LICENSE", "pyproject.toml", "requirements.lock.txt", ".gitignore", "config.example.json"]:
+        (tmp_path / name).write_text("public\n", encoding="utf-8")
+    preserved = tmp_path / "reproducibility/long-following-13.0.0"
+    preserved.mkdir(parents=True)
+    body = b"# original CRLF source\r\nvalue = 1\r\n"
+    (preserved / "pipeline.py").write_bytes(body)
+    for name in ["README.md", "LICENSE", "requirements.lock.txt", ".gitattributes"]:
+        (preserved / name).write_text("public\n", encoding="utf-8")
+    (preserved / "source-hashes.json").write_text(json.dumps({"pipeline.py": hashlib.sha256(body).hexdigest()}))
+    (preserved / "unexpected.py").write_text("private extra", encoding="utf-8")
+    (preserved / "weights.cbm").write_bytes(b"private model")
+    output = tmp_path / "complete.zip"
+    export_source(tmp_path, output)
+    with zipfile.ZipFile(output) as archive:
+        assert archive.read("reproducibility/long-following-13.0.0/pipeline.py") == body
+        assert not any("unexpected" in n or "weights" in n for n in archive.namelist())
+    (preserved / "pipeline.py").write_bytes(body.replace(b"\r\n", b"\n"))
+    refused = tmp_path / "changed.zip"
+    with pytest.raises(ValueError, match="Preserved source bytes differ"):
+        export_source(tmp_path, refused)
+    assert not refused.exists()
