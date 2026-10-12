@@ -70,6 +70,10 @@ bytes first. Existing ranking objects are never replaced. Public rank observatio
 continues independently and never changes the local forward MAE leaderboard.
 
 Current validation: all nine historical ranking stages reproduce original bytes;
-the two complete final native passes are in progress. All 166 research tests and
+both complete final native passes and all nine intermediate stage repeats match
+exactly. Final prediction SHA256 is
+`b1adbc9b2a62f72feef1590cd2ba4a3e6d74e1ffc5300acb20e90c7b1f6356ee`.
+The read-only authoritative bucket/quotas/training-hash preflight also passes.
+All 168 research tests and
 43 strict maintained Python modules pass public CI. Runtime data, native models,
 credentials, detailed receipts and artifact archives remain outside Git.
