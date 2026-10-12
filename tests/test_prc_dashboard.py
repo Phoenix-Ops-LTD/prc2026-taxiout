@@ -116,3 +116,26 @@ def test_uploaded_result_is_visible_without_changing_validation_or_exposing_priv
     assert "release_directory" not in state["submission"]
     assert state["official_feedback_used_for_selection"] is False
     assert state["completed_candidates"] == 0 and state["champion"] is None
+
+
+def test_final_guard_and_verified_upload_are_separate_and_allowlisted(tmp_path: Path) -> None:
+    runs = tmp_path / "runs"
+    runs.mkdir()
+    (runs / "final-deadline-guard.json").write_text(json.dumps({
+        "status": "VERIFIED_FINAL_WAITING_FOR_SCHEDULED_UNIQUE_UPLOAD",
+        "scheduled_upload_at_utc": "2026-10-14T08:00:00Z", "final_key": "own_final.parquet",
+        "process_id": 123, "private_source_path": "restricted/path"}))
+    state = dashboard.dashboard_state(tmp_path)
+    assert state["final_submission"]["scheduled_upload_at_utc"] == "2026-10-14T08:00:00Z"
+    assert "process_id" not in state["final_submission"] and "private_source_path" not in state["final_submission"]
+    assert state["submission_uploaded"] is False
+    (runs / "latest-final-submission.json").write_text(json.dumps({
+        "status": "FINAL_UPLOADED_REMOTE_BYTES_EXACT_EVALUATION_PENDING",
+        "key": "own_final.parquet", "rows": 12, "final_official_score": None,
+        "manifest_path": "restricted/manifest"}))
+    state = dashboard.dashboard_state(tmp_path)
+    assert state["final_submission"]["key"] == "own_final.parquet"
+    assert state["final_submission"]["scheduled_upload_at_utc"] is None
+    assert state["final_submission"]["final_official_score"] is None
+    assert "manifest_path" not in state["final_submission"]
+    assert state["submission_uploaded"] is False
